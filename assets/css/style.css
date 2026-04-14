@@ -701,6 +701,10 @@
             display: block;
         }
 
+
+
+
+
         /* =============================================
    MENU
 ============================================= */
@@ -816,6 +820,9 @@
             text-align: center;
         }
 
+
+
+        
         /* =============================================
    WHY CHOOSE US
 ============================================= */
@@ -1208,8 +1215,8 @@
         }
 
         .contact-val {
-            font-family: var(--font-serif);
-            font-size: 0.92rem;
+            font-family: var(--font-body);
+            font-size: 18px;
             color: var(--text-light);
             line-height: 1.65;
         }

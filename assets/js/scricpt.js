@@ -45,46 +45,21 @@
         }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
         document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
 
-       // === MENU FILTER ===
-document.querySelectorAll('.menu-tab').forEach(btn => {
-    btn.addEventListener('click', function () {
-        // Remove active class from all tabs
-        document.querySelectorAll('.menu-tab').forEach(b => b.classList.remove('active'));
-        // Add active class to clicked tab
-        this.classList.add('active');
-        
-        const cat = this.dataset.cat;
-        
-        document.querySelectorAll('.menu-card').forEach(card => {
-            const show = cat === 'all' || card.dataset.cat === cat;
-            
-            if (show) {
-                card.style.display = '';
-                // Small delay to allow display to apply before opacity transition
-                setTimeout(() => {
-                    card.style.opacity = '1';
-                    card.style.transform = 'scale(1)';
-                }, 10);
-                card.style.pointerEvents = '';
-            } else {
-                card.style.opacity = '0';
-                card.style.transform = 'scale(0.95)';
-                card.style.pointerEvents = 'none';
-                // Hide completely after transition
-                setTimeout(() => {
-                    if (!card.style.opacity || card.style.opacity === '0') {
-                        card.style.display = 'none';
-                    }
-                }, 400);
-            }
+        // === MENU FILTER ===
+        document.querySelectorAll('.menu-tab').forEach(btn => {
+            btn.addEventListener('click', function () {
+                document.querySelectorAll('.menu-tab').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                const cat = this.dataset.cat;
+                document.querySelectorAll('.menu-card').forEach(card => {
+                    const show = cat === 'all' || card.dataset.cat === cat;
+                    card.style.transition = 'opacity 0.4s, transform 0.4s';
+                    card.style.opacity = show ? '1' : '0.15';
+                    card.style.transform = show ? '' : 'scale(0.97)';
+                    card.style.pointerEvents = show ? '' : 'none';
+                });
+            });
         });
-    });
-});
-
-// Add CSS transition to menu cards if not already present
-document.querySelectorAll('.menu-card').forEach(card => {
-    card.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
-});
 
         // === LIGHTBOX ===
         const lbImgs = ['image29.jpg', 'image30.jpg', 'image31.jpg', 'image32.jpg', 'image33.jpg', 'image34.jpg', 'image35.jpg']
