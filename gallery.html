@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Long John Silver's Shillong — Taste the Myth</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&family=Cinzel:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+    <!-- ===================== NAVBAR ===================== -->
+    <nav id="navbar">
+        <div class="container">
+            <div class="d-flex align-items-center justify-content-between">
+                <a href="#" class="nav-logo-wrap">
+                    <img src="assets/images/long-john-logo.png" alt="Long John Silver's Shillong" class="nav-logo-img">
+                    <!-- <div class="nav-logo-text">
+                        <span class="nav-logo-name">Long John Silver's</span>
+                        <span class="nav-logo-sub">Taste the Myth · Shillong</span>
+                    </div> -->
+                </a>
+                <button class="navbar-toggler d-lg-none" type="button" id="menuToggle">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="d-none d-lg-flex align-items-center gap-1">
+                    <a class="nav-link" href="index.html">Home</a>
+                    <a class="nav-link" href="menu.html">Menu</a>
+                    <a class="nav-link" href="#why">Our Promise</a>
+                    <a class="nav-link" href="#gallery">Gallery</a>
+                    <a class="nav-link" href="#order">Order</a>
+                    <a class="nav-link" href="#contact">Contact</a>
+                    <a class="nav-link nav-cta ms-2" href="#order">Order Now</a>
+                </div>
+            </div>
+            <div class="d-lg-none" id="mobileMenu" style="display:none">
+                <a class="nav-link d-block py-2" href="index.html">Home</a>
+                <a class="nav-link d-block py-2" href="menu.html">Menu</a>
+                <a class="nav-link d-block py-2" href="#gallery">Gallery</a>
+                <a class="nav-link d-block py-2" href="#order">Order</a>
+                <a class="nav-link d-block py-2" href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===================== GALLERY ===================== -->
+  
+<!-- ══════════════════════════════════════════════════
+     SECTION  MARKUP
+══════════════════════════════════════════════════ -->
+<section class="fst-section" id="gallery">
+  <div class="fst-wrap">
+ 
+    <!-- ── Header ── -->
+    <div class="fst-header">
+      <div>
+        <div class="fst-kicker">
+          <span class="fst-kicker-bar"></span>
+          <span class="fst-kicker-text">Visual Menu</span>
+          <span class="fst-kicker-bar2"></span>
+        </div>
+        <h2 class="fst-headline">
+          Taste It With<br><em>Your Eyes</em>
+        </h2>
+        <p class="fst-sub">
+          Every dish crafted for flavour — and for the eye.
+        </p>
+      </div>
+ 
+      <!-- Filters -->
+      <div class="fst-tabs">
+        <span class="fst-tabs-label">Filter by</span>
+        <div class="fst-tabs-row">
+          <button class="fst-tab fst-tab-on" data-f="all"><span>All</span></button>
+          <button class="fst-tab" data-f="chicken"><span>Chicken</span></button>
+          <button class="fst-tab" data-f="mutton"><span>Mutton</span></button>
+          <button class="fst-tab" data-f="specials"><span>Specials</span></button>
+          <button class="fst-tab" data-f="sides"><span>Sides</span></button>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- ── Mosaic Grid ── -->
+    <div class="fst-mosaic" id="fstGrid">
+ 
+      <div class="fst-tile" data-cat="chicken" onclick="fstOpen(0)">
+        <img src="assets/images/food-long-john/lemon-chicken-gravy.jpg" alt="Lemon Chicken Gravy" class="fst-photo">
+        <div class="fst-veil">
+          <span class="fst-lens"><i class="fas fa-expand-alt"></i></span>
+          <div class="fst-idx">01</div>
+          <div class="fst-info">
+            <div class="fst-badge"><i class="fas fa-circle" style="font-size:5px"></i> Chicken</div>
+            <div class="fst-dish">Lemon Chicken Gravy</div>
+          </div>
+        </div>
+      </div>
+ 
+      <div class="fst-tile" data-cat="chicken" onclick="fstOpen(1)">
+        <img src="assets/images/food-long-john/chicken-thali.jpg" alt="Chicken Thali" class="fst-photo">
+        <div class="fst-veil">
+          <span class="fst-lens"><i class="fas fa-expand-alt"></i></span>
+          <div class="fst-idx">02</div>
+          <div class="fst-info">
+            <div class="fst-badge"><i class="fas fa-circle" style="font-size:5px"></i> Chicken</div>
+            <div class="fst-dish">Chicken Thali</div>
+          </div>
+        </div>
+      </div>
+ 
+      <div class="fst-tile" data-cat="mutton" onclick="fstOpen(2)">
+        <img src="assets/images/food-long-john/mutton-keema-with-roti-2-pc.jpg" alt="Mutton Keema Roti" class="fst-photo">
+        <div class="fst-veil">
+          <span class="fst-lens"><i class="fas fa-expand-alt"></i></span>
+          <div class="fst-idx">03</div>
+          <div class="fst-info">
+            <div class="fst-badge"><i class="fas fa-circle" style="font-size:5px"></i> Mutton</div>
+            <div class="fst-dish">Mutton Keema &amp; Roti</div>
+          </div>
+        </div>
+      </div>
+ 
+      <div class="fst-tile" data-cat="mutton" onclick="fstOpen(3)">
+        <img src="assets/images/food-long-john/mutton-curry.jpg" alt="Mutton Curry" class="fst-photo">
+        <div class="fst-veil">
+          <span class="fst-lens"><i class="fas fa-expand-alt"></i></span>
+          <div class="fst-idx">04</div>
+          <div class="fst-info">
+            <div class="fst-badge"><i class="fas fa-circle" style="font-size:5px"></i> Mutton</div>
+            <div class="fst-dish">Mutton Curry</div>
+          </div>
+        </div>
+      </div>
+ 
+      <div class="fst-tile" data-cat="chicken" onclick="fstOpen(4)">
+        <img src="assets/images/food-long-john/chicke-drumstick.jpg" alt="Chicken Drumstick" class="fst-photo">
+        <div class="fst-veil">
+          <span class="fst-lens"><i class="fas fa-expand-alt"></i></span>
+          <div class="fst-idx">05</div>
+          <div class="fst-info">
+            <div class="fst-badge"><i class="fas fa-circle" style="font-size:5px"></i> Chicken</div>
+            <div class="fst-dish">Chicken Drumstick</div>
+          </div>
+        </div>
+      </div>
+ 
+      <div class="fst-tile" data-cat="specials" onclick="fstOpen(5)">
+        <img src="assets/images/food-long-john/pork-chilly-dry.jpg" alt="Pork Chilly Dry" class="fst-photo">
+        <div class="fst-veil">
+          <span class="fst-lens"><i class="fas fa-expand-alt"></i></span>
+          <div class="fst-idx">06</div>
+          <div class="fst-info">
+            <div class="fst-badge"><i class="fas fa-circle" style="font-size:5px"></i> Specials</div>
+            <div class="fst-dish">Pork Chilly Dry</div>
+          </div>
+        </div>
+      </div>
+ 
+      <div class="fst-tile" data-cat="sides" onclick="fstOpen(6)">
+        <img src="assets/images/food-long-john/noodles-about.jpg" alt="Wok Noodles" class="fst-photo">
+        <div class="fst-veil">
+          <span class="fst-lens"><i class="fas fa-expand-alt"></i></span>
+          <div class="fst-idx">07</div>
+          <div class="fst-info">
+            <div class="fst-badge"><i class="fas fa-circle" style="font-size:5px"></i> Sides</div>
+            <div class="fst-dish">Wok Noodles</div>
+          </div>
+        </div>
+      </div>
+ 
+    </div><!-- /fst-mosaic -->
+ 
+    <!-- ── Divider + Reel ── -->
+    <div class="fst-divider">
+      <i class="fas fa-utensils fst-divider-icon"></i>
+      <div class="fst-reel">
+        <div class="fst-reel-track" id="fstReel">
+          <span class="fst-reel-node"><span class="fst-reel-sep"></span>Fresh Daily</span>
+          <span class="fst-reel-node"><span class="fst-reel-sep"></span>Slow Cooked</span>
+          <span class="fst-reel-node"><span class="fst-reel-sep"></span>Bold Spices</span>
+          <span class="fst-reel-node"><span class="fst-reel-sep"></span>Handcrafted Flavours</span>
+          <span class="fst-reel-node"><span class="fst-reel-sep"></span>Local Ingredients</span>
+          <span class="fst-reel-node"><span class="fst-reel-sep"></span>Chef&rsquo;s Passion</span>
+          <span class="fst-reel-node"><span class="fst-reel-sep"></span>Open Flame</span>
+          <span class="fst-reel-node"><span class="fst-reel-sep"></span>Family Recipes</span>
+          <!-- duplicate for seamless loop -->
+          <span class="fst-reel-node"><span class="fst-reel-sep"></span>Fresh Daily</span>
+          <span class="fst-reel-node"><span class="fst-reel-sep"></span>Slow Cooked</span>
+          <span class="fst-reel-node"><span class="fst-reel-sep"></span>Bold Spices</span>
+          <span class="fst-reel-node"><span class="fst-reel-sep"></span>Handcrafted Flavours</span>
+          <span class="fst-reel-node"><span class="fst-reel-sep"></span>Local Ingredients</span>
+          <span class="fst-reel-node"><span class="fst-reel-sep"></span>Chef&rsquo;s Passion</span>
+          <span class="fst-reel-node"><span class="fst-reel-sep"></span>Open Flame</span>
+          <span class="fst-reel-node"><span class="fst-reel-sep"></span>Family Recipes</span>
+        </div>
+      </div>
+    </div>
+ 
+  </div><!-- /fst-wrap -->
+</section>
+ 
+<!-- ══════════════════════════════════════════════════
+     LIGHTBOX
+══════════════════════════════════════════════════ -->
+<div class="fst-lb" id="fstLb">
+  <div class="fst-lb-bar" id="fstBar"></div>
+  <div class="fst-lb-bg" onclick="fstClose()"></div>
+ 
+  <button class="fst-lb-close" onclick="fstClose()"><i class="fas fa-times"></i></button>
+  <button class="fst-lb-arrow fst-lb-prev" onclick="fstNav(-1)"><i class="fas fa-chevron-left"></i></button>
+  <button class="fst-lb-arrow fst-lb-next" onclick="fstNav(1)"><i class="fas fa-chevron-right"></i></button>
+ 
+  <div class="fst-lb-shell">
+    <div class="fst-lb-frame">
+      <img id="fstLbPhoto" src="" alt="" class="fst-lb-photo">
+    </div>
+    <div class="fst-lb-meta">
+      <div class="fst-lb-tag" id="fstLbTag"></div>
+      <div class="fst-lb-name" id="fstLbName"></div>
+    </div>
+    <div class="fst-lb-dots" id="fstDots"></div>
+  </div>
+ 
+  <div class="fst-lb-count" id="fstCount"></div>
+</div>
+  
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer>
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="footer-logo-wrap">
+                        <img src="assets/images/long-john-logo.png" alt="LJS Logo" class="footer-logo">
+                        <div>
+                            <span class="footer-brand">Long John Silver's</span>
+                            <span class="footer-tagline">Taste the Myth · Shillong</span>
+                        </div>
+                    </div>
+                    <p
+                        style="font-family:var(--font-serif);font-size:0.9rem;color:var(--text-muted);font-style:italic;line-height:1.8;margin-bottom:20px">
+                        Your culinary haven in the heart of Meghalaya — where every meal feels like home.</p>
+                    <div class="d-flex gap-2">
+                        <a href="#" class="social-btn"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-btn"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-6">
+                    <div class="section-label mb-3" style="font-size:0.58rem">Navigate</div>
+                    <div class="footer-links">
+                        <a href="#about">About Us</a>
+                        <a href="#menu">Our Menu</a>
+                        <a href="#gallery">Gallery</a>
+                        <a href="#order">Order Online</a>
+                        <a href="#contact">Contact</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-6">
+                    <div class="section-label mb-3" style="font-size:0.58rem">Cuisine</div>
+                    <div class="footer-links">
+                        <a href="#menu">Indian Delights</a>
+                        <a href="#menu">Chinese Wok</a>
+                        <a href="#menu">Continental</a>
+                        <a href="#menu">Combo Meals</a>
+                        <a href="#menu">Beverages</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="section-label mb-3" style="font-size:0.58rem">Visit Us</div>
+                    <p style="font-family:var(--font-serif);font-size:0.9rem;color:var(--text-muted);line-height:1.85">
+                        Near Polo Towers<br>Shillong, Meghalaya<br>India<br><br>
+                        <span style="color:var(--cream-dark)">Open Daily</span> · 11AM – 10PM
+                    </p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span class="footer-copy">© 2024 Long John Silver's Shillong. All rights reserved.</span>
+                <span class="footer-copy">Taste the Myth · Made with ♥ in Shillong</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/scricpt.js"></script>
+ 
+<script>
+(function(){
+ 
+  /* ── DATA ─────────────────────────────────────────── */
+  const DATA = [
+    {src:'assets/images/food-long-john/lemon-chicken-gravy.jpg',     name:'Lemon Chicken Gravy',    cat:'chicken'},
+    {src:'assets/images/food-long-john/chicken-thali.jpg',           name:'Chicken Thali',          cat:'chicken'},
+    {src:'assets/images/food-long-john/mutton-keema-with-roti-2-pc.jpg',name:'Mutton Keema & Roti', cat:'mutton'},
+    {src:'assets/images/food-long-john/mutton-curry.jpg',            name:'Mutton Curry',           cat:'mutton'},
+    {src:'assets/images/food-long-john/chicke-drumstick.jpg',        name:'Chicken Drumstick',      cat:'chicken'},
+    {src:'assets/images/food-long-john/pork-chilly-dry.jpg',         name:'Pork Chilly Dry',        cat:'specials'},
+    {src:'assets/images/food-long-john/noodles-about.jpg',           name:'Wok Noodles',            cat:'sides'},
+  ];
+ 
+  const CAT_LABEL = {
+    chicken:'Chicken', mutton:'Mutton', specials:'Specials', sides:'Sides'
+  };
+ 
+  let idx  = 0;
+  let pool = [...DATA]; /* filtered subset for lightbox */
+ 
+  /* ── ENTRANCE OBSERVER ────────────────────────────── */
+  const tiles = document.querySelectorAll('.fst-tile');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(e.isIntersecting) e.target.classList.add('fst-visible');
+    });
+  },{threshold:.12});
+  tiles.forEach(t => io.observe(t));
+ 
+  /* ── FILTER ───────────────────────────────────────── */
+  document.querySelectorAll('.fst-tab').forEach(btn => {
+    btn.addEventListener('click',()=>{
+      document.querySelectorAll('.fst-tab').forEach(b=>b.classList.remove('fst-tab-on'));
+      btn.classList.add('fst-tab-on');
+ 
+      const f = btn.dataset.f;
+      tiles.forEach(tile => {
+        const match = f==='all' || tile.dataset.cat===f;
+        tile.style.transition='opacity .45s, transform .45s';
+        tile.classList.toggle('fst-dim', !match);
+      });
+      pool = f==='all' ? [...DATA] : DATA.filter(d=>d.cat===f);
+    });
+  });
+ 
+  /* ── LIGHTBOX ─────────────────────────────────────── */
+  window.fstOpen = function(i){
+    idx = i;
+    renderLb();
+    document.getElementById('fstLb').classList.add('fst-lb-open');
+    document.body.style.overflow='hidden';
+  };
+ 
+  window.fstClose = function(){
+    document.getElementById('fstLb').classList.remove('fst-lb-open');
+    document.body.style.overflow='';
+  };
+ 
+  window.fstNav = function(dir){
+    idx = (idx + dir + pool.length) % pool.length;
+    renderLb();
+  };
+ 
+  function renderLb(){
+    const d = pool[idx] ?? DATA[idx];
+    const photo = document.getElementById('fstLbPhoto');
+    const bar   = document.getElementById('fstBar');
+ 
+    /* fade swap */
+    photo.style.opacity='0';
+    bar.style.width='0%';
+    setTimeout(()=>{
+      photo.src = d.src;
+      photo.alt = d.name;
+      document.getElementById('fstLbTag').textContent  = CAT_LABEL[d.cat]||d.cat;
+      document.getElementById('fstLbName').textContent = d.name;
+      photo.style.opacity='1';
+    },240);
+ 
+    /* progress bar */
+    bar.style.width = Math.round(((idx+1)/pool.length)*100)+'%';
+ 
+    /* count */
+    document.getElementById('fstCount').textContent =
+      String(idx+1).padStart(2,'0') + ' / ' + String(pool.length).padStart(2,'0');
+ 
+    /* dots */
+    const dotsEl = document.getElementById('fstDots');
+    dotsEl.innerHTML='';
+    pool.forEach((_,i)=>{
+      const d2=document.createElement('button');
+      d2.className='fst-lb-dot'+(i===idx?' fst-lb-dot-on':'');
+      d2.setAttribute('aria-label','Image '+(i+1));
+      d2.onclick=()=>{ idx=i; renderLb(); };
+      dotsEl.appendChild(d2);
+    });
+  }
+ 
+  /* keyboard */
+  document.addEventListener('keydown',e=>{
+    if(!document.getElementById('fstLb').classList.contains('fst-lb-open')) return;
+    if(e.key==='ArrowLeft')  fstNav(-1);
+    if(e.key==='ArrowRight') fstNav(1);
+    if(e.key==='Escape')     fstClose();
+  });
+ 
+  /* touch swipe in lightbox */
+  let tx=0;
+  const lb=document.getElementById('fstLb');
+  lb.addEventListener('touchstart',e=>{ tx=e.touches[0].clientX; },{passive:true});
+  lb.addEventListener('touchend',e=>{
+    const dx=e.changedTouches[0].clientX-tx;
+    if(Math.abs(dx)>50) fstNav(dx<0?1:-1);
+  });
+ 
+})();
+</script>
+ 
+</body>
+
+</html>
