@@ -31,9 +31,9 @@
                 </button>
                 <div class="d-none d-lg-flex align-items-center gap-1">
                     <a class="nav-link" href="index.html">Home</a>
-                    <a class="nav-link" href="menu.html">Menu</a>
+                    <a class="nav-link active" href="menu.html">Menu</a>
                     <a class="nav-link" href="#why">Our Promise</a>
-                    <a class="nav-link" href="#gallery">Gallery</a>
+                    <a class="nav-link active" href="gallery.html">Gallery</a>
                     <a class="nav-link" href="#order">Order</a>
                     <a class="nav-link" href="#contact">Contact</a>
                     <a class="nav-link nav-cta ms-2" href="#order">Order Now</a>
@@ -41,19 +41,20 @@
             </div>
             <div class="d-lg-none" id="mobileMenu" style="display:none">
                 <a class="nav-link d-block py-2" href="index.html">Home</a>
-                <a class="nav-link d-block py-2" href="menu.html">Menu</a>
-                <a class="nav-link d-block py-2" href="#gallery">Gallery</a>
+                <a class="nav-link active d-block py-2" href="menu.html">Menu</a>
+                <a class="nav-link active  d-block py-2" href="gallery.html">Gallery</a>
                 <a class="nav-link d-block py-2" href="#order">Order</a>
                 <a class="nav-link d-block py-2" href="#contact">Contact</a>
             </div>
         </div>
     </nav>
 
-    <!-- ===================== GALLERY ===================== -->
   
+
 <!-- ══════════════════════════════════════════════════
      SECTION  MARKUP
 ══════════════════════════════════════════════════ -->
+
 <section class="fst-section" id="gallery">
   <div class="fst-wrap">
  
@@ -175,31 +176,7 @@
  
     </div><!-- /fst-mosaic -->
  
-    <!-- ── Divider + Reel ── -->
-    <div class="fst-divider">
-      <i class="fas fa-utensils fst-divider-icon"></i>
-      <div class="fst-reel">
-        <div class="fst-reel-track" id="fstReel">
-          <span class="fst-reel-node"><span class="fst-reel-sep"></span>Fresh Daily</span>
-          <span class="fst-reel-node"><span class="fst-reel-sep"></span>Slow Cooked</span>
-          <span class="fst-reel-node"><span class="fst-reel-sep"></span>Bold Spices</span>
-          <span class="fst-reel-node"><span class="fst-reel-sep"></span>Handcrafted Flavours</span>
-          <span class="fst-reel-node"><span class="fst-reel-sep"></span>Local Ingredients</span>
-          <span class="fst-reel-node"><span class="fst-reel-sep"></span>Chef&rsquo;s Passion</span>
-          <span class="fst-reel-node"><span class="fst-reel-sep"></span>Open Flame</span>
-          <span class="fst-reel-node"><span class="fst-reel-sep"></span>Family Recipes</span>
-          <!-- duplicate for seamless loop -->
-          <span class="fst-reel-node"><span class="fst-reel-sep"></span>Fresh Daily</span>
-          <span class="fst-reel-node"><span class="fst-reel-sep"></span>Slow Cooked</span>
-          <span class="fst-reel-node"><span class="fst-reel-sep"></span>Bold Spices</span>
-          <span class="fst-reel-node"><span class="fst-reel-sep"></span>Handcrafted Flavours</span>
-          <span class="fst-reel-node"><span class="fst-reel-sep"></span>Local Ingredients</span>
-          <span class="fst-reel-node"><span class="fst-reel-sep"></span>Chef&rsquo;s Passion</span>
-          <span class="fst-reel-node"><span class="fst-reel-sep"></span>Open Flame</span>
-          <span class="fst-reel-node"><span class="fst-reel-sep"></span>Family Recipes</span>
-        </div>
-      </div>
-    </div>
+    
  
   </div><!-- /fst-wrap -->
 </section>
@@ -289,124 +266,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/scricpt.js"></script>
  
-<script>
-(function(){
- 
-  /* ── DATA ─────────────────────────────────────────── */
-  const DATA = [
-    {src:'assets/images/food-long-john/lemon-chicken-gravy.jpg',     name:'Lemon Chicken Gravy',    cat:'chicken'},
-    {src:'assets/images/food-long-john/chicken-thali.jpg',           name:'Chicken Thali',          cat:'chicken'},
-    {src:'assets/images/food-long-john/mutton-keema-with-roti-2-pc.jpg',name:'Mutton Keema & Roti', cat:'mutton'},
-    {src:'assets/images/food-long-john/mutton-curry.jpg',            name:'Mutton Curry',           cat:'mutton'},
-    {src:'assets/images/food-long-john/chicke-drumstick.jpg',        name:'Chicken Drumstick',      cat:'chicken'},
-    {src:'assets/images/food-long-john/pork-chilly-dry.jpg',         name:'Pork Chilly Dry',        cat:'specials'},
-    {src:'assets/images/food-long-john/noodles-about.jpg',           name:'Wok Noodles',            cat:'sides'},
-  ];
- 
-  const CAT_LABEL = {
-    chicken:'Chicken', mutton:'Mutton', specials:'Specials', sides:'Sides'
-  };
- 
-  let idx  = 0;
-  let pool = [...DATA]; /* filtered subset for lightbox */
- 
-  /* ── ENTRANCE OBSERVER ────────────────────────────── */
-  const tiles = document.querySelectorAll('.fst-tile');
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if(e.isIntersecting) e.target.classList.add('fst-visible');
-    });
-  },{threshold:.12});
-  tiles.forEach(t => io.observe(t));
- 
-  /* ── FILTER ───────────────────────────────────────── */
-  document.querySelectorAll('.fst-tab').forEach(btn => {
-    btn.addEventListener('click',()=>{
-      document.querySelectorAll('.fst-tab').forEach(b=>b.classList.remove('fst-tab-on'));
-      btn.classList.add('fst-tab-on');
- 
-      const f = btn.dataset.f;
-      tiles.forEach(tile => {
-        const match = f==='all' || tile.dataset.cat===f;
-        tile.style.transition='opacity .45s, transform .45s';
-        tile.classList.toggle('fst-dim', !match);
-      });
-      pool = f==='all' ? [...DATA] : DATA.filter(d=>d.cat===f);
-    });
-  });
- 
-  /* ── LIGHTBOX ─────────────────────────────────────── */
-  window.fstOpen = function(i){
-    idx = i;
-    renderLb();
-    document.getElementById('fstLb').classList.add('fst-lb-open');
-    document.body.style.overflow='hidden';
-  };
- 
-  window.fstClose = function(){
-    document.getElementById('fstLb').classList.remove('fst-lb-open');
-    document.body.style.overflow='';
-  };
- 
-  window.fstNav = function(dir){
-    idx = (idx + dir + pool.length) % pool.length;
-    renderLb();
-  };
- 
-  function renderLb(){
-    const d = pool[idx] ?? DATA[idx];
-    const photo = document.getElementById('fstLbPhoto');
-    const bar   = document.getElementById('fstBar');
- 
-    /* fade swap */
-    photo.style.opacity='0';
-    bar.style.width='0%';
-    setTimeout(()=>{
-      photo.src = d.src;
-      photo.alt = d.name;
-      document.getElementById('fstLbTag').textContent  = CAT_LABEL[d.cat]||d.cat;
-      document.getElementById('fstLbName').textContent = d.name;
-      photo.style.opacity='1';
-    },240);
- 
-    /* progress bar */
-    bar.style.width = Math.round(((idx+1)/pool.length)*100)+'%';
- 
-    /* count */
-    document.getElementById('fstCount').textContent =
-      String(idx+1).padStart(2,'0') + ' / ' + String(pool.length).padStart(2,'0');
- 
-    /* dots */
-    const dotsEl = document.getElementById('fstDots');
-    dotsEl.innerHTML='';
-    pool.forEach((_,i)=>{
-      const d2=document.createElement('button');
-      d2.className='fst-lb-dot'+(i===idx?' fst-lb-dot-on':'');
-      d2.setAttribute('aria-label','Image '+(i+1));
-      d2.onclick=()=>{ idx=i; renderLb(); };
-      dotsEl.appendChild(d2);
-    });
-  }
- 
-  /* keyboard */
-  document.addEventListener('keydown',e=>{
-    if(!document.getElementById('fstLb').classList.contains('fst-lb-open')) return;
-    if(e.key==='ArrowLeft')  fstNav(-1);
-    if(e.key==='ArrowRight') fstNav(1);
-    if(e.key==='Escape')     fstClose();
-  });
- 
-  /* touch swipe in lightbox */
-  let tx=0;
-  const lb=document.getElementById('fstLb');
-  lb.addEventListener('touchstart',e=>{ tx=e.touches[0].clientX; },{passive:true});
-  lb.addEventListener('touchend',e=>{
-    const dx=e.changedTouches[0].clientX-tx;
-    if(Math.abs(dx)>50) fstNav(dx<0?1:-1);
-  });
- 
-})();
-</script>
  
 </body>
 

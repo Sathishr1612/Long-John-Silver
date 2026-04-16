@@ -1,3 +1,20 @@
+
+// Highlight current page nav link
+(function highlightCurrentPage() {
+    const currentPage = location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-link').forEach(link => {
+        const linkPage = link.getAttribute('href').split('#')[0];
+        if (linkPage === currentPage || (currentPage === '' && linkPage === 'index.html')) {
+            link.classList.add('active');
+        } else {
+            link.classList.remove('active');
+        }
+    });
+})();
+
+
+
+
 // ================================================
 // HERO CAROUSEL
 // ================================================
@@ -293,6 +310,12 @@ document.addEventListener('keydown', e => {
     if (e.key === 'ArrowRight') lbNav(1);
 });
 
+
+
+
+
+
+
 // ================================================
 // CONTACT FORM
 // ================================================
@@ -400,4 +423,242 @@ forceRevealVisible();
     hero?.addEventListener('mouseleave', startTimer);
  
     startTimer();
+})();
+
+
+
+
+// ====================  GALLERY  ===========
+
+
+(function(){
+
+  /* ── DATA ─────────────────────────────────────────── */
+  const DATA = [
+    {src:'assets/images/food-long-john/lemon-chicken-gravy.jpg',     name:'Lemon Chicken Gravy',    cat:'chicken'},
+    {src:'assets/images/food-long-john/chicken-thali.jpg',           name:'Chicken Thali',          cat:'chicken'},
+    {src:'assets/images/food-long-john/mutton-keema-with-roti-2-pc.jpg',name:'Mutton Keema & Roti', cat:'mutton'},
+    {src:'assets/images/food-long-john/mutton-curry.jpg',            name:'Mutton Curry',           cat:'mutton'},
+    {src:'assets/images/food-long-john/chicke-drumstick.jpg',        name:'Chicken Drumstick',      cat:'chicken'},
+    {src:'assets/images/food-long-john/pork-chilly-dry.jpg',         name:'Pork Chilly Dry',        cat:'specials'},
+    {src:'assets/images/food-long-john/noodles-about.jpg',           name:'Wok Noodles',            cat:'sides'},
+  ];
+
+  const CAT_LABEL = {
+    chicken:'Chicken', mutton:'Mutton', specials:'Specials', sides:'Sides'
+  };
+
+  let idx  = 0;
+  let pool = [...DATA];
+
+  // Check if mobile
+  function isMobile() {
+    return window.innerWidth <= 768;
+  }
+
+  // Check if tablet
+  function isTablet() {
+    return window.innerWidth <= 1080 && window.innerWidth > 768;
+  }
+
+  /* ── ENTRANCE OBSERVER ────────────────────────────── */
+  const tiles = document.querySelectorAll('.fst-tile');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(e.isIntersecting) e.target.classList.add('fst-visible');
+    });
+  },{threshold:.12});
+  tiles.forEach(t => io.observe(t));
+
+  /* ── FILTER ───────────────────────────────────────── */
+  document.querySelectorAll('.fst-tab').forEach(btn => {
+    btn.addEventListener('click',()=>{
+      document.querySelectorAll('.fst-tab').forEach(b=>b.classList.remove('fst-tab-on'));
+      btn.classList.add('fst-tab-on');
+
+      const f = btn.dataset.f;
+
+      // Get visible tiles
+      const visibleTiles = [];
+      tiles.forEach((tile, index) => {
+        const match = f==='all' || tile.dataset.cat===f;
+        if (match) {
+          visibleTiles.push({tile: tile, originalIndex: index});
+        }
+      });
+
+      // Hide all first
+      tiles.forEach(tile => {
+        tile.style.opacity = '0';
+        tile.style.transform = 'translateY(20px) scale(0.95)';
+      });
+
+      setTimeout(() => {
+        // Hide non-matching completely
+        tiles.forEach((tile, index) => {
+          const match = f==='all' || tile.dataset.cat===f;
+          if (!match) {
+            tile.style.display = 'none';
+            // Reset inline styles when hidden
+            tile.style.gridColumn = '';
+            tile.style.gridRow = '';
+          } else {
+            tile.style.display = 'block';
+          }
+        });
+
+        // Apply new grid positions for visible tiles
+        visibleTiles.forEach((item, newIndex) => {
+          const tile = item.tile;
+
+          if (isMobile()) {
+            // Mobile: 2 columns, simple layout
+            // First item spans full width, rest are 50/50
+            if (newIndex === 0) {
+              tile.style.gridColumn = '1/3';
+              tile.style.gridRow = 'auto';
+            } else {
+              const row = Math.floor((newIndex - 1) / 2) + 2;
+              const col = (newIndex - 1) % 2 === 0 ? '1/2' : '2/3';
+              tile.style.gridColumn = col;
+              tile.style.gridRow = row + '/' + (row + 1);
+            }
+          } else if (isTablet()) {
+            // Tablet: 6 columns
+            if (newIndex === 0) {
+              tile.style.gridColumn = '1/4';
+              tile.style.gridRow = '1/5';
+            } else if (newIndex === 1) {
+              tile.style.gridColumn = '4/7';
+              tile.style.gridRow = '1/4';
+            } else if (newIndex === 2) {
+              tile.style.gridColumn = '4/7';
+              tile.style.gridRow = '4/5';
+            } else if (newIndex === 3) {
+              tile.style.gridColumn = '1/3';
+              tile.style.gridRow = '5/8';
+            } else if (newIndex === 4) {
+              tile.style.gridColumn = '3/5';
+              tile.style.gridRow = '5/8';
+            } else if (newIndex === 5) {
+              tile.style.gridColumn = '5/7';
+              tile.style.gridRow = '5/8';
+            } else if (newIndex === 6) {
+              tile.style.gridColumn = '1/7';
+              tile.style.gridRow = '8/11';
+            }
+          } else {
+            // Desktop: 12 columns
+            if (newIndex === 0) {
+              tile.style.gridColumn = '1/6';
+              tile.style.gridRow = '1/8';
+            } else if (newIndex === 1) {
+              tile.style.gridColumn = '6/9';
+              tile.style.gridRow = '1/5';
+            } else if (newIndex === 2) {
+              tile.style.gridColumn = '9/13';
+              tile.style.gridRow = '1/4';
+            } else if (newIndex === 3) {
+              tile.style.gridColumn = '6/9';
+              tile.style.gridRow = '5/8';
+            } else if (newIndex === 4) {
+              tile.style.gridColumn = '9/13';
+              tile.style.gridRow = '4/8';
+            } else if (newIndex === 5) {
+              tile.style.gridColumn = '1/5';
+              tile.style.gridRow = '8/11';
+            } else if (newIndex === 6) {
+              tile.style.gridColumn = '5/13';
+              tile.style.gridRow = '8/11';
+            }
+          }
+
+          // Show with animation
+          setTimeout(() => {
+            tile.style.opacity = '1';
+            tile.style.transform = 'translateY(0) scale(1)';
+          }, 50 * newIndex);
+        });
+
+      }, 300);
+
+      pool = f==='all' ? [...DATA] : DATA.filter(d=>d.cat===f);
+    });
+  });
+
+  /* ── LIGHTBOX ─────────────────────────────────────── */
+  window.fstOpen = function(i){
+    idx = i;
+    renderLb();
+    document.getElementById('fstLb').classList.add('fst-lb-open');
+    document.body.style.overflow='hidden';
+  };
+
+  window.fstClose = function(){
+    document.getElementById('fstLb').classList.remove('fst-lb-open');
+    document.body.style.overflow='';
+  };
+
+  window.fstNav = function(dir){
+    idx = (idx + dir + pool.length) % pool.length;
+    renderLb();
+  };
+
+  function renderLb(){
+    const d = pool[idx] ?? DATA[idx];
+    const photo = document.getElementById('fstLbPhoto');
+    const bar   = document.getElementById('fstBar');
+
+    /* fade swap */
+    photo.style.opacity='0';
+    bar.style.width='0%';
+    setTimeout(()=>{
+      photo.src = d.src;
+      photo.alt = d.name;
+      document.getElementById('fstLbTag').textContent  = CAT_LABEL[d.cat]||d.cat;
+      document.getElementById('fstLbName').textContent = d.name;
+      photo.style.opacity='1';
+    },240);
+
+    /* progress bar */
+    bar.style.width = Math.round(((idx+1)/pool.length)*100)+'%';
+
+    /* count */
+    document.getElementById('fstCount').textContent =
+      String(idx+1).padStart(2,'0') + ' / ' + String(pool.length).padStart(2,'0');
+
+    /* dots */
+    const dotsEl = document.getElementById('fstDots');
+    dotsEl.innerHTML='';
+    pool.forEach((_,i)=>{
+      const d2=document.createElement('button');
+      d2.className='fst-lb-dot'+(i===idx?' fst-lb-dot-on':'');
+      d2.setAttribute('aria-label','Image '+(i+1));
+      d2.onclick=()=>{ idx=i; renderLb(); };
+      dotsEl.appendChild(d2);
+    });
+  }
+
+  /* keyboard */
+  document.addEventListener('keydown',e=>{
+    if(!document.getElementById('fstLb').classList.contains('fst-lb-open')) return;
+    if(e.key==='ArrowLeft')  fstNav(-1);
+    if(e.key==='ArrowRight') fstNav(1);
+    if(e.key==='Escape')     fstClose();
+  });
+
+  /* touch swipe in lightbox */
+  let tx=0;
+  const lb=document.getElementById('fstLb');
+  lb.addEventListener('touchstart',e=>{ tx=e.touches[0].clientX; },{passive:true});
+  lb.addEventListener('touchend',e=>{
+    const dx=e.changedTouches[0].clientX-tx;
+    if(Math.abs(dx)>50) fstNav(dx<0?1:-1);
+  });
+
+  /* Handle resize - reset grid when going back to all */
+  window.addEventListener('resize', () => {
+    // Optional: refresh layout on resize if needed
+  });
+
 })();
