@@ -1,0 +1,1495 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Long John Silver's Shillong — Taste the Myth</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&family=Cinzel:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+    <!-- ===================== NAVBAR ===================== -->
+
+    <nav id="navbar">
+        <div class="container">
+            <div class="d-flex align-items-center justify-content-between">
+                <a href="#" class="nav-logo-wrap">
+                    <img src="assets/images/long-john-logo.png" alt="Long John Silver's Shillong" class="nav-logo-img">
+                    <!-- <div class="nav-logo-text">
+                        <span class="nav-logo-name">Long John Silver's</span>
+                        <span class="nav-logo-sub">Taste the Myth · Shillong</span>
+                    </div> -->
+                </a>
+                <button class="navbar-toggler d-lg-none" type="button" id="menuToggle">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="d-none d-lg-flex align-items-center gap-1">
+                    <a class="nav-link" href="index.html">About</a>
+                    <a class="nav-link" href="menu.html">Menu</a>
+                    <a class="nav-link" href="#why">Our Promise</a>
+                    <a class="nav-link" href="#gallery">Gallery</a>
+                    <a class="nav-link" href="#order">Order</a>
+                    <a class="nav-link" href="#contact">Contact</a>
+                    <a class="nav-link nav-cta ms-2" href="#order">Order Now</a>
+                </div>
+            </div>
+            <div class="d-lg-none" id="mobileMenu" style="display:none">
+                <a class="nav-link d-block py-2" href="index.html">About</a>
+                <a class="nav-link d-block py-2" href="menu.html">Menu</a>
+                <a class="nav-link d-block py-2" href="#gallery">Gallery</a>
+                <a class="nav-link d-block py-2" href="#order">Order</a>
+                <a class="nav-link d-block py-2" href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    
+
+    <!-- ===== MENU HERO ===== -->
+
+
+  
+<section class="menu-hero">
+ 
+    <!-- Background Slider -->
+    <div class="hero-bg-slider">
+        <div class="hero-slide active" style="background-image: url('assets/images/food-long-john/pork-mushroom-chow.jpg')"></div>
+        <div class="hero-slide" style="background-image: url('assets/images/food-long-john/fish-fry.jpg')"></div>
+        <div class="hero-slide" style="background-image: url('assets/images/food-long-john/pork-mushroom-chow.jpg')"></div>
+        <div class="hero-slide" style="background-image: url('assets/images/food-long-john/prawns-chillyg-ravy.jpg')"></div>
+        <div class="hero-slide" style="background-image: url('assets/images/food-long-john/paneer-butter-masala.jpg')"></div>
+    </div>
+ 
+    <!-- Content -->
+    <div class="menu-hero-inner py-5 pb-5">
+        <!-- <div class="hero-eyebrow">Long John Silver's · Shillong</div> -->
+        <h1>A Feast of<br><em>Flavors</em></h1>
+        <p class="hero-sub">Indian, Chinese &amp; Continental — crafted with passion, served with love.</p>
+ 
+        <!-- Slide dots indicator -->
+        <div class="hero-dots">
+            <span class="hero-dot active"></span>
+            <span class="hero-dot"></span>
+            <span class="hero-dot"></span>
+            <span class="hero-dot"></span>
+            <span class="hero-dot"></span>
+        </div>
+    </div>
+ 
+</section>
+
+
+    <!-- ===== FILTER BAR ===== -->
+
+    <div class="filter-bar">
+        <div class="filter-inner">
+            <button class="filter-btn active" data-cat="all">All Items</button>
+            <div class="filter-divider"></div>
+            <button class="filter-btn" data-cat="indian">Indian</button>
+            <button class="filter-btn" data-cat="chinese">Chinese</button>
+            <button class="filter-btn" data-cat="continental">Continental</button>
+            <div class="filter-divider"></div>
+            <button class="filter-btn" data-cat="combos">Combos</button>
+            <button class="filter-btn" data-cat="beverages">Beverages</button>
+        </div>
+    </div>
+
+
+    <!-- ===== MAIN CONTENT ===== -->
+
+    <div class="menu-main">
+
+        <!-- ============ INDIAN SECTION ============ -->
+
+        <div class="menu-section visible" id="sec-all">
+        </div>
+
+        <div class="menu-section" id="sec-indian">
+            <div class="section-header reveal">
+                <div class="section-label-wrap">
+                    <div class="section-label">Indian Cuisine</div>
+                    <div class="section-title-big">Desi <em>Flavors</em></div>
+                </div>
+                <div class="section-count">01</div>
+            </div>
+
+            <!-- Featured Cards -->
+            <div class="featured-row reveal">
+                <div class="featured-card">
+                    <img src="assets/images/food-long-john/chicken-curry.jpg" alt="Chicken Curry" class="fc-img"
+                        onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 800 600%22><rect fill=%22%231C2409%22 width=%22800%22 height=%22600%22/><text x=%22400%22 y=%22310%22 font-size=%2240%22 fill=%22%234A5E14%22 text-anchor=%22middle%22 font-family=%22serif%22>Chicken Curry</text></svg>'">
+                    <div class="fc-overlay"></div>
+                    <div class="fc-content">
+                        <span class="fc-ribbon">Indian · Non-Veg</span>
+                        <div class="fc-name">Chicken Curry</div>
+                        <div class="fc-desc">Bone-in chicken slow-simmered in an aromatic blend of spices, tomatoes and
+                            fresh herbs. Served with chapati or rice.</div>
+                        <span class="fc-price">220 <span>/ 4 pcs</span></span>
+                    </div>
+                </div>
+                <div class="featured-card">
+                    <img src="assets/images/food-long-john/chicken-kasha.jpg" alt="Chicken Kasha" class="fc-img"
+                        onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 800 600%22><rect fill=%22%221C2409%22 width=%22800%22 height=%22600%22/><text x=%22400%22 y=%22310%22 font-size=%2240%22 fill=%22%234A5E14%22 text-anchor=%22middle%22 font-family=%22serif%22>Chicken Kasha</text></svg>'">
+                    <div class="fc-overlay"></div>
+                    <span class="fc-tag">Chef's Pick</span>
+                    <div class="fc-content">
+                        <span class="fc-ribbon">Indian · Signature</span>
+                        <div class="fc-name">Chicken Kasha</div>
+                        <div class="fc-desc">Thick, spiced dry gravy with tender chicken pieces. A Bengali-style
+                            preparation packed with robust flavors.</div>
+                        <span class="fc-price">230</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sub-grid -->
+            <div class="grid-row reveal">
+                <div class="grid-card">
+                    <img src="assets/images/food-long-john/paneer-butter-masala.jpg" alt="Paneer Butter Masala"
+                        class="gc-img" onerror="this.parentNode.style.background='#1C2409'">
+                    <div class="gc-overlay"></div>
+                    <div class="gc-content">
+                        <span class="gc-ribbon">Indian · Veg</span>
+                        <div class="gc-name">Paneer Butter Masala</div>
+                        <div class="gc-desc">Soft cottage cheese in a velvety tomato-butter gravy with cream.</div>
+                        <div class="gc-price"><span class="rupee">₹</span> 250</div>
+                    </div>
+                </div>
+                <div class="grid-card">
+                    <img src="assets/images/food-long-john/peas-pulao.jpg" alt="Veg Pulao" class="gc-img"
+                        onerror="this.parentNode.style.background='#1C2409'">
+                    <div class="gc-overlay"></div>
+                    <div class="gc-content">
+                        <span class="gc-ribbon">Indian · Rice</span>
+                        <div class="gc-name">Veg Pulao</div>
+                        <div class="gc-desc">Fragrant basmati with seasonal vegetables and whole spices.</div>
+                        <div class="gc-price"><span class="rupee">₹</span> 200</div>
+                    </div>
+                </div>
+                <div class="grid-card">
+                    <img src="assets/images/food-long-john/egg-biryani.jpg" alt="Chicken Biryani" class="gc-img"
+                        onerror="this.parentNode.style.background='#1C2409'">
+                    <div class="gc-overlay"></div>
+                    <div class="gc-content">
+                        <span class="gc-ribbon">Indian · Biryani</span>
+                        <div class="gc-name">Chicken Biryani</div>
+                        <div class="gc-desc">Fragrant rice layered with spiced chicken and caramelized onions.</div>
+                        <div class="gc-price"><span class="rupee">₹</span> 300</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Indian List Items -->
+            <div class="list-section reveal">
+                <div class="list-section-title">Starters &amp; Breads</div>
+                <div class="list-grid">
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot veg"></span>Plain Chapati</div>
+                        </div>
+                        <div class="li-price">15</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot veg"></span>Butter Chapati</div>
+                        </div>
+                        <div class="li-price">20</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot veg"></span>Onion Pakora <span class="li-sub">8
+                                    pc</span></div>
+                        </div>
+                        <div class="li-price">130</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Chicken Pakora Boneless <span
+                                    class="li-sub">8 pc</span></div>
+                        </div>
+                        <div class="li-price">220</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot veg"></span>Cheese Ball <span class="li-sub">8
+                                    pc</span></div>
+                        </div>
+                        <div class="li-price">260</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot veg"></span>Paneer Pakora</div>
+                        </div>
+                        <div class="li-price">220</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Fish Finger with Fries <span
+                                    class="li-sub">8 pcs</span></div>
+                        </div>
+                        <div class="li-price">270</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot veg"></span>French Fries with Hot Garlic Sauce
+                            </div>
+                        </div>
+                        <div class="li-price">120</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="list-section reveal">
+                <div class="list-section-title">Rolls</div>
+                <div class="list-grid">
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot veg"></span>Veg Roll</div>
+                        </div>
+                        <div class="li-price">90</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Egg Roll</div>
+                        </div>
+                        <div class="li-price">100</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Double Egg Roll</div>
+                        </div>
+                        <div class="li-price">110</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Chicken Roll</div>
+                        </div>
+                        <div class="li-price">100</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot veg"></span>Paneer Roll</div>
+                        </div>
+                        <div class="li-price">110</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot veg"></span>Veg Mayonnaise Roll</div>
+                        </div>
+                        <div class="li-price">100</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Egg Mayonnaise Roll</div>
+                        </div>
+                        <div class="li-price">110</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Chicken Mayonnaise Roll</div>
+                        </div>
+                        <div class="li-price">120</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot veg"></span>Paneer Mayonnaise Roll</div>
+                        </div>
+                        <div class="li-price">120</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Egg Chicken Mayonnaise Roll</div>
+                        </div>
+                        <div class="li-price">130</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="list-section reveal">
+                <div class="list-section-title">Rice &amp; Dal</div>
+                <div class="list-grid">
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot veg"></span>Plain Dal</div>
+                        </div>
+                        <div class="li-price">60</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot veg"></span>Dal Fry</div>
+                        </div>
+                        <div class="li-price">150</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot veg"></span>Plain Rice</div>
+                        </div>
+                        <div class="li-price">80</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot veg"></span>Jeera Rice</div>
+                        </div>
+                        <div class="li-price">140</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot veg"></span>Veg Pulao</div>
+                        </div>
+                        <div class="li-price">200</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot veg"></span>Peas Pulao</div>
+                        </div>
+                        <div class="li-price">200</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot veg"></span>Paneer Pulao</div>
+                        </div>
+                        <div class="li-price">220</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot veg"></span>Veg Biryani</div>
+                        </div>
+                        <div class="li-price">200</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Chicken Biryani</div>
+                        </div>
+                        <div class="li-price">300</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Mutton Biryani</div>
+                        </div>
+                        <div class="li-price">360</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Egg Biryani</div>
+                        </div>
+                        <div class="li-price">270</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="list-section reveal">
+                <div class="list-section-title">Veg Main Course</div>
+                <div class="list-grid">
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot veg"></span>Matar Paneer</div>
+                        </div>
+                        <div class="li-price">210</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot veg"></span>Aloo Bhajee</div>
+                        </div>
+                        <div class="li-price">100</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot veg"></span>Karai Paneer</div>
+                        </div>
+                        <div class="li-price">240</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot veg"></span>Paneer Butter Masala</div>
+                        </div>
+                        <div class="li-price">250</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot veg"></span>Shahi Paneer</div>
+                        </div>
+                        <div class="li-price">250</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot veg"></span>Aloo Jeera</div>
+                        </div>
+                        <div class="li-price">120</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot veg"></span>Mix Veg</div>
+                        </div>
+                        <div class="li-price">150</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="list-section reveal">
+                <div class="list-section-title">Non-Veg Main Course</div>
+                <div class="list-grid">
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Chicken Curry <span
+                                    class="li-sub">4 pcs</span></div>
+                        </div>
+                        <div class="li-price">220</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Chicken Masala <span
+                                    class="li-sub">4 pcs</span></div>
+                        </div>
+                        <div class="li-price">220</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Chicken Butter Masala <span
+                                    class="li-sub">4 pcs</span></div>
+                        </div>
+                        <div class="li-price">270</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Chicken Kasha</div>
+                        </div>
+                        <div class="li-price">230</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Chicken Do Piyaza</div>
+                        </div>
+                        <div class="li-price">240</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Mutton Curry <span class="li-sub">4
+                                    pcs</span></div>
+                        </div>
+                        <div class="li-price">300</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Mutton Masala <span
+                                    class="li-sub">4 pcs</span></div>
+                        </div>
+                        <div class="li-price">300</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Mutton Kasha <span class="li-sub">4
+                                    pcs</span></div>
+                        </div>
+                        <div class="li-price">300</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Fish Curry</div>
+                        </div>
+                        <div class="li-price">120</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Omelette</div>
+                        </div>
+                        <div class="li-price">50</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Double Omelette</div>
+                        </div>
+                        <div class="li-price">80</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Egg Bhurji</div>
+                        </div>
+                        <div class="li-price">60</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Egg Chop</div>
+                        </div>
+                        <div class="li-price">80</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Chicken Chop</div>
+                        </div>
+                        <div class="li-price">100</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============ CHINESE SECTION ============ -->
+        <div class="menu-section" id="sec-chinese">
+            <div class="section-header reveal">
+                <div class="section-label-wrap">
+                    <div class="section-label">Chinese Cuisine</div>
+                    <div class="section-title-big">Wok <em>Wonders</em></div>
+                </div>
+                <div class="section-count">02</div>
+            </div>
+
+            <!-- Featured Chinese Cards -->
+            <div class="featured-row reveal">
+                <div class="featured-card">
+                    <img src="assets/images/food-long-john/chicken-chow.jpg" alt="Chicken Chow" class="fc-img"
+                        onerror="this.parentNode.style.background='#1C2409'">
+                    <div class="fc-overlay"></div>
+                    <div class="fc-content">
+                        <span class="fc-ribbon">Chinese · Noodles</span>
+                        <div class="fc-name">Chicken Chowmein</div>
+                        <div class="fc-desc">Wok-tossed noodles with tender chicken strips, crisp vegetables and a
+                            house-special sauce. A timeless classic.</div>
+                        <span class="fc-price">170</span>
+                    </div>
+                </div>
+                <div class="featured-card">
+                    <img src="/assets/images/food-long-john/chicken-manchurian-gravy.jpg" alt="Chicken Manchurian"
+                        class="fc-img" onerror="this.parentNode.style.background='#1C2409'">
+                    <div class="fc-overlay"></div>
+                    <span class="fc-tag">Most Loved</span>
+                    <div class="fc-content">
+                        <span class="fc-ribbon">Chinese · Gravy</span>
+                        <div class="fc-name">Chicken Manchurian</div>
+                        <div class="fc-desc">Crispy boneless chicken in a tangy, glossy Manchurian gravy with bell
+                            peppers, onions and spring onion.</div>
+                        <span class="fc-price">260</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-row reveal">
+                    <div class="grid-card">
+                        <img src="assets/images/food-long-john/vg-roll.jpg" alt="Schezwan Fried Rice"
+                            class="gc-img" onerror="this.parentNode.style.background='#1C2409'">
+                        <div class="gc-overlay"></div>
+                    <div class="gc-content">
+                        <span class="gc-ribbon">Chinese · Rice</span>
+                        <div class="gc-name">Veg Schezwan Fried Rice</div>
+                        <div class="gc-desc">Bold Schezwan-tossed rice with garden vegetables.</div>
+                        <div class="gc-price"><span class="rupee">₹</span> 160</div>
+                    </div>
+                </div>
+                <div class="grid-card">
+                    <img src="assets/images/food-long-john/veg-chow.jpg" alt="Veg Chow" class="gc-img"
+                        onerror="this.parentNode.style.background='#1C2409'">
+                    <div class="gc-overlay"></div>
+                    <div class="gc-content">
+                        <span class="gc-ribbon">Chinese · Noodles</span>
+                        <div class="gc-name">Veg Schezwan Chow</div>
+                        <div class="gc-desc">Noodles tossed in bold Schezwan sauce with fresh vegetables.</div>
+                        <div class="gc-price"><span class="rupee">₹</span> 160</div>
+                    </div>
+                </div>
+                <div class="grid-card">
+                    <img src="assets/images/food-long-john/chicken-fried-rice.jpg" alt="Chicken Fried Rice"
+                        class="gc-img" onerror="this.parentNode.style.background='#1C2409'">
+                    <div class="gc-overlay"></div>
+                    <div class="gc-content">
+                        <span class="gc-ribbon">Chinese · Rice</span>
+                        <div class="gc-name">Chicken Fried Rice</div>
+                        <div class="gc-desc">Wok-fried rice with chicken, soy sauce and vegetables.</div>
+                        <div class="gc-price"><span class="rupee">₹</span> 170</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-row reveal">
+                <div class="grid-card">
+                    <img src="assets/images/food-long-john/chicken-chowmein-gravy.jpg" alt="Chicken Chowmein Gravy"
+                        class="gc-img" onerror="this.parentNode.style.background='#1C2409'">
+                    <div class="gc-overlay"></div>
+                    <div class="gc-content">
+                        <span class="gc-ribbon">Chinese · Gravy Noodles</span>
+                        <div class="gc-name">Chicken Chowmein Gravy</div>
+                        <div class="gc-desc">Noodles bathed in a rich, glossy chicken gravy sauce.</div>
+                        <div class="gc-price"><span class="rupee">₹</span> 200</div>
+                    </div>
+                </div>
+                <div class="grid-card">
+                    <img src="assets/images/food-long-john/veg-fried-rice.jpg" alt="Veg Fried Rice" class="gc-img"
+                        onerror="this.parentNode.style.background='#1C2409'">
+                    <div class="gc-overlay"></div>
+                    <div class="gc-content">
+                        <span class="gc-ribbon">Chinese · Rice</span>
+                        <div class="gc-name">Veg Fried Rice</div>
+                        <div class="gc-desc">Classic wok-tossed rice with fresh vegetables.</div>
+                        <div class="gc-price"><span class="rupee">₹</span> 150</div>
+                    </div>
+                </div>
+                <div class="grid-card">
+                    <img src="assets/images/food-long-john/veg-schezwan-chow.jpg" alt="Veg Schezwan Chow"
+                        class="gc-img" onerror="this.parentNode.style.background='#1C2409'">
+                    <div class="gc-overlay"></div>
+                    <div class="gc-content">
+                        <span class="gc-ribbon">Chinese · Noodles</span>
+                        <div class="gc-name">Veg Schezwan Noodles</div>
+                        <div class="gc-desc">Fiery Schezwan noodles with crisp garden veggies.</div>
+                        <div class="gc-price"><span class="rupee">₹</span> 160</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chinese List Items -->
+            <div class="list-section reveal">
+                <div class="list-section-title">Soups</div>
+                <div class="list-grid">
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot veg"></span>Tomato Soup</div>
+                        </div>
+                        <div class="li-price">100</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot veg"></span>Veg Soup</div>
+                        </div>
+                        <div class="li-price">100</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot veg"></span>Veg Sweet Corn Soup</div>
+                        </div>
+                        <div class="li-price">110</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot veg"></span>Veg Hot &amp; Sour Soup</div>
+                        </div>
+                        <div class="li-price">110</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Chicken Hot &amp; Sour Soup</div>
+                        </div>
+                        <div class="li-price">130</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Chicken Soup</div>
+                        </div>
+                        <div class="li-price">120</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Chicken Sweet Corn Soup</div>
+                        </div>
+                        <div class="li-price">130</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Chicken Mushroom Soup</div>
+                        </div>
+                        <div class="li-price">170</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Chicken Lemon Coriander Soup</div>
+                        </div>
+                        <div class="li-price">150</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Chicken Manchow Soup</div>
+                        </div>
+                        <div class="li-price">150</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="list-section reveal">
+                <div class="list-section-title">Momos</div>
+                <div class="list-grid">
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Chicken Steam Momo</div>
+                        </div>
+                        <div class="li-price">150</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Chicken Momo Fry</div>
+                        </div>
+                        <div class="li-price">150</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Tandoori Momo</div>
+                        </div>
+                        <div class="li-price">200</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Crispy Momo</div>
+                        </div>
+                        <div class="li-price">180</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Schezwan Momo</div>
+                        </div>
+                        <div class="li-price">170</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Cocktail Momo</div>
+                        </div>
+                        <div class="li-price">170</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Pizza Momo</div>
+                        </div>
+                        <div class="li-price">220</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Sizzler Momo</div>
+                        </div>
+                        <div class="li-price">230</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="list-section reveal">
+                <div class="list-section-title">Noodles — Veg</div>
+                <div class="list-grid">
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot veg"></span>Veg Noodles</div>
+                        </div>
+                        <div class="li-price">150</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot veg"></span>Veg Schezwan Noodles</div>
+                        </div>
+                        <div class="li-price">160</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot veg"></span>Veg Chowmein Gravy</div>
+                        </div>
+                        <div class="li-price">180</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot veg"></span>Veg Mushroom Soup Chow</div>
+                        </div>
+                        <div class="li-price">160</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot veg"></span>Veg Chopsuey</div>
+                        </div>
+                        <div class="li-price">200</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Egg Noodles</div>
+                        </div>
+                        <div class="li-price">160</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Egg Schezwan Noodles</div>
+                        </div>
+                        <div class="li-price">170</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Egg Chowmein Gravy</div>
+                        </div>
+                        <div class="li-price">190</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="list-section reveal">
+                <div class="list-section-title">Noodles — Chicken &amp; Pork</div>
+                <div class="list-grid">
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Chicken Noodles</div>
+                        </div>
+                        <div class="li-price">170</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Chicken Schezwan Noodles</div>
+                        </div>
+                        <div class="li-price">180</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Chicken Chowmein Gravy</div>
+                        </div>
+                        <div class="li-price">200</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Chicken Mushroom Chow</div>
+                        </div>
+                        <div class="li-price">190</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Chicken Mushroom Soup Chow</div>
+                        </div>
+                        <div class="li-price">180</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Chicken Chopsuey</div>
+                        </div>
+                        <div class="li-price">220</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Mix Chow with Pork</div>
+                        </div>
+                        <div class="li-price">240</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Mix Chow without Pork</div>
+                        </div>
+                        <div class="li-price">220</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Mix Chowmein Gravy</div>
+                        </div>
+                        <div class="li-price">240</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Pork Noodles</div>
+                        </div>
+                        <div class="li-price">190</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Pork Schezwan Noodles</div>
+                        </div>
+                        <div class="li-price">200</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Pork Chowmein Gravy</div>
+                        </div>
+                        <div class="li-price">220</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Pork Mushroom Chow</div>
+                        </div>
+                        <div class="li-price">200</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Pork Mushroom Soup Chow</div>
+                        </div>
+                        <div class="li-price">200</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="list-section reveal">
+                <div class="list-section-title">Rice — Chinese</div>
+                <div class="list-grid">
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot veg"></span>Veg Fried Rice</div>
+                        </div>
+                        <div class="li-price">150</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot veg"></span>Veg Schezwan Fried Rice</div>
+                        </div>
+                        <div class="li-price">160</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot veg"></span>Mushroom Fried Rice</div>
+                        </div>
+                        <div class="li-price">160</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot veg"></span>Garlic Fried Rice</div>
+                        </div>
+                        <div class="li-price">170</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Chicken Fried Rice</div>
+                        </div>
+                        <div class="li-price">170</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Chicken Garlic Fried Rice</div>
+                        </div>
+                        <div class="li-price">180</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Chicken Mushroom Fried Rice</div>
+                        </div>
+                        <div class="li-price">190</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Chicken Schezwan Fried Rice</div>
+                        </div>
+                        <div class="li-price">180</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Egg Fried Rice</div>
+                        </div>
+                        <div class="li-price">170</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Mix Fried Rice without Pork</div>
+                        </div>
+                        <div class="li-price">220</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Mix Fried Rice with Pork</div>
+                        </div>
+                        <div class="li-price">240</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Pork Fried Rice</div>
+                        </div>
+                        <div class="li-price">180</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Pork Schezwan Fried Rice</div>
+                        </div>
+                        <div class="li-price">200</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Pork Mushroom Fried Rice</div>
+                        </div>
+                        <div class="li-price">200</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="list-section reveal">
+                <div class="list-section-title">Main Course — Chinese</div>
+                <div class="list-grid">
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot veg"></span>Gobi Manchurian</div>
+                        </div>
+                        <div class="li-price">200</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot veg"></span>Chilly Paneer Gravy</div>
+                        </div>
+                        <div class="li-price">200</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot veg"></span>Paneer Manchurian</div>
+                        </div>
+                        <div class="li-price">200</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot veg"></span>Veg Manchurian</div>
+                        </div>
+                        <div class="li-price">190</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Chicken Chilly Dry (Boneless)</div>
+                        </div>
+                        <div class="li-price">260</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Chicken 65 (Boneless)</div>
+                        </div>
+                        <div class="li-price">260</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Chicken Chilly Gravy (Boneless)
+                            </div>
+                        </div>
+                        <div class="li-price">260</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Chicken Manchurian (Boneless)</div>
+                        </div>
+                        <div class="li-price">260</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Chicken with Mushroom</div>
+                        </div>
+                        <div class="li-price">280</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Chicken in Hot Garlic Sauce</div>
+                        </div>
+                        <div class="li-price">280</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Lemon Chicken</div>
+                        </div>
+                        <div class="li-price">280</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Sweet and Sour Chicken</div>
+                        </div>
+                        <div class="li-price">280</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Finger Chicken Thai Style</div>
+                        </div>
+                        <div class="li-price">280</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Pork Chilly Dry</div>
+                        </div>
+                        <div class="li-price">300</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Pork Chilly Gravy</div>
+                        </div>
+                        <div class="li-price">330</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Pork Dry Fry</div>
+                        </div>
+                        <div class="li-price">330</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Prawn Chow</div>
+                        </div>
+                        <div class="li-price">260</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Prawn Fried Rice</div>
+                        </div>
+                        <div class="li-price">260</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Prawn Chilly Dry</div>
+                        </div>
+                        <div class="li-price">300</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Prawn Chilly Gravy</div>
+                        </div>
+                        <div class="li-price">300</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Prawn Golden Fry</div>
+                        </div>
+                        <div class="li-price">360</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============ CONTINENTAL SECTION ============ -->
+        <div class="menu-section" id="sec-continental">
+            <div class="section-header reveal">
+                <div class="section-label-wrap">
+                    <div class="section-label">Continental</div>
+                    <div class="section-title-big">West <em>Meets East</em></div>
+                </div>
+                <div class="section-count">03</div>
+            </div>
+
+            <div class="featured-row reveal">
+                <div class="featured-card">
+                    <img src="assets/images/food-long-john/white-chicken-pasta-removebg-preview.png" alt="White Chicken Pasta"
+                        class="fc-img" onerror="this.parentNode.style.background='#1C2409'">
+                    <div class="fc-overlay"></div>
+                    <span class="fc-tag">Fan Favourite</span>
+                    <div class="fc-content">
+                        <span class="fc-ribbon">Continental · Pasta</span>
+                        <div class="fc-name">White Pasta — Chicken</div>
+                        <div class="fc-desc">Penne in a rich, velvety béchamel with tender chicken pieces, capsicum and
+                            aromatic herbs. Comfort in a bowl.</div>
+                        <span class="fc-price">220</span>
+                    </div>
+                </div>
+                <div class="featured-card">
+                    <img src="assets/images/food-long-john/veg-cocktail-pasta.jpg" alt="Cocktail Pasta Veg"
+                        class="fc-img" onerror="this.parentNode.style.background='#1C2409'">
+                    <div class="fc-overlay"></div>
+                    <div class="fc-content">
+                        <span class="fc-ribbon">Continental · Pasta</span>
+                        <div class="fc-name">Cocktail Pasta — Veg</div>
+                        <div class="fc-desc">Penne tossed in a tangy, spiced tomato-cream sauce with colorful bell
+                            peppers and fresh vegetables.</div>
+                        <span class="fc-price">190</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-row reveal">
+                <div class="grid-card">
+                    <img src="assets/images/food-long-john/veg-white-pasta.jpg" alt="Veg White Pasta" class="gc-img"
+                        onerror="this.parentNode.style.background='#1C2409'">
+                    <div class="gc-overlay"></div>
+                    <div class="gc-content">
+                        <span class="gc-ribbon">Continental · Pasta</span>
+                        <div class="gc-name">White Pasta — Veg</div>
+                        <div class="gc-desc">Creamy béchamel pasta with seasonal vegetables.</div>
+                        <div class="gc-price"><span class="rupee">₹</span> 190</div>
+                    </div>
+                </div>
+                <div class="grid-card">
+                    <img src="assets/images/food-long-john/vg-roll.jpg" alt="Veg Roll" class="gc-img"
+                        onerror="this.parentNode.style.background='#1C2409'">
+                    <div class="gc-overlay"></div>
+                    <div class="gc-content">
+                        <span class="gc-ribbon">Rolls · Veg</span>
+                        <div class="gc-name">Veg Roll</div>
+                        <div class="gc-desc">Flaky paratha wrapped around spiced vegetables.</div>
+                        <div class="gc-price"><span class="rupee">₹</span> 90</div>
+                    </div>
+                </div>
+
+                <div class="grid-card">
+                    <img src="assets/images/food-long-john/chicken-cheese-burger.jpg" alt="Veg Roll" class="gc-img"
+                        onerror="this.parentNode.style.background='#1C2409'">
+                    <div class="gc-overlay"></div>
+                    <div class="gc-content">
+                        <span class="gc-ribbon">Chicken Burger · Cheese Burger </span>
+                        <div class="gc-name">Burgers & Sandwiches</div>
+                        <div class="gc-desc">Flaky paratha wrapped around spiced vegetables.</div>
+                       
+                         <div style="font-family:var(--font-display);color:var(--cream-dark);font-size:1rem;">From ₹100
+                        </div>
+                    </div>
+                </div>
+                 
+            </div>
+
+            <div class="list-section reveal">
+                <div class="list-section-title">Burgers &amp; Sandwiches</div>
+                <div class="list-grid">
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Chicken Burger with Fries</div>
+                        </div>
+                        <div class="li-price">150</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Chicken Cheese Burger with Fries
+                            </div>
+                        </div>
+                        <div class="li-price">160</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot veg"></span>Veg Sandwich</div>
+                        </div>
+                        <div class="li-price">100</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Chicken Sandwich</div>
+                        </div>
+                        <div class="li-price">140</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Chicken Cheese Sandwich</div>
+                        </div>
+                        <div class="li-price">150</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Chicken Grilled Sandwich</div>
+                        </div>
+                        <div class="li-price">150</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Chicken Cheese Grilled Sandwich
+                            </div>
+                        </div>
+                        <div class="li-price">160</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="list-section reveal">
+                <div class="list-section-title">Chinese Starters</div>
+                <div class="list-grid">
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot veg"></span>Veg Chilly Pepper Corn</div>
+                        </div>
+                        <div class="li-price">150</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot veg"></span>Baby Corn Golden Fry</div>
+                        </div>
+                        <div class="li-price">150</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot veg"></span>Paneer Chilly Dry</div>
+                        </div>
+                        <div class="li-price">220</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot veg"></span>Paneer 65</div>
+                        </div>
+                        <div class="li-price">230</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Chicken Cutlet with Fries</div>
+                        </div>
+                        <div class="li-price">200</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Chicken Drumstick <span
+                                    class="li-sub">4 pc</span></div>
+                        </div>
+                        <div class="li-price">200</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============ COMBOS SECTION ============ -->
+
+        <div class="menu-section" id="sec-combos">
+            <div class="section-header reveal">
+                <div class="section-label-wrap">
+                    <div class="section-label">Value Combos</div>
+                    <div class="section-title-big">Best <em>Value</em></div>
+                </div>
+                <div class="section-count">04</div>
+            </div>
+
+            <div class="combo-grid reveal">
+                <div class="combo-card">
+                    <div class="combo-label">Indian · Combo</div>
+                    <div class="combo-name">Mutton Keema with Roti</div>
+                    <div class="combo-items">Spiced minced mutton + 2 fresh rotis</div>
+                    <div class="combo-price"><span class="rupee-sym">₹</span>140</div>
+                </div>
+                <div class="combo-card">
+                    <div class="combo-label">Indian · Combo</div>
+                    <div class="combo-name">Chicken Keema with Roti</div>
+                    <div class="combo-items">Spiced minced chicken + 2 fresh rotis</div>
+                    <div class="combo-price"><span class="rupee-sym">₹</span>120</div>
+                </div>
+                <div class="combo-card">
+                    <div class="combo-label">Indian · Combo</div>
+                    <div class="combo-name">Butter Chicken with Roti</div>
+                    <div class="combo-items">Creamy butter chicken + 2 fresh rotis</div>
+                    <div class="combo-price"><span class="rupee-sym">₹</span>300</div>
+                </div>
+                <div class="combo-card">
+                    <div class="combo-label">Indian · Combo</div>
+                    <div class="combo-name">Butter Paneer Masala with Roti</div>
+                    <div class="combo-items">Rich paneer masala + 2 fresh rotis</div>
+                    <div class="combo-price"><span class="rupee-sym">₹</span>270</div>
+                </div>
+                <div class="combo-card">
+                    <div class="combo-label">Indian · Combo</div>
+                    <div class="combo-name">Jeera Rice with Chicken Butter Masala</div>
+                    <div class="combo-items">Fragrant jeera rice + chicken butter masala</div>
+                    <div class="combo-price"><span class="rupee-sym">₹</span>300</div>
+                </div>
+                <div class="combo-card">
+                    <div class="combo-label">Indian · Combo</div>
+                    <div class="combo-name">Jeera Rice with Paneer Butter Masala</div>
+                    <div class="combo-items">Fragrant jeera rice + paneer butter masala</div>
+                    <div class="combo-price"><span class="rupee-sym">₹</span>270</div>
+                </div>
+                <div class="combo-card">
+                    <div class="combo-label">Chinese · Combo</div>
+                    <div class="combo-name">Veg Fried Rice + Veg Manchurian + Fries</div>
+                    <div class="combo-items">Complete Chinese veg meal deal</div>
+                    <div class="combo-price"><span class="rupee-sym">₹</span>200 <span class="combo-save">GREAT
+                            VALUE</span></div>
+                </div>
+                <div class="combo-card">
+                    <div class="combo-label">Chinese · Combo</div>
+                    <div class="combo-name">Veg Fried Rice + Paneer Manchurian + Fries</div>
+                    <div class="combo-items">Paneer-powered combo meal</div>
+                    <div class="combo-price"><span class="rupee-sym">₹</span>220</div>
+                </div>
+                <div class="combo-card">
+                    <div class="combo-label">Chinese · Combo</div>
+                    <div class="combo-name">Veg Chow + Veg Manchurian + Fries</div>
+                    <div class="combo-items">Noodle-based complete combo</div>
+                    <div class="combo-price"><span class="rupee-sym">₹</span>200</div>
+                </div>
+                <div class="combo-card">
+                    <div class="combo-label">Chinese · Combo</div>
+                    <div class="combo-name">Veg Fried Rice + Chilly Chicken + Fries</div>
+                    <div class="combo-items">Rice + crispy chilly chicken combo</div>
+                    <div class="combo-price"><span class="rupee-sym">₹</span>250</div>
+                </div>
+                <div class="combo-card">
+                    <div class="combo-label">Chinese · Combo</div>
+                    <div class="combo-name">Veg Chow + Pork Chilly + Fries</div>
+                    <div class="combo-items">Noodle + pork chilly gravy/dry combo</div>
+                    <div class="combo-price"><span class="rupee-sym">₹</span>280</div>
+                </div>
+                <div class="combo-card">
+                    <div class="combo-label">Chinese · Combo</div>
+                    <div class="combo-name">Veg Fried Rice + Pork Chilly + Fries</div>
+                    <div class="combo-items">Rice + pork chilly gravy/dry combo</div>
+                    <div class="combo-price"><span class="rupee-sym">₹</span>280</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============ BEVERAGES SECTION ============ -->
+         
+        <div class="menu-section" id="sec-beverages">
+            <div class="section-header reveal">
+                <div class="section-label-wrap">
+                    <div class="section-label">Beverages</div>
+                    <div class="section-title-big">Sip &amp; <em>Savour</em></div>
+                </div>
+                <div class="section-count">05</div>
+            </div>
+
+            <div class="bev-grid reveal">
+                <div class="bev-card">
+                    <span class="bev-icon"><i class="fas fa-mug-hot"></i></span>
+                    <div class="bev-name">Milk Tea</div>
+                    <div class="bev-price">30</div>
+                </div>
+                <div class="bev-card">
+                    <span class="bev-icon"><i class="fas fa-tea"></i></span>
+                    <div class="bev-name">Black Tea</div>
+                    <div class="bev-price">20</div>
+                </div>
+                <div class="bev-card">
+                    <span class="bev-icon"><i class="fas fa-coffee"></i></span>
+                    <div class="bev-name">Coffee</div>
+                    <div class="bev-price">50</div>
+                </div>
+                <div class="bev-card">
+                    <span class="bev-icon"><i class="fas fa-glass-citrus"></i></span>
+                    <div class="bev-name">Seasonal Juice</div>
+                    <div class="bev-price">50</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+    <!-- /menu-main -->
+
+
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer>
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="footer-logo-wrap">
+                        <img src="assets/images/long-john-logo.png" alt="LJS Logo" class="footer-logo">
+                        <div>
+                            <span class="footer-brand">Long John Silver's</span>
+                            <span class="footer-tagline">Taste the Myth · Shillong</span>
+                        </div>
+                    </div>
+                    <p
+                        style="font-family:var(--font-serif);font-size:0.9rem;color:var(--text-muted);font-style:italic;line-height:1.8;margin-bottom:20px">
+                        Your culinary haven in the heart of Meghalaya — where every meal feels like home.</p>
+                    <div class="d-flex gap-2">
+                        <a href="#" class="social-btn"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-btn"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-6">
+                    <div class="section-label mb-3" style="font-size:0.58rem">Navigate</div>
+                    <div class="footer-links">
+                        <a href="#about">About Us</a>
+                        <a href="#menu">Our Menu</a>
+                        <a href="#gallery">Gallery</a>
+                        <a href="#order">Order Online</a>
+                        <a href="#contact">Contact</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-6">
+                    <div class="section-label mb-3" style="font-size:0.58rem">Cuisine</div>
+                    <div class="footer-links">
+                        <a href="#menu">Indian Delights</a>
+                        <a href="#menu">Chinese Wok</a>
+                        <a href="#menu">Continental</a>
+                        <a href="#menu">Combo Meals</a>
+                        <a href="#menu">Beverages</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="section-label mb-3" style="font-size:0.58rem">Visit Us</div>
+                    <p style="font-family:var(--font-serif);font-size:0.9rem;color:var(--text-muted);line-height:1.85">
+                        Near Polo Towers<br>Shillong, Meghalaya<br>India<br><br>
+                        <span style="color:var(--cream-dark)">Open Daily</span> · 11AM – 10PM
+                    </p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span class="footer-copy">© 2024 Long John Silver's Shillong. All rights reserved.</span>
+                <span class="footer-copy">Taste the Myth · Made with ♥ in Shillong</span>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/scricpt.js"></script>
+
+</body>
+
+</html>

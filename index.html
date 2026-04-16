@@ -21,17 +21,17 @@
             <div class="d-flex align-items-center justify-content-between">
                 <a href="#" class="nav-logo-wrap">
                     <img src="assets/images/long-john-logo.png" alt="Long John Silver's Shillong" class="nav-logo-img">
-                    <div class="nav-logo-text">
+                    <!-- <div class="nav-logo-text">
                         <span class="nav-logo-name">Long John Silver's</span>
                         <span class="nav-logo-sub">Taste the Myth · Shillong</span>
-                    </div>
+                    </div> -->
                 </a>
                 <button class="navbar-toggler d-lg-none" type="button" id="menuToggle">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="d-none d-lg-flex align-items-center gap-1">
-                    <a class="nav-link" href="#about">About.</a>
-                    <a class="nav-link" href="#menu">Menu</a>
+                    <a class="nav-link" href="index.html">About</a>
+                    <a class="nav-link" href="menu.html">Menu</a>
                     <a class="nav-link" href="#why">Our Promise</a>
                     <a class="nav-link" href="#gallery">Gallery</a>
                     <a class="nav-link" href="#order">Order</a>
@@ -40,8 +40,8 @@
                 </div>
             </div>
             <div class="d-lg-none" id="mobileMenu" style="display:none">
-                <a class="nav-link d-block py-2" href="#about">About</a>
-                <a class="nav-link d-block py-2" href="#menu">Menu</a>
+                <a class="nav-link d-block py-2" href="index.html">About</a>
+                <a class="nav-link d-block py-2" href="menu.html">Menu</a>
                 <a class="nav-link d-block py-2" href="#gallery">Gallery</a>
                 <a class="nav-link d-block py-2" href="#order">Order</a>
                 <a class="nav-link d-block py-2" href="#contact">Contact</a>
@@ -52,10 +52,13 @@
     <!-- ===================== HERO ===================== -->
     <section id="hero">
         <div class="hero-slides">
-            <div class="hero-slide active" style="background-image:url('assets/images/food-long-john/chicke-drumstick.jpg')"></div>
-            <div class="hero-slide" style="background-image:url('assets/images/food-long-john/chicken-cheese-burger.jpg')"></div>
+            <div class="hero-slide active"
+                style="background-image:url('assets/images/food-long-john/chicke-drumstick.jpg')"></div>
+            <div class="hero-slide"
+                style="background-image:url('assets/images/food-long-john/chicken-cheese-burger.jpg')"></div>
             <div class="hero-slide" style="background-image:url('assets/images/food-long-john/chicken-roll.jpg')"></div>
-            <div class="hero-slide" style="background-image:url('assets/images/food-long-john/chilly-chickn-dry.jpg')"></div>
+            <div class="hero-slide" style="background-image:url('assets/images/food-long-john/chilly-chickn-dry.jpg')">
+            </div>
             <!-- <div class="hero-slide" style="background-image:url('assets/images/food-long-john/pork-mushroom-chow.jpg')"></div> -->
 
         </div>
@@ -112,12 +115,14 @@
     </div>
 
     <!-- ===================== ABOUT ===================== -->
-    <section id="about"> 
+
+    <section id="about">
         <div class="container">
             <div class="row align-items-center g-5">
                 <div class="col-lg-5 reveal from-left">
                     <div class="about-frame">
-                        <img src="assets/images/food-long-john/chicken-keema-with-Roti-2-pc.jpg" alt="LJS cuisine" class="about-img">
+                        <img src="assets/images/food-long-john/chicken-keema-with-Roti-2-pc.jpg" alt="LJS cuisine"
+                            class="about-img">
                         <div class="about-frame-border"></div>
                         <img src="assets/images/long-john-logo.png" alt="LJS Logo" class="about-logo-stamp">
                     </div>
@@ -158,165 +163,177 @@
         </div>
     </section>
 
-    <!-- ===================== MENU ===================== -->
-    <section id="menu">
-    <div class="container">
-        <div class="row mb-4">
-            <div class="col-lg-6 reveal">
-                <div class="section-label">Explore</div>
-                <h2 class="section-title">A Feast of <em>Flavors</em></h2>
+
+
+
+
+
+
+
+    <!-- ===== HOMEPAGE MENU PREVIEW SECTION =====-->
+
+
+
+    <div class="menu-main" id="menu" style="padding-top:0">
+
+        <!-- Section Header (matches your existing pattern) -->
+        <div class="menu-section visible" id="sec-home-menu">
+
+            <div class="section-header reveal">
+                <div class="section-label-wrap">
+                    <div class="section-label">Our Menu</div>
+                    <div class="section-title-big">Taste the <em>Best</em></div>
+                </div>
+                <div class="section-count">A Feast of Flavors</div>
             </div>
-            <div class="col-lg-6 d-flex align-items-end reveal">
-                
-                <p class="section-body">From rich aromatic curries to zesty stir-fries and comforting continental
-                    dishes — there's something for every palate.</p>
+
+            <!-- Featured Row — 2 hero cards -->
+            <div class="featured-row reveal">
+
+                <div class="featured-card">
+                    <img src="assets/images/food-long-john/chicken-curry.jpg" alt="Chicken Curry" class="fc-img"
+                        onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 800 600%22><rect fill=%22%231C2409%22 width=%22800%22 height=%22600%22/><text x=%22400%22 y=%22310%22 font-size=%2240%22 fill=%22%234A5E14%22 text-anchor=%22middle%22 font-family=%22serif%22>Chicken Curry</text></svg>'">
+                    <div class="fc-overlay"></div>
+                    <span class="fc-tag">House Favourite</span>
+                    <div class="fc-content">
+                        <span class="fc-ribbon">Indian · Non-Veg</span>
+                        <div class="fc-name">Chicken Curry</div>
+                        <div class="fc-desc">Bone-in chicken slow-simmered in an aromatic blend of spices, tomatoes and
+                            fresh herbs. Served with chapati or rice.</div>
+                        <span class="fc-price">220 <span>/ 4 pcs</span></span>
+                    </div>
+                </div>
+
+                <div class="featured-card">
+                    <img src="assets/images/food-long-john/chicken-manchurian-gravy.jpg" alt="Chicken Manchurian"
+                        class="fc-img"
+                        onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 800 600%22><rect fill=%22%221C2409%22 width=%22800%22 height=%22600%22/><text x=%22400%22 y=%22310%22 font-size=%2240%22 fill=%22%234A5E14%22 text-anchor=%22middle%22 font-family=%22serif%22>Chicken Manchurian</text></svg>'">
+                    <div class="fc-overlay"></div>
+                    <span class="fc-tag">Most Loved</span>
+                    <div class="fc-content">
+                        <span class="fc-ribbon">Chinese · Gravy</span>
+                        <div class="fc-name">Chicken Manchurian</div>
+                        <div class="fc-desc">Crispy boneless chicken in a tangy, glossy Manchurian gravy with bell
+                            peppers, onions and spring onion.</div>
+                        <span class="fc-price">260</span>
+                    </div>
+                </div>
+
             </div>
-        </div>
-        <div class="menu-tabs reveal">
-            <button class="menu-tab active" data-cat="all">All</button>
-            <button class="menu-tab" data-cat="indian">Indian</button>
-            <button class="menu-tab" data-cat="chinese">Chinese</button>
-            <button class="menu-tab" data-cat="continental">Continental</button>
-        </div>
-        <div class="menu-grid">
-            <div class="menu-card reveal" data-cat="indian">
-                <div class="menu-img-wrap">
-                    <img src="assets/images/food-long-john/mutton-curry.jpg" alt="Mutton Curry" class="menu-card-img">
-                    <span class="menu-cat-ribbon">Indian · Non-Veg</span>
+
+            <!-- Grid Row — 3 supporting cards -->
+            <div class="grid-row reveal">
+
+                <div class="grid-card">
+                    <img src="assets/images/food-long-john/paneer-butter-masala.jpg" alt="Paneer Butter Masala"
+                        class="gc-img" onerror="this.parentNode.style.background='#1C2409'">
+                    <div class="gc-overlay"></div>
+                    <div class="gc-content">
+                        <span class="gc-ribbon">Indian · Veg</span>
+                        <div class="gc-name">Paneer Butter Masala</div>
+                        <div class="gc-desc">Soft cottage cheese in a velvety tomato-butter gravy with cream.</div>
+                        <div class="gc-price"><span class="rupee">₹</span> 250</div>
+                    </div>
                 </div>
-                <div class="menu-card-body">
-                    <div class="menu-item-name">Mutton Curry</div>
-                    <div class="menu-item-desc">Slow-simmered bone-in mutton in a rich, aromatic gravy of whole
-                        spices and fresh tomatoes.</div>
+
+                <div class="grid-card">
+                    <img src="assets/images/food-long-john/egg-biryani.jpg" alt="Chicken Biryani" class="gc-img"
+                        onerror="this.parentNode.style.background='#1C2409'">
+                    <div class="gc-overlay"></div>
+                    <div class="gc-content">
+                        <span class="gc-ribbon">Indian · Biryani</span>
+                        <div class="gc-name">Chicken Biryani</div>
+                        <div class="gc-desc">Fragrant rice layered with spiced chicken and caramelized onions.</div>
+                        <div class="gc-price"><span class="rupee">₹</span> 300</div>
+                    </div>
                 </div>
+
+                <div class="grid-card">
+                    <img src="assets/images/food-long-john/veg-fried-rice.jpg" alt="Veg Fried Rice" class="gc-img"
+                        onerror="this.parentNode.style.background='#1C2409'">
+                    <div class="gc-overlay"></div>
+                    <div class="gc-content">
+                        <span class="gc-ribbon">Chinese · Rice</span>
+                        <div class="gc-name">Veg Fried Rice</div>
+                        <div class="gc-desc">Classic wok-tossed rice with fresh vegetables and soy sauce.</div>
+                        <div class="gc-price"><span class="rupee">₹</span> 150</div>
+                    </div>
+                </div>
+
             </div>
-            <div class="menu-card reveal" data-cat="indian">
-                <div class="menu-img-wrap">
-                    <img src="assets/images/food-long-john/chilly-chickn-dry.jpg" alt="Chicken Butter Masala" class="menu-card-img">
-                    <span class="menu-cat-ribbon">Indian · Signature</span>
-                </div>
-                <div class="menu-card-body">
-                    <div class="menu-item-name">Chicken Butter Masala</div>
-                    <div class="menu-item-desc">Tender chicken in a velvety tomato-cream sauce, kissed with butter
-                        and fragrant spices.</div>
-                </div>
-            </div>
-            <div class="menu-card reveal" data-cat="indian">
-                <div class="menu-img-wrap">
-                    <img src="assets/images/food-long-john/paneer-butter-masala.jpg" alt="Paneer Butter Masala" class="menu-card-img">
-                    <span class="menu-cat-ribbon">Indian · Veg</span>
-                </div>
-                <div class="menu-card-body">
-                    <div class="menu-item-name">Paneer Butter Masala</div>
-                    <div class="menu-item-desc">Soft cottage cheese in a rich, mildly spiced tomato-butter gravy
-                        with a drizzle of cream.</div>
-                </div>
-            </div>
-            <div class="menu-card reveal" data-cat="indian">
-                <div class="menu-img-wrap">
-                    <img src="image12.jpg" alt="Chicken Biryani" class="menu-card-img">
-                    <span class="menu-cat-ribbon">Indian · Biryani</span>
-                </div>
-                <div class="menu-card-body">
-                    <div class="menu-item-name">Chicken Biryani</div>
-                    <div class="menu-item-desc">Fragrant long-grain rice layered with spiced chicken, caramelized
-                        onions and herbs. Served with egg.</div>
-                </div>
-            </div>
-            <div class="menu-card reveal" data-cat="indian">
-                <div class="menu-img-wrap">
-                    <img src="image13.jpg" alt="Mutton Keema" class="menu-card-img">
-                    <span class="menu-cat-ribbon">Indian · Combo</span>
-                </div>
-                <div class="menu-card-body">
-                    <div class="menu-item-name">Mutton Keema with Roti</div>
-                    <div class="menu-item-desc">Finely spiced minced mutton cooked to perfection, served with
-                        fresh-made chapatis and sides.</div>
-                </div>
-            </div>
-            <div class="menu-card reveal" data-cat="chinese">
-                <div class="menu-img-wrap">
-                    <img src="image14.jpg" alt="Schezwan Noodles" class="menu-card-img">
-                    <span class="menu-cat-ribbon">Chinese · Noodles</span>
-                </div>
-                <div class="menu-card-body">
-                    <div class="menu-item-name">Schezwan Noodles</div>
-                    <div class="menu-item-desc">Wok-tossed noodles in bold Schezwan sauce with fresh vegetables and
-                        dried red chilies.</div>
-                </div>
-            </div>
-            <div class="menu-card reveal" data-cat="chinese">
-                <div class="menu-img-wrap">
-                    <img src="image15.jpg" alt="Chicken Manchurian" class="menu-card-img">
-                    <span class="menu-cat-ribbon">Chinese · Gravy</span>
-                </div>
-                <div class="menu-card-body">
-                    <div class="menu-item-name">Chicken Manchurian</div>
-                    <div class="menu-item-desc">Crispy chicken in a tangy, glossy Manchurian gravy with peppers,
-                        onions and spring onion.</div>
-                </div>
-            </div>
-            <div class="menu-card reveal" data-cat="chinese">
-                <div class="menu-img-wrap">
-                    <img src="image16.jpg" alt="Chicken Thukpa" class="menu-card-img">
-                    <span class="menu-cat-ribbon">Chinese · Soup</span>
-                </div>
-                <div class="menu-card-body">
-                    <div class="menu-item-name">Chicken Thukpa</div>
-                    <div class="menu-item-desc">A warming Himalayan noodle soup brimming with vegetables, chicken,
-                        and aromatic broth.</div>
-                </div>
-            </div>
-            <div class="menu-card reveal" data-cat="continental">
-                <div class="menu-img-wrap">
-                    <img src="image17.jpg" alt="French Fries" class="menu-card-img">
-                    <span class="menu-cat-ribbon">Continental · Starter</span>
-                </div>
-                <div class="menu-card-body">
-                    <div class="menu-item-name">French Fries with Hot Garlic Sauce</div>
-                    <div class="menu-item-desc">Golden crispy fries in a signature wire basket with house-made hot
-                        garlic dipping sauce.</div>
-                </div>
-            </div>
-            <div class="menu-card reveal" data-cat="chinese">
-                <div class="menu-img-wrap">
-                    <img src="image18.jpg" alt="Pesto Noodles" class="menu-card-img">
-                    <span class="menu-cat-ribbon">Chinese · Noodles</span>
-                </div>
-                <div class="menu-card-body">
-                    <div class="menu-item-name">Pesto Veg Noodles</div>
-                    <div class="menu-item-desc">Thin noodles tossed in aromatic herb sauce with fresh carrots and
-                        crisp garden vegetables.</div>
-                </div>
-            </div>
-            <div class="menu-card reveal" data-cat="indian">
-                <div class="menu-img-wrap">
-                    <img src="image19.jpg" alt="Dry Fish Fry" class="menu-card-img">
-                    <span class="menu-cat-ribbon">Indian · Northeast Special</span>
-                </div>
-                <div class="menu-card-body">
-                    <div class="menu-item-name">Shillong Dry Fish Fry</div>
-                    <div class="menu-item-desc">A Northeast classic — crispy shredded dry fish fried with spices.
-                        Bold, unique, unforgettable.</div>
-                </div>
-            </div>
-            <div class="menu-card reveal" data-cat="indian">
-                <div class="menu-img-wrap">
-                    <img src="image20.jpg" alt="LJS Thali" class="menu-card-img">
-                    <span class="menu-cat-ribbon">Indian · Complete Meal</span>
-                </div>
-                <div class="menu-card-body">
-                    <div class="menu-item-name">LJS Special Thali</div>
-                    <div class="menu-item-desc">A wholesome platter: steamed rice, dal, seasonal sabzi, curry and
-                        fresh paratha — the full experience.</div>
+
+            <!-- List Row — 1 item as a clean list entry (White Pasta) -->
+
+            <div class="list-section reveal">
+                <div class="list-section-title">Starters &amp; Breads</div>
+                <div class="list-grid">
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot veg"></span>Plain Chapati</div>
+                        </div>
+                        <div class="li-price">15</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot veg"></span>Butter Chapati</div>
+                        </div>
+                        <div class="li-price">20</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot veg"></span>Onion Pakora <span class="li-sub">8
+                                    pc</span></div>
+                        </div>
+                        <div class="li-price">130</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Chicken Pakora Boneless <span
+                                    class="li-sub">8 pc</span></div>
+                        </div>
+                        <div class="li-price">220</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot veg"></span>Cheese Ball <span class="li-sub">8
+                                    pc</span></div>
+                        </div>
+                        <div class="li-price">260</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot veg"></span>Paneer Pakora</div>
+                        </div>
+                        <div class="li-price">220</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot nonveg"></span>Fish Finger with Fries <span
+                                    class="li-sub">8 pcs</span></div>
+                        </div>
+                        <div class="li-price">270</div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <div class="li-name"><span class="veg-dot veg"></span>French Fries with Hot Garlic Sauce
+                            </div>
+                        </div>
+                        <div class="li-price">120</div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="menu-view-all reveal">
-            <a href="#contact" class="btn-outline-ljs">View Full Menu</a>
+
+
+
+            <div class="menu-view-all reveal">
+                <a href="menu.html" class="btn-outline-ljs">View Full Menu</a>
+            </div>
+
         </div>
     </div>
-</section>
+
+    <!-- END HOMEPAGE MENU PREVIEW -->
+
 
     <!-- ===================== WHY ===================== -->
     <section id="why">
@@ -369,43 +386,43 @@
             </div>
             <div class="gallery-grid reveal">
                 <div class="gallery-item" onclick="openLb(0)">
-                    <img src="image21.jpg" alt="" class="gallery-img">
+                    <img src="assets/images/food-long-john/lemon-chicken-gravy.jpg" alt="" class="gallery-img">
                     <div class="gallery-overlay">
                         <div class="gallery-zoom"><i class="fas fa-expand"></i></div>
                     </div>
                 </div>
                 <div class="gallery-item" onclick="openLb(1)">
-                    <img src="image22.jpg" alt="" class="gallery-img">
+                    <img src="assets/images/food-long-john/chicken-thali.jpg" alt="" class="gallery-img">
                     <div class="gallery-overlay">
                         <div class="gallery-zoom"><i class="fas fa-expand"></i></div>
                     </div>
                 </div>
                 <div class="gallery-item" onclick="openLb(2)">
-                    <img src="image23.jpg" alt="" class="gallery-img">
+                    <img src="assets/images/food-long-john/mutton-keema-with-roti-2-pc.jpg" alt="" class="gallery-img">
                     <div class="gallery-overlay">
                         <div class="gallery-zoom"><i class="fas fa-expand"></i></div>
                     </div>
                 </div>
                 <div class="gallery-item" onclick="openLb(3)">
-                    <img src="image24.jpg" alt="" class="gallery-img">
+                    <img src="assets/images/food-long-john/mutton-curry.jpg" alt="" class="gallery-img">
                     <div class="gallery-overlay">
                         <div class="gallery-zoom"><i class="fas fa-expand"></i></div>
                     </div>
                 </div>
                 <div class="gallery-item" onclick="openLb(4)">
-                    <img src="image25.jpg" alt="" class="gallery-img">
+                    <img src="assets/images/food-long-john/chicke-drumstick.jpg" alt="" class="gallery-img">
                     <div class="gallery-overlay">
                         <div class="gallery-zoom"><i class="fas fa-expand"></i></div>
                     </div>
                 </div>
                 <div class="gallery-item" onclick="openLb(5)">
-                    <img src="image26.jpg" alt="" class="gallery-img">
+                    <img src="assets/images/food-long-john/pork-chilly-dry.jpg" alt="" class="gallery-img">
                     <div class="gallery-overlay">
                         <div class="gallery-zoom"><i class="fas fa-expand"></i></div>
                     </div>
                 </div>
                 <div class="gallery-item" onclick="openLb(6)">
-                    <img src="image27.jpg" alt="" class="gallery-img">
+                    <img src="assets/images/food-long-john/noodles-about.jpg" alt="" class="gallery-img">
                     <div class="gallery-overlay">
                         <div class="gallery-zoom"><i class="fas fa-expand"></i></div>
                     </div>
@@ -578,7 +595,7 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-       <script src="assets/js/scricpt.js"></script>
+    <script src="assets/js/scricpt.js"></script>
 
 </body>
 

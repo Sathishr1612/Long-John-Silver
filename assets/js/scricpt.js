@@ -1,106 +1,403 @@
+// ================================================
+// HERO CAROUSEL
+// ================================================
+let heroCur = 0;
+const heroSlides = document.querySelectorAll('.hero-slide');
+const heroDots   = document.querySelectorAll('.hero-dot');
+let heroTimer;
 
-        // === HERO CAROUSEL ===
-        let cur = 0;
-        const slides = document.querySelectorAll('.hero-slide');
-        const dots = document.querySelectorAll('.hero-dot');
-        let timer;
-        function goToSlide(n) {
-            slides[cur].classList.remove('active');
-            dots[cur].classList.remove('active');
-            cur = (n + slides.length) % slides.length;
-            slides[cur].classList.add('active');
-            dots[cur].classList.add('active');
-        }
-        function startTimer() {
-            clearInterval(timer);
-            timer = setInterval(() => goToSlide(cur + 1), 5500);
-        }
-        startTimer();
+function goToSlide(n) {
+    heroSlides[heroCur].classList.remove('active');
+    heroDots[heroCur].classList.remove('active');
+    heroCur = (n + heroSlides.length) % heroSlides.length;
+    heroSlides[heroCur].classList.add('active');
+    heroDots[heroCur].classList.add('active');
+}
+function startHeroTimer() {
+    clearInterval(heroTimer);
+    heroTimer = setInterval(() => goToSlide(heroCur + 1), 5500);
+}
+if (heroSlides.length) startHeroTimer();
 
-        // === NAVBAR ===
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            navbar.classList.toggle('scrolled', window.scrollY > 50);
+// ================================================
+// NAVBAR + BACK-TO-TOP
+// ================================================
+const navbar = document.getElementById('navbar');
+const topBar = document.getElementById('topBar');
+const btt    = document.getElementById('btt');
+
+window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    if (navbar) navbar.classList.toggle('scrolled', y > 50);
+    if (topBar) topBar.classList.toggle('scrolled', y > 50);
+    if (btt)    btt.classList.toggle('visible',     y > 400);
+}, { passive: true });
+
+// ================================================
+// MOBILE MENU
+// ================================================
+const menuToggle = document.getElementById('menuToggle');
+if (menuToggle) {
+    menuToggle.addEventListener('click', () => {
+        const m = document.getElementById('mobileMenu');
+        if (m) m.style.display = m.style.display === 'block' ? 'none' : 'block';
+    });
+}
+document.querySelectorAll('#mobileMenu a').forEach(a => {
+    a.addEventListener('click', () => {
+        const m = document.getElementById('mobileMenu');
+        if (m) m.style.display = 'none';
+    });
+});
+
+// ================================================
+// UNIFIED SECTIONS MAP
+// ------------------------------------------------
+// Used by: category nav scroll-spy  AND  filter buttons
+// ================================================
+const sections = {
+    indian:      document.getElementById('sec-indian'),
+    chinese:     document.getElementById('sec-chinese'),
+    continental: document.getElementById('sec-continental'),
+    combos:      document.getElementById('sec-combos'),
+    beverages:   document.getElementById('sec-beverages'),
+    all:         document.getElementById('sec-all'),
+};
+
+// Scroll-spy only tracks these four visible page sections
+const navSections = {
+    indian:      sections.indian,
+    chinese:     sections.chinese,
+    continental: sections.continental,
+    beverages:   sections.beverages,
+};
+
+// ================================================
+// CATEGORY NAV — SMOOTH SCROLL + ACTIVE HIGHLIGHT
+// ================================================
+const catNav = document.getElementById('catNav');
+
+document.querySelectorAll('.cat-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+        const target = navSections[tab.dataset.target];
+        if (!target) return;
+        const offset = (catNav  ? catNav.offsetHeight  : 0)
+                     + (topBar  ? topBar.offsetHeight  : 0);
+        window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - offset, behavior: 'smooth' });
+    });
+});
+
+function updateActiveTab() {
+    const scrollPos = window.scrollY
+        + (catNav ? catNav.offsetHeight : 0)
+        + (topBar ? topBar.offsetHeight : 0)
+        + 60;
+    let active = 'indian';
+    for (const [key, el] of Object.entries(navSections)) {
+        if (el && el.offsetTop <= scrollPos) active = key;
+    }
+    document.querySelectorAll('.cat-tab').forEach(t => {
+        t.classList.toggle('active', t.dataset.target === active);
+    });
+}
+window.addEventListener('scroll', updateActiveTab, { passive: true });
+
+
+
+
+// ================================================
+// BUILD "ALL" SECTION
+// ================================================
+function buildAllSection() {
+    const allSec = sections.all;
+    if (!allSec) return;
+
+    allSec.innerHTML = `
+    <div class="section-header reveal">
+        <div class="section-label-wrap">
+            <div class="section-label">Full Menu</div>
+            <div class="section-title-big">Every <em>Dish</em></div>
+        </div>
+    </div>
+    <div class="featured-row reveal">
+        <div class="featured-card">
+            <img src="assets/images/food-long-john/chicken-curry.jpg" alt="Chicken Curry" class="fc-img" onerror="this.parentNode.style.background='#1C2409'">
+            <div class="fc-overlay"></div>
+            <div class="fc-content">
+                <span class="fc-ribbon">Indian · Non-Veg</span>
+                <div class="fc-name">Chicken Curry</div>
+                <div class="fc-desc">Slow-simmered in an aromatic blend of spices, tomatoes and fresh herbs.</div>
+                <span class="fc-price">220 <span>/ 4 pcs</span></span>
+            </div>
+        </div>
+        <div class="featured-card">
+            <img src="assets/images/food-long-john/chicken-manchurian-gravy.jpg" alt="Chicken Manchurian" class="fc-img" onerror="this.parentNode.style.background='#1C2409'">
+            <div class="fc-overlay"></div>
+            <span class="fc-tag">Most Loved</span>
+            <div class="fc-content">
+                <span class="fc-ribbon">Chinese · Gravy</span>
+                <div class="fc-name">Chicken Manchurian</div>
+                <div class="fc-desc">Crispy chicken in tangy, glossy Manchurian gravy with peppers and spring onion.</div>
+                <span class="fc-price">260</span>
+            </div>
+        </div>
+    </div>
+    <div class="grid-row reveal">
+        <div class="grid-card">
+            <img src="assets/images/food-long-john/veg-schezwan-fried-rice.jpg" alt="Schezwan Fried Rice" class="gc-img" onerror="this.parentNode.style.background='#1C2409'">
+            <div class="gc-overlay"></div>
+            <div class="gc-content"><span class="gc-ribbon">Chinese · Rice</span><div class="gc-name">Veg Schezwan Fried Rice</div><div class="gc-price"><span class="rupee">₹</span> 160</div></div>
+        </div>
+        <div class="grid-card">
+            <img src="assets/images/food-long-john/veg-cocktail-pasta.jpg" alt="Cocktail Pasta" class="gc-img" onerror="this.parentNode.style.background='#1C2409'">
+            <div class="gc-overlay"></div>
+            <div class="gc-content"><span class="gc-ribbon">Continental · Pasta</span><div class="gc-name">Cocktail Pasta — Veg</div><div class="gc-price"><span class="rupee">₹</span> 190</div></div>
+        </div>
+        <div class="grid-card">
+            <img src="assets/images/food-long-john/chicken-chow.jpg" alt="Chicken Chow" class="gc-img" onerror="this.parentNode.style.background='#1C2409'">
+            <div class="gc-overlay"></div>
+            <div class="gc-content"><span class="gc-ribbon">Chinese · Noodles</span><div class="gc-name">Chicken Chowmein</div><div class="gc-price"><span class="rupee">₹</span> 170</div></div>
+        </div>
+    </div>
+    <div class="grid-row reveal">
+        <div class="grid-card">
+            <img src="assets/images/food-long-john/veg-pulao.jpg" alt="Veg Pulao" class="gc-img" onerror="this.parentNode.style.background='#1C2409'">
+            <div class="gc-overlay"></div>
+            <div class="gc-content"><span class="gc-ribbon">Indian · Rice</span><div class="gc-name">Veg Pulao</div><div class="gc-price"><span class="rupee">₹</span> 200</div></div>
+        </div>
+        <div class="grid-card">
+            <img src="assets/images/food-long-john/white-chicken-pasta.jpg" alt="White Chicken Pasta" class="gc-img" onerror="this.parentNode.style.background='#1C2409'">
+            <div class="gc-overlay"></div>
+            <div class="gc-content"><span class="gc-ribbon">Continental · Pasta</span><div class="gc-name">White Pasta — Chicken</div><div class="gc-price"><span class="rupee">₹</span> 220</div></div>
+        </div>
+        <div class="grid-card">
+            <img src="assets/images/food-long-john/chicken-kasha.jpg" alt="Chicken Kasha" class="gc-img" onerror="this.parentNode.style.background='#1C2409'">
+            <div class="gc-overlay"></div>
+            <div class="gc-content"><span class="gc-ribbon">Indian · Signature</span><div class="gc-name">Chicken Kasha</div><div class="gc-price"><span class="rupee">₹</span> 230</div></div>
+        </div>
+    </div>
+
+    <div class="list-section reveal"><div class="list-section-title">Quick Scan — Indian</div>
+    <div class="list-grid">
+        <div class="list-item"><div class="li-name"><span class="veg-dot veg"></span>Plain Chapati</div><div class="li-price">15</div></div>
+        <div class="list-item"><div class="li-name"><span class="veg-dot veg"></span>Butter Chapati</div><div class="li-price">20</div></div>
+        <div class="list-item"><div class="li-name"><span class="veg-dot veg"></span>Onion Pakora 8pc</div><div class="li-price">130</div></div>
+        <div class="list-item"><div class="li-name"><span class="veg-dot nonveg"></span>Chicken Pakora Boneless 8pc</div><div class="li-price">220</div></div>
+        <div class="list-item"><div class="li-name"><span class="veg-dot veg"></span>Paneer Pakora</div><div class="li-price">220</div></div>
+        <div class="list-item"><div class="li-name"><span class="veg-dot veg"></span>French Fries w/ Hot Garlic Sauce</div><div class="li-price">120</div></div>
+        <div class="list-item"><div class="li-name"><span class="veg-dot veg"></span>Veg Roll</div><div class="li-price">90</div></div>
+        <div class="list-item"><div class="li-name"><span class="veg-dot nonveg"></span>Chicken Roll</div><div class="li-price">100</div></div>
+        <div class="list-item"><div class="li-name"><span class="veg-dot veg"></span>Dal Fry</div><div class="li-price">150</div></div>
+        <div class="list-item"><div class="li-name"><span class="veg-dot veg"></span>Jeera Rice</div><div class="li-price">140</div></div>
+        <div class="list-item"><div class="li-name"><span class="veg-dot veg"></span>Veg Pulao</div><div class="li-price">200</div></div>
+        <div class="list-item"><div class="li-name"><span class="veg-dot nonveg"></span>Chicken Biryani</div><div class="li-price">300</div></div>
+        <div class="list-item"><div class="li-name"><span class="veg-dot nonveg"></span>Mutton Biryani</div><div class="li-price">360</div></div>
+        <div class="list-item"><div class="li-name"><span class="veg-dot veg"></span>Paneer Butter Masala</div><div class="li-price">250</div></div>
+        <div class="list-item"><div class="li-name"><span class="veg-dot nonveg"></span>Chicken Curry 4pc</div><div class="li-price">220</div></div>
+        <div class="list-item"><div class="li-name"><span class="veg-dot nonveg"></span>Chicken Butter Masala 4pc</div><div class="li-price">270</div></div>
+        <div class="list-item"><div class="li-name"><span class="veg-dot nonveg"></span>Chicken Kasha</div><div class="li-price">230</div></div>
+        <div class="list-item"><div class="li-name"><span class="veg-dot nonveg"></span>Mutton Curry 4pc</div><div class="li-price">300</div></div>
+    </div></div>
+
+    <div class="list-section reveal"><div class="list-section-title">Quick Scan — Chinese</div>
+    <div class="list-grid">
+        <div class="list-item"><div class="li-name"><span class="veg-dot veg"></span>Veg Fried Rice</div><div class="li-price">150</div></div>
+        <div class="list-item"><div class="li-name"><span class="veg-dot veg"></span>Veg Schezwan Fried Rice</div><div class="li-price">160</div></div>
+        <div class="list-item"><div class="li-name"><span class="veg-dot nonveg"></span>Chicken Fried Rice</div><div class="li-price">170</div></div>
+        <div class="list-item"><div class="li-name"><span class="veg-dot nonveg"></span>Egg Fried Rice</div><div class="li-price">170</div></div>
+        <div class="list-item"><div class="li-name"><span class="veg-dot veg"></span>Veg Noodles</div><div class="li-price">150</div></div>
+        <div class="list-item"><div class="li-name"><span class="veg-dot veg"></span>Veg Schezwan Noodles</div><div class="li-price">160</div></div>
+        <div class="list-item"><div class="li-name"><span class="veg-dot nonveg"></span>Chicken Noodles</div><div class="li-price">170</div></div>
+        <div class="list-item"><div class="li-name"><span class="veg-dot nonveg"></span>Chicken Schezwan Noodles</div><div class="li-price">180</div></div>
+        <div class="list-item"><div class="li-name"><span class="veg-dot nonveg"></span>Chicken Chowmein Gravy</div><div class="li-price">200</div></div>
+        <div class="list-item"><div class="li-name"><span class="veg-dot veg"></span>Gobi Manchurian</div><div class="li-price">200</div></div>
+        <div class="list-item"><div class="li-name"><span class="veg-dot nonveg"></span>Chicken Manchurian</div><div class="li-price">260</div></div>
+        <div class="list-item"><div class="li-name"><span class="veg-dot nonveg"></span>Chicken Chilly Dry</div><div class="li-price">260</div></div>
+        <div class="list-item"><div class="li-name"><span class="veg-dot nonveg"></span>Chicken in Hot Garlic Sauce</div><div class="li-price">280</div></div>
+        <div class="list-item"><div class="li-name"><span class="veg-dot nonveg"></span>Chicken Steam Momo</div><div class="li-price">150</div></div>
+        <div class="list-item"><div class="li-name"><span class="veg-dot nonveg"></span>Prawn Fried Rice</div><div class="li-price">260</div></div>
+        <div class="list-item"><div class="li-name"><span class="veg-dot nonveg"></span>Pork Noodles</div><div class="li-price">190</div></div>
+    </div></div>
+
+    <div class="list-section reveal"><div class="list-section-title">Quick Scan — Continental &amp; Beverages</div>
+    <div class="list-grid">
+        <div class="list-item"><div class="li-name"><span class="veg-dot veg"></span>White Pasta — Veg</div><div class="li-price">190</div></div>
+        <div class="list-item"><div class="li-name"><span class="veg-dot nonveg"></span>White Pasta — Chicken</div><div class="li-price">220</div></div>
+        <div class="list-item"><div class="li-name"><span class="veg-dot veg"></span>Cocktail Pasta — Veg</div><div class="li-price">190</div></div>
+        <div class="list-item"><div class="li-name"><span class="veg-dot nonveg"></span>Cocktail Pasta — Chicken</div><div class="li-price">220</div></div>
+        <div class="list-item"><div class="li-name"><span class="veg-dot nonveg"></span>Chicken Burger with Fries</div><div class="li-price">150</div></div>
+        <div class="list-item"><div class="li-name"><span class="veg-dot nonveg"></span>Chicken Cheese Burger with Fries</div><div class="li-price">160</div></div>
+        <div class="list-item"><div class="li-name"><span class="veg-dot veg"></span>Veg Sandwich</div><div class="li-price">100</div></div>
+        <div class="list-item"><div class="li-name"><span class="veg-dot nonveg"></span>Chicken Grilled Sandwich</div><div class="li-price">150</div></div>
+        <div class="list-item"><div class="li-name"><span class="veg-dot veg"></span>Milk Tea</div><div class="li-price">30</div></div>
+        <div class="list-item"><div class="li-name"><span class="veg-dot veg"></span>Coffee</div><div class="li-price">50</div></div>
+        <div class="list-item"><div class="li-name"><span class="veg-dot veg"></span>Seasonal Juice</div><div class="li-price">50</div></div>
+    </div></div>
+    `;
+}
+
+buildAllSection();
+
+// ================================================
+// FILTER BUTTONS (.filter-btn)
+// ================================================
+const filterBtns = document.querySelectorAll('.filter-btn');
+
+filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const cat = btn.dataset.cat;
+
+        Object.values(sections).forEach(s => { if (s) s.classList.remove('visible'); });
+
+        const target = sections[cat];
+        if (target) target.classList.add('visible');
+
+        setTimeout(triggerReveal, 50);
+    });
+});
+
+// ================================================
+// LIGHTBOX
+// ================================================
+const lbImgs = [
+    'image29.jpg','image30.jpg','image31.jpg','image32.jpg',
+    'image33.jpg','image34.jpg','image35.jpg'
+];
+let lbCur = 0;
+const lb   = document.getElementById('lightbox');
+const lbEl = document.getElementById('lbImg');
+
+function openLb(i) {
+    lbCur    = i;
+    lbEl.src = lbImgs[i];
+    lb.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+}
+function closeLb() {
+    lb.style.display = 'none';
+    document.body.style.overflow = '';
+}
+function lbNav(d) {
+    lbCur    = (lbCur + d + lbImgs.length) % lbImgs.length;
+    lbEl.src = lbImgs[lbCur];
+}
+
+if (lb) {
+    lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
+}
+document.addEventListener('keydown', e => {
+    if (e.key === 'Escape')     closeLb();
+    if (e.key === 'ArrowLeft')  lbNav(-1);
+    if (e.key === 'ArrowRight') lbNav(1);
+});
+
+// ================================================
+// CONTACT FORM
+// ================================================
+function handleForm(e) {
+    e.preventDefault();
+    const s = document.getElementById('formSuccess');
+    if (s) {
+        s.style.display = 'block';
+        setTimeout(() => { s.style.display = 'none'; }, 5000);
+    }
+    e.target.reset();
+}
+
+// ================================================
+// SMOOTH SCROLL — single unified listener
+// ================================================
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if (!el) return;
+        e.preventDefault();
+        const offset = (catNav ? catNav.offsetHeight : 0)
+                     + (topBar ? topBar.offsetHeight : 0);
+        window.scrollTo({ top: el.offsetTop - offset, behavior: 'smooth' });
+    });
+});
+
+// ================================================
+// SCROLL REVEAL — single unified observer
+// ================================================
+function triggerReveal() {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, i) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => {
+                    entry.target.classList.add('visible');
+                    entry.target.classList.add('vis');
+                }, i * 60);
+                observer.unobserve(entry.target);
+            }
         });
+    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
 
-        // === MOBILE MENU ===
-        document.getElementById('menuToggle').addEventListener('click', () => {
-            const m = document.getElementById('mobileMenu');
-            m.style.display = m.style.display === 'block' ? 'none' : 'block';
+    document.querySelectorAll('.reveal:not(.visible)').forEach(el => observer.observe(el));
+}
+
+function forceRevealVisible() {
+    document.querySelectorAll('.menu-section.visible .reveal').forEach((el, i) => {
+        setTimeout(() => {
+            el.classList.add('visible');
+            el.classList.add('vis');
+        }, i * 50);
+    });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    forceRevealVisible();
+    triggerReveal();
+});
+window.addEventListener('scroll', triggerReveal, { passive: true });
+triggerReveal();
+forceRevealVisible();
+
+
+
+/* ── MENU  background slideshow ── */
+
+(function () {
+    const slides = document.querySelectorAll('.hero-slide');
+    const dots   = document.querySelectorAll('.hero-dot');
+    let current  = 0;
+    let timer;
+ 
+    if (!slides.length) return;
+ 
+    function goTo(index) {
+        slides[current].classList.remove('active');
+        dots[current]?.classList.remove('active');
+        current = index;
+        slides[current].classList.add('active');
+        dots[current]?.classList.add('active');
+    }
+ 
+    function next() {
+        goTo((current + 1) % slides.length);
+    }
+ 
+    function startTimer() {
+        clearInterval(timer);
+        timer = setInterval(next, 5000);
+    }
+ 
+    // Dot click
+    dots.forEach((dot, i) => {
+        dot.addEventListener('click', () => {
+            goTo(i);
+            startTimer(); // reset timer on manual click
         });
-        document.querySelectorAll('#mobileMenu a').forEach(a => {
-            a.addEventListener('click', () => { document.getElementById('mobileMenu').style.display = 'none'; });
-        });
-
-        // === SCROLL REVEAL ===
-        const ro = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const siblings = Array.from(entry.target.parentElement?.children || []);
-                    const delay = siblings.indexOf(entry.target) * 90;
-                    setTimeout(() => entry.target.classList.add('visible'), delay);
-                    ro.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-        document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
-
-        // === MENU FILTER ===
-        document.querySelectorAll('.menu-tab').forEach(btn => {
-            btn.addEventListener('click', function () {
-                document.querySelectorAll('.menu-tab').forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                const cat = this.dataset.cat;
-                document.querySelectorAll('.menu-card').forEach(card => {
-                    const show = cat === 'all' || card.dataset.cat === cat;
-                    card.style.transition = 'opacity 0.4s, transform 0.4s';
-                    card.style.opacity = show ? '1' : '0.15';
-                    card.style.transform = show ? '' : 'scale(0.97)';
-                    card.style.pointerEvents = show ? '' : 'none';
-                });
-            });
-        });
-
-        // === LIGHTBOX ===
-        const lbImgs = ['image29.jpg', 'image30.jpg', 'image31.jpg', 'image32.jpg', 'image33.jpg', 'image34.jpg', 'image35.jpg']
-        let lbCur = 0;
-        const lb = document.getElementById('lightbox');
-        const lbEl = document.getElementById('lbImg');
-        function openLb(i) {
-            lbCur = i;
-            lbEl.src = lbImgs[i];
-            lb.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
-        function closeLb() {
-            lb.style.display = 'none';
-            document.body.style.overflow = '';
-        }
-        function lbNav(d) {
-            lbCur = (lbCur + d + lbImgs.length) % lbImgs.length;
-            lbEl.src = lbImgs[lbCur];
-        }
-        lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
-        document.addEventListener('keydown', e => {
-            if (e.key === 'Escape') closeLb();
-            if (e.key === 'ArrowLeft') lbNav(-1);
-            if (e.key === 'ArrowRight') lbNav(1);
-        });
-
-        // === FORM ===
-        function handleForm(e) {
-            e.preventDefault();
-            const s = document.getElementById('formSuccess');
-            s.style.display = 'block';
-            e.target.reset();
-            setTimeout(() => { s.style.display = 'none'; }, 5000);
-        }
-
-        // === SMOOTH SCROLL ===
-        document.querySelectorAll('a[href^="#"]').forEach(a => {
-            a.addEventListener('click', e => {
-                const t = document.querySelector(a.getAttribute('href'));
-                if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
-            });
-        });
-    
+    });
+ 
+    // Pause on hover
+    const hero = document.querySelector('.menu-hero');
+    hero?.addEventListener('mouseenter', () => clearInterval(timer));
+    hero?.addEventListener('mouseleave', startTimer);
+ 
+    startTimer();
+})();
