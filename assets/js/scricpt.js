@@ -1,53 +1,98 @@
+// Handle ALL .dd-wrapper instances (desktop + mobile) independently
+document.querySelectorAll('.dd-wrapper').forEach(wrapper => {
+  const btn = wrapper.querySelector('.dd-btn');
+  if (!btn) return;
+
+  // Toggle on button click
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    // Close any other open wrappers first
+    document.querySelectorAll('.dd-wrapper.active').forEach(w => {
+      if (w !== wrapper) w.classList.remove('active');
+    });
+    wrapper.classList.toggle('active');
+  });
+
+  // Close when a menu item link is clicked
+  wrapper.querySelectorAll('.dd-item').forEach(item => {
+    item.addEventListener('click', () => {
+      wrapper.classList.remove('active');
+    });
+  });
+});
+
+// Close all dropdowns when clicking outside any wrapper
+document.addEventListener('click', (e) => {
+  document.querySelectorAll('.dd-wrapper.active').forEach(wrapper => {
+    if (!wrapper.contains(e.target)) {
+      wrapper.classList.remove('active');
+    }
+  });
+});
+
+// Close all dropdowns on Escape key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.dd-wrapper.active').forEach(w => {
+      w.classList.remove('active');
+    });
+  }
+});
+
 
 // Highlight current page nav link
 (function highlightCurrentPage() {
-    const currentPage = location.pathname.split('/').pop() || 'index.html';
-    document.querySelectorAll('.nav-link').forEach(link => {
-        const linkPage = link.getAttribute('href').split('#')[0];
-        if (linkPage === currentPage || (currentPage === '' && linkPage === 'index.html')) {
-            link.classList.add('active');
-        } else {
-            link.classList.remove('active');
-        }
-    });
+  const currentPage = location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('.nav-link').forEach(link => {
+    const linkPage = link.getAttribute('href').split('#')[0];
+    if (linkPage === currentPage || (currentPage === '' && linkPage === 'index.html')) {
+      link.classList.add('active');
+    } else {
+      link.classList.remove('active');
+    }
+  });
 })();
-
-
 
 
 // ================================================
 // HERO CAROUSEL
 // ================================================
+
 let heroCur = 0;
 const heroSlides = document.querySelectorAll('.hero-slide');
-const heroDots   = document.querySelectorAll('.hero-dot');
+const heroDots = document.querySelectorAll('.hero-dot');
 let heroTimer;
 
 function goToSlide(n) {
-    heroSlides[heroCur].classList.remove('active');
-    heroDots[heroCur].classList.remove('active');
-    heroCur = (n + heroSlides.length) % heroSlides.length;
-    heroSlides[heroCur].classList.add('active');
-    heroDots[heroCur].classList.add('active');
+  if (!heroSlides.length) return;
+  heroSlides[heroCur].classList.remove('active');
+  heroDots[heroCur]?.classList.remove('active');
+  heroCur = (n + heroSlides.length) % heroSlides.length;
+  heroSlides[heroCur].classList.add('active');
+  heroDots[heroCur]?.classList.add('active');
 }
+
 function startHeroTimer() {
-    clearInterval(heroTimer);
-    heroTimer = setInterval(() => goToSlide(heroCur + 1), 5500);
+  clearInterval(heroTimer);
+  heroTimer = setInterval(() => goToSlide(heroCur + 1), 5500);
 }
+
 if (heroSlides.length) startHeroTimer();
+
 
 // ================================================
 // NAVBAR + BACK-TO-TOP
 // ================================================
 const navbar = document.getElementById('navbar');
 const topBar = document.getElementById('topBar');
-const btt    = document.getElementById('btt');
+const btt = document.getElementById('btt');
 
 window.addEventListener('scroll', () => {
-    const y = window.scrollY;
-    if (navbar) navbar.classList.toggle('scrolled', y > 50);
-    if (topBar) topBar.classList.toggle('scrolled', y > 50);
-    if (btt)    btt.classList.toggle('visible',     y > 400);
+  const y = window.scrollY;
+  if (navbar) navbar.classList.toggle('scrolled', y > 50);
+  if (topBar) topBar.classList.toggle('scrolled', y > 50);
+  if (btt) btt.classList.toggle('visible', y > 400);
 }, { passive: true });
 
 // ================================================
@@ -55,16 +100,16 @@ window.addEventListener('scroll', () => {
 // ================================================
 const menuToggle = document.getElementById('menuToggle');
 if (menuToggle) {
-    menuToggle.addEventListener('click', () => {
-        const m = document.getElementById('mobileMenu');
-        if (m) m.style.display = m.style.display === 'block' ? 'none' : 'block';
-    });
+  menuToggle.addEventListener('click', () => {
+    const m = document.getElementById('mobileMenu');
+    if (m) m.style.display = m.style.display === 'block' ? 'none' : 'block';
+  });
 }
 document.querySelectorAll('#mobileMenu a').forEach(a => {
-    a.addEventListener('click', () => {
-        const m = document.getElementById('mobileMenu');
-        if (m) m.style.display = 'none';
-    });
+  a.addEventListener('click', () => {
+    const m = document.getElementById('mobileMenu');
+    if (m) m.style.display = 'none';
+  });
 });
 
 // ================================================
@@ -73,20 +118,20 @@ document.querySelectorAll('#mobileMenu a').forEach(a => {
 // Used by: category nav scroll-spy  AND  filter buttons
 // ================================================
 const sections = {
-    indian:      document.getElementById('sec-indian'),
-    chinese:     document.getElementById('sec-chinese'),
-    continental: document.getElementById('sec-continental'),
-    combos:      document.getElementById('sec-combos'),
-    beverages:   document.getElementById('sec-beverages'),
-    all:         document.getElementById('sec-all'),
+  indian: document.getElementById('sec-indian'),
+  chinese: document.getElementById('sec-chinese'),
+  continental: document.getElementById('sec-continental'),
+  combos: document.getElementById('sec-combos'),
+  beverages: document.getElementById('sec-beverages'),
+  all: document.getElementById('sec-all'),
 };
 
 // Scroll-spy only tracks these four visible page sections
 const navSections = {
-    indian:      sections.indian,
-    chinese:     sections.chinese,
-    continental: sections.continental,
-    beverages:   sections.beverages,
+  indian: sections.indian,
+  chinese: sections.chinese,
+  continental: sections.continental,
+  beverages: sections.beverages,
 };
 
 // ================================================
@@ -95,27 +140,27 @@ const navSections = {
 const catNav = document.getElementById('catNav');
 
 document.querySelectorAll('.cat-tab').forEach(tab => {
-    tab.addEventListener('click', () => {
-        const target = navSections[tab.dataset.target];
-        if (!target) return;
-        const offset = (catNav  ? catNav.offsetHeight  : 0)
-                     + (topBar  ? topBar.offsetHeight  : 0);
-        window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - offset, behavior: 'smooth' });
-    });
+  tab.addEventListener('click', () => {
+    const target = navSections[tab.dataset.target];
+    if (!target) return;
+    const offset = (catNav ? catNav.offsetHeight : 0)
+      + (topBar ? topBar.offsetHeight : 0);
+    window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - offset, behavior: 'smooth' });
+  });
 });
 
 function updateActiveTab() {
-    const scrollPos = window.scrollY
-        + (catNav ? catNav.offsetHeight : 0)
-        + (topBar ? topBar.offsetHeight : 0)
-        + 60;
-    let active = 'indian';
-    for (const [key, el] of Object.entries(navSections)) {
-        if (el && el.offsetTop <= scrollPos) active = key;
-    }
-    document.querySelectorAll('.cat-tab').forEach(t => {
-        t.classList.toggle('active', t.dataset.target === active);
-    });
+  const scrollPos = window.scrollY
+    + (catNav ? catNav.offsetHeight : 0)
+    + (topBar ? topBar.offsetHeight : 0)
+    + 60;
+  let active = 'indian';
+  for (const [key, el] of Object.entries(navSections)) {
+    if (el && el.offsetTop <= scrollPos) active = key;
+  }
+  document.querySelectorAll('.cat-tab').forEach(t => {
+    t.classList.toggle('active', t.dataset.target === active);
+  });
 }
 window.addEventListener('scroll', updateActiveTab, { passive: true });
 
@@ -126,10 +171,10 @@ window.addEventListener('scroll', updateActiveTab, { passive: true });
 // BUILD "ALL" SECTION
 // ================================================
 function buildAllSection() {
-    const allSec = sections.all;
-    if (!allSec) return;
+  const allSec = sections.all;
+  if (!allSec) return;
 
-    allSec.innerHTML = `
+  allSec.innerHTML = `
     <div class="section-header reveal">
         <div class="section-label-wrap">
             <div class="section-label">Full Menu</div>
@@ -138,7 +183,10 @@ function buildAllSection() {
     </div>
     <div class="featured-row reveal">
         <div class="featured-card">
-            <img src="assets/images/food-long-john/chicken-curry.jpg" alt="Chicken Curry" class="fc-img" onerror="this.parentNode.style.background='#1C2409'">
+            <picture>
+                <source srcset="assets/images/food-long-john/chicken-curry.webp" type="image/webp">
+                <img src="assets/images/food-long-john/chicken-curry.jpg" alt="Chicken Curry" class="fc-img" onerror="this.parentNode.style.background='#1C2409'">
+            </picture>
             <div class="fc-overlay"></div>
             <div class="fc-content">
                 <span class="fc-ribbon">Indian · Non-Veg</span>
@@ -148,7 +196,10 @@ function buildAllSection() {
             </div>
         </div>
         <div class="featured-card">
-            <img src="assets/images/food-long-john/chicken-manchurian-gravy.jpg" alt="Chicken Manchurian" class="fc-img" onerror="this.parentNode.style.background='#1C2409'">
+            <picture>
+                <source srcset="assets/images/food-long-john/chicken-manchurian-gravy.webp" type="image/webp">
+                <img src="assets/images/food-long-john/chicken-manchurian-gravy.jpg" alt="Chicken Manchurian" class="fc-img" onerror="this.parentNode.style.background='#1C2409'">
+            </picture>
             <div class="fc-overlay"></div>
             <span class="fc-tag">Most Loved</span>
             <div class="fc-content">
@@ -161,34 +212,52 @@ function buildAllSection() {
     </div>
     <div class="grid-row reveal">
         <div class="grid-card">
-            <img src="assets/images/food-long-john/veg-schezwan-fried-rice.jpg" alt="Schezwan Fried Rice" class="gc-img" onerror="this.parentNode.style.background='#1C2409'">
+            <picture>
+                <source srcset="assets/images/food-long-john/veg-schezwan-fried-rice.webp" type="image/webp">
+                <img src="assets/images/food-long-john/veg-schezwan-fried-rice.jpg" alt="Schezwan Fried Rice" class="gc-img" onerror="this.parentNode.style.background='#1C2409'">
+            </picture>
             <div class="gc-overlay"></div>
             <div class="gc-content"><span class="gc-ribbon">Chinese · Rice</span><div class="gc-name">Veg Schezwan Fried Rice</div><div class="gc-price"><span class="rupee">₹</span> 160</div></div>
         </div>
         <div class="grid-card">
-            <img src="assets/images/food-long-john/veg-cocktail-pasta.jpg" alt="Cocktail Pasta" class="gc-img" onerror="this.parentNode.style.background='#1C2409'">
+            <picture>
+                <source srcset="assets/images/food-long-john/veg-cocktail-pasta.webp" type="image/webp">
+                <img src="assets/images/food-long-john/veg-cocktail-pasta.jpg" alt="Cocktail Pasta" class="gc-img" onerror="this.parentNode.style.background='#1C2409'">
+            </picture>
             <div class="gc-overlay"></div>
             <div class="gc-content"><span class="gc-ribbon">Continental · Pasta</span><div class="gc-name">Cocktail Pasta — Veg</div><div class="gc-price"><span class="rupee">₹</span> 190</div></div>
         </div>
         <div class="grid-card">
-            <img src="assets/images/food-long-john/chicken-chow.jpg" alt="Chicken Chow" class="gc-img" onerror="this.parentNode.style.background='#1C2409'">
+            <picture>
+                <source srcset="assets/images/food-long-john/chicken-chow.webp" type="image/webp">
+                <img src="assets/images/food-long-john/chicken-chow.jpg" alt="Chicken Chow" class="gc-img" onerror="this.parentNode.style.background='#1C2409'">
+            </picture>
             <div class="gc-overlay"></div>
             <div class="gc-content"><span class="gc-ribbon">Chinese · Noodles</span><div class="gc-name">Chicken Chowmein</div><div class="gc-price"><span class="rupee">₹</span> 170</div></div>
         </div>
     </div>
     <div class="grid-row reveal">
         <div class="grid-card">
-            <img src="assets/images/food-long-john/veg-pulao.jpg" alt="Veg Pulao" class="gc-img" onerror="this.parentNode.style.background='#1C2409'">
+            <picture>
+                <source srcset="assets/images/food-long-john/veg-pulao.webp" type="image/webp">
+                <img src="assets/images/food-long-john/veg-pulao.jpg" alt="Veg Pulao" class="gc-img" onerror="this.parentNode.style.background='#1C2409'">
+            </picture>
             <div class="gc-overlay"></div>
             <div class="gc-content"><span class="gc-ribbon">Indian · Rice</span><div class="gc-name">Veg Pulao</div><div class="gc-price"><span class="rupee">₹</span> 200</div></div>
         </div>
         <div class="grid-card">
-            <img src="assets/images/food-long-john/white-chicken-pasta.jpg" alt="White Chicken Pasta" class="gc-img" onerror="this.parentNode.style.background='#1C2409'">
+            <picture>
+                <source srcset="assets/images/food-long-john/white-chicken-pasta.webp" type="image/webp">
+                <img src="assets/images/food-long-john/white-chicken-pasta.jpg" alt="White Chicken Pasta" class="gc-img" onerror="this.parentNode.style.background='#1C2409'">
+            </picture>
             <div class="gc-overlay"></div>
             <div class="gc-content"><span class="gc-ribbon">Continental · Pasta</span><div class="gc-name">White Pasta — Chicken</div><div class="gc-price"><span class="rupee">₹</span> 220</div></div>
         </div>
         <div class="grid-card">
-            <img src="assets/images/food-long-john/chicken-kasha.jpg" alt="Chicken Kasha" class="gc-img" onerror="this.parentNode.style.background='#1C2409'">
+            <picture>
+                <source srcset="assets/images/food-long-john/chicken-kasha.webp" type="image/webp">
+                <img src="assets/images/food-long-john/chicken-kasha.jpg" alt="Chicken Kasha" class="gc-img" onerror="this.parentNode.style.background='#1C2409'">
+            </picture>
             <div class="gc-overlay"></div>
             <div class="gc-content"><span class="gc-ribbon">Indian · Signature</span><div class="gc-name">Chicken Kasha</div><div class="gc-price"><span class="rupee">₹</span> 230</div></div>
         </div>
@@ -261,53 +330,53 @@ buildAllSection();
 const filterBtns = document.querySelectorAll('.filter-btn');
 
 filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-        filterBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const cat = btn.dataset.cat;
+  btn.addEventListener('click', () => {
+    filterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const cat = btn.dataset.cat;
 
-        Object.values(sections).forEach(s => { if (s) s.classList.remove('visible'); });
+    Object.values(sections).forEach(s => { if (s) s.classList.remove('visible'); });
 
-        const target = sections[cat];
-        if (target) target.classList.add('visible');
+    const target = sections[cat];
+    if (target) target.classList.add('visible');
 
-        setTimeout(triggerReveal, 50);
-    });
+    setTimeout(triggerReveal, 50);
+  });
 });
 
 // ================================================
 // LIGHTBOX
 // ================================================
 const lbImgs = [
-    'image29.jpg','image30.jpg','image31.jpg','image32.jpg',
-    'image33.jpg','image34.jpg','image35.jpg'
+  'image29.jpg', 'image30.jpg', 'image31.jpg', 'image32.jpg',
+  'image33.jpg', 'image34.jpg', 'image35.jpg'
 ];
 let lbCur = 0;
-const lb   = document.getElementById('lightbox');
+const lb = document.getElementById('lightbox');
 const lbEl = document.getElementById('lbImg');
 
 function openLb(i) {
-    lbCur    = i;
-    lbEl.src = lbImgs[i];
-    lb.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
+  lbCur = i;
+  lbEl.src = lbImgs[i];
+  lb.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
 }
 function closeLb() {
-    lb.style.display = 'none';
-    document.body.style.overflow = '';
+  lb.style.display = 'none';
+  document.body.style.overflow = '';
 }
 function lbNav(d) {
-    lbCur    = (lbCur + d + lbImgs.length) % lbImgs.length;
-    lbEl.src = lbImgs[lbCur];
+  lbCur = (lbCur + d + lbImgs.length) % lbImgs.length;
+  lbEl.src = lbImgs[lbCur];
 }
 
 if (lb) {
-    lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
+  lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
 }
 document.addEventListener('keydown', e => {
-    if (e.key === 'Escape')     closeLb();
-    if (e.key === 'ArrowLeft')  lbNav(-1);
-    if (e.key === 'ArrowRight') lbNav(1);
+  if (e.key === 'Escape') closeLb();
+  if (e.key === 'ArrowLeft') lbNav(-1);
+  if (e.key === 'ArrowRight') lbNav(1);
 });
 
 
@@ -320,61 +389,61 @@ document.addEventListener('keydown', e => {
 // CONTACT FORM
 // ================================================
 function handleForm(e) {
-    e.preventDefault();
-    const s = document.getElementById('formSuccess');
-    if (s) {
-        s.style.display = 'block';
-        setTimeout(() => { s.style.display = 'none'; }, 5000);
-    }
-    e.target.reset();
+  e.preventDefault();
+  const s = document.getElementById('formSuccess');
+  if (s) {
+    s.style.display = 'block';
+    setTimeout(() => { s.style.display = 'none'; }, 5000);
+  }
+  e.target.reset();
 }
 
 // ================================================
 // SMOOTH SCROLL — single unified listener
 // ================================================
 document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-        const id = a.getAttribute('href').slice(1);
-        const el = document.getElementById(id);
-        if (!el) return;
-        e.preventDefault();
-        const offset = (catNav ? catNav.offsetHeight : 0)
-                     + (topBar ? topBar.offsetHeight : 0);
-        window.scrollTo({ top: el.offsetTop - offset, behavior: 'smooth' });
-    });
+  a.addEventListener('click', e => {
+    const id = a.getAttribute('href').slice(1);
+    const el = document.getElementById(id);
+    if (!el) return;
+    e.preventDefault();
+    const offset = (catNav ? catNav.offsetHeight : 0)
+      + (topBar ? topBar.offsetHeight : 0);
+    window.scrollTo({ top: el.offsetTop - offset, behavior: 'smooth' });
+  });
 });
 
 // ================================================
 // SCROLL REVEAL — single unified observer
 // ================================================
 function triggerReveal() {
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry, i) => {
-            if (entry.isIntersecting) {
-                setTimeout(() => {
-                    entry.target.classList.add('visible');
-                    entry.target.classList.add('vis');
-                }, i * 60);
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+          entry.target.classList.add('vis');
+        }, i * 60);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
 
-    document.querySelectorAll('.reveal:not(.visible)').forEach(el => observer.observe(el));
+  document.querySelectorAll('.reveal:not(.visible)').forEach(el => observer.observe(el));
 }
 
 function forceRevealVisible() {
-    document.querySelectorAll('.menu-section.visible .reveal').forEach((el, i) => {
-        setTimeout(() => {
-            el.classList.add('visible');
-            el.classList.add('vis');
-        }, i * 50);
-    });
+  document.querySelectorAll('.menu-section.visible .reveal').forEach((el, i) => {
+    setTimeout(() => {
+      el.classList.add('visible');
+      el.classList.add('vis');
+    }, i * 50);
+  });
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    forceRevealVisible();
-    triggerReveal();
+  forceRevealVisible();
+  triggerReveal();
 });
 window.addEventListener('scroll', triggerReveal, { passive: true });
 triggerReveal();
@@ -385,44 +454,44 @@ forceRevealVisible();
 /* ── MENU  background slideshow ── */
 
 (function () {
-    const slides = document.querySelectorAll('.hero-slide');
-    const dots   = document.querySelectorAll('.hero-dot');
-    let current  = 0;
-    let timer;
- 
-    if (!slides.length) return;
- 
-    function goTo(index) {
-        slides[current].classList.remove('active');
-        dots[current]?.classList.remove('active');
-        current = index;
-        slides[current].classList.add('active');
-        dots[current]?.classList.add('active');
-    }
- 
-    function next() {
-        goTo((current + 1) % slides.length);
-    }
- 
-    function startTimer() {
-        clearInterval(timer);
-        timer = setInterval(next, 5000);
-    }
- 
-    // Dot click
-    dots.forEach((dot, i) => {
-        dot.addEventListener('click', () => {
-            goTo(i);
-            startTimer(); // reset timer on manual click
-        });
+  const slides = document.querySelectorAll('.hero-slide');
+  const dots = document.querySelectorAll('.hero-dot');
+  let current = 0;
+  let timer;
+
+  if (!slides.length) return;
+
+  function goTo(index) {
+    slides[current].classList.remove('active');
+    dots[current]?.classList.remove('active');
+    current = index;
+    slides[current].classList.add('active');
+    dots[current]?.classList.add('active');
+  }
+
+  function next() {
+    goTo((current + 1) % slides.length);
+  }
+
+  function startTimer() {
+    clearInterval(timer);
+    timer = setInterval(next, 5000);
+  }
+
+  // Dot click
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+      goTo(i);
+      startTimer(); // reset timer on manual click
     });
- 
-    // Pause on hover
-    const hero = document.querySelector('.menu-hero');
-    hero?.addEventListener('mouseenter', () => clearInterval(timer));
-    hero?.addEventListener('mouseleave', startTimer);
- 
-    startTimer();
+  });
+
+  // Pause on hover
+  const hero = document.querySelector('.menu-hero');
+  hero?.addEventListener('mouseenter', () => clearInterval(timer));
+  hero?.addEventListener('mouseleave', startTimer);
+
+  startTimer();
 })();
 
 
@@ -431,24 +500,24 @@ forceRevealVisible();
 // ====================  GALLERY  ===========
 
 
-(function(){
+(function () {
 
   /* ── DATA ─────────────────────────────────────────── */
   const DATA = [
-    {src:'assets/images/food-long-john/lemon-chicken-gravy.jpg',     name:'Lemon Chicken Gravy',    cat:'chicken'},
-    {src:'assets/images/food-long-john/chicken-thali.jpg',           name:'Chicken Thali',          cat:'chicken'},
-    {src:'assets/images/food-long-john/mutton-keema-with-roti-2-pc.jpg',name:'Mutton Keema & Roti', cat:'mutton'},
-    {src:'assets/images/food-long-john/mutton-curry.jpg',            name:'Mutton Curry',           cat:'mutton'},
-    {src:'assets/images/food-long-john/chicke-drumstick.jpg',        name:'Chicken Drumstick',      cat:'chicken'},
-    {src:'assets/images/food-long-john/pork-chilly-dry.jpg',         name:'Pork Chilly Dry',        cat:'specials'},
-    {src:'assets/images/food-long-john/noodles-about.jpg',           name:'Wok Noodles',            cat:'sides'},
+    { src: 'assets/images/food-long-john/lemon-chicken-gravy.jpg', name: 'Lemon Chicken Gravy', cat: 'chicken' },
+    { src: 'assets/images/food-long-john/chicken-thali.jpg', name: 'Chicken Thali', cat: 'chicken' },
+    { src: 'assets/images/food-long-john/mutton-keema-with-roti-2-pc.jpg', name: 'Mutton Keema & Roti', cat: 'mutton' },
+    { src: 'assets/images/food-long-john/mutton-curry.jpg', name: 'Mutton Curry', cat: 'mutton' },
+    { src: 'assets/images/food-long-john/chicke-drumstick.jpg', name: 'Chicken Drumstick', cat: 'chicken' },
+    { src: 'assets/images/food-long-john/pork-chilly-dry.jpg', name: 'Pork Chilly Dry', cat: 'specials' },
+    { src: 'assets/images/food-long-john/noodles-about.jpg', name: 'Wok Noodles', cat: 'sides' },
   ];
 
   const CAT_LABEL = {
-    chicken:'Chicken', mutton:'Mutton', specials:'Specials', sides:'Sides'
+    chicken: 'Chicken', mutton: 'Mutton', specials: 'Specials', sides: 'Sides'
   };
 
-  let idx  = 0;
+  let idx = 0;
   let pool = [...DATA];
 
   // Check if mobile
@@ -465,15 +534,15 @@ forceRevealVisible();
   const tiles = document.querySelectorAll('.fst-tile');
   const io = new IntersectionObserver(entries => {
     entries.forEach(e => {
-      if(e.isIntersecting) e.target.classList.add('fst-visible');
+      if (e.isIntersecting) e.target.classList.add('fst-visible');
     });
-  },{threshold:.12});
+  }, { threshold: .12 });
   tiles.forEach(t => io.observe(t));
 
   /* ── FILTER ───────────────────────────────────────── */
   document.querySelectorAll('.fst-tab').forEach(btn => {
-    btn.addEventListener('click',()=>{
-      document.querySelectorAll('.fst-tab').forEach(b=>b.classList.remove('fst-tab-on'));
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.fst-tab').forEach(b => b.classList.remove('fst-tab-on'));
       btn.classList.add('fst-tab-on');
 
       const f = btn.dataset.f;
@@ -481,9 +550,9 @@ forceRevealVisible();
       // Get visible tiles
       const visibleTiles = [];
       tiles.forEach((tile, index) => {
-        const match = f==='all' || tile.dataset.cat===f;
+        const match = f === 'all' || tile.dataset.cat === f;
         if (match) {
-          visibleTiles.push({tile: tile, originalIndex: index});
+          visibleTiles.push({ tile: tile, originalIndex: index });
         }
       });
 
@@ -496,7 +565,7 @@ forceRevealVisible();
       setTimeout(() => {
         // Hide non-matching completely
         tiles.forEach((tile, index) => {
-          const match = f==='all' || tile.dataset.cat===f;
+          const match = f === 'all' || tile.dataset.cat === f;
           if (!match) {
             tile.style.display = 'none';
             // Reset inline styles when hidden
@@ -582,78 +651,82 @@ forceRevealVisible();
 
       }, 300);
 
-      pool = f==='all' ? [...DATA] : DATA.filter(d=>d.cat===f);
+      pool = f === 'all' ? [...DATA] : DATA.filter(d => d.cat === f);
     });
   });
 
   /* ── LIGHTBOX ─────────────────────────────────────── */
-  window.fstOpen = function(i){
+  window.fstOpen = function (i) {
     idx = i;
     renderLb();
     document.getElementById('fstLb').classList.add('fst-lb-open');
-    document.body.style.overflow='hidden';
+    document.body.style.overflow = 'hidden';
   };
 
-  window.fstClose = function(){
+  window.fstClose = function () {
     document.getElementById('fstLb').classList.remove('fst-lb-open');
-    document.body.style.overflow='';
+    document.body.style.overflow = '';
   };
 
-  window.fstNav = function(dir){
+  window.fstNav = function (dir) {
     idx = (idx + dir + pool.length) % pool.length;
     renderLb();
   };
 
-  function renderLb(){
+  function renderLb() {
     const d = pool[idx] ?? DATA[idx];
     const photo = document.getElementById('fstLbPhoto');
-    const bar   = document.getElementById('fstBar');
+    const bar = document.getElementById('fstBar');
 
     /* fade swap */
-    photo.style.opacity='0';
-    bar.style.width='0%';
-    setTimeout(()=>{
+    photo.style.opacity = '0';
+    bar.style.width = '0%';
+    setTimeout(() => {
+      const source = photo.previousElementSibling;
+      if (source && source.tagName === 'SOURCE') {
+        source.srcset = d.src.replace(/\.(jpg|png)$/, '.webp');
+      }
       photo.src = d.src;
       photo.alt = d.name;
-      document.getElementById('fstLbTag').textContent  = CAT_LABEL[d.cat]||d.cat;
+      document.getElementById('fstLbTag').textContent = CAT_LABEL[d.cat] || d.cat;
       document.getElementById('fstLbName').textContent = d.name;
-      photo.style.opacity='1';
-    },240);
+      photo.style.opacity = '1';
+    }, 240);
 
     /* progress bar */
-    bar.style.width = Math.round(((idx+1)/pool.length)*100)+'%';
+    bar.style.width = Math.round(((idx + 1) / pool.length) * 100) + '%';
 
     /* count */
     document.getElementById('fstCount').textContent =
-      String(idx+1).padStart(2,'0') + ' / ' + String(pool.length).padStart(2,'0');
+      String(idx + 1).padStart(2, '0') + ' / ' + String(pool.length).padStart(2, '0');
 
     /* dots */
     const dotsEl = document.getElementById('fstDots');
-    dotsEl.innerHTML='';
-    pool.forEach((_,i)=>{
-      const d2=document.createElement('button');
-      d2.className='fst-lb-dot'+(i===idx?' fst-lb-dot-on':'');
-      d2.setAttribute('aria-label','Image '+(i+1));
-      d2.onclick=()=>{ idx=i; renderLb(); };
+    dotsEl.innerHTML = '';
+    pool.forEach((_, i) => {
+      const d2 = document.createElement('button');
+      d2.className = 'fst-lb-dot' + (i === idx ? ' fst-lb-dot-on' : '');
+      d2.setAttribute('aria-label', 'Image ' + (i + 1));
+      d2.onclick = () => { idx = i; renderLb(); };
       dotsEl.appendChild(d2);
     });
   }
 
   /* keyboard */
-  document.addEventListener('keydown',e=>{
-    if(!document.getElementById('fstLb').classList.contains('fst-lb-open')) return;
-    if(e.key==='ArrowLeft')  fstNav(-1);
-    if(e.key==='ArrowRight') fstNav(1);
-    if(e.key==='Escape')     fstClose();
+  document.addEventListener('keydown', e => {
+    if (!document.getElementById('fstLb').classList.contains('fst-lb-open')) return;
+    if (e.key === 'ArrowLeft') fstNav(-1);
+    if (e.key === 'ArrowRight') fstNav(1);
+    if (e.key === 'Escape') fstClose();
   });
 
   /* touch swipe in lightbox */
-  let tx=0;
-  const lb=document.getElementById('fstLb');
-  lb.addEventListener('touchstart',e=>{ tx=e.touches[0].clientX; },{passive:true});
-  lb.addEventListener('touchend',e=>{
-    const dx=e.changedTouches[0].clientX-tx;
-    if(Math.abs(dx)>50) fstNav(dx<0?1:-1);
+  let tx = 0;
+  const lb = document.getElementById('fstLb');
+  lb?.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
+  lb?.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - tx;
+    if (Math.abs(dx) > 50) fstNav(dx < 0 ? 1 : -1);
   });
 
   /* Handle resize - reset grid when going back to all */

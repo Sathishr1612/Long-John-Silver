@@ -10,6 +10,7 @@
         href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&family=Cinzel:wght@400;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
@@ -20,7 +21,11 @@
         <div class="container">
             <div class="d-flex align-items-center justify-content-between">
                 <a href="#" class="nav-logo-wrap">
-                    <img src="assets/images/long-john-logo.png" alt="Long John Silver's Shillong" class="nav-logo-img">
+                    <picture>
+                        <source srcset="assets/images/long-john-logo.webp" type="image/webp">
+                        <img src="assets/images/long-john-logo.png" alt="Long John Silver's Shillong"
+                            class="nav-logo-img">
+                    </picture>
                     <!-- <div class="nav-logo-text">
                         <span class="nav-logo-name">Long John Silver's</span>
                         <span class="nav-logo-sub">Taste the Myth · Shillong</span>
@@ -31,59 +36,153 @@
                 </button>
                 <div class="d-none d-lg-flex align-items-center gap-1">
                     <a class="nav-link active" href="index.html">Home</a>
-              
                     <a class="nav-link" href="menu.html">Menu</a>
                     <a class="nav-link" href="#why">Our Promise</a>
-                    <a class="nav-link" href="gallery.html">Gallery</a>
-                    <a class="nav-link" href="#order">Order</a>
-                    <a class="nav-link" href="#contact">Contact</a>
-                    <a class="nav-link nav-cta ms-2" href="#order">Order Now</a>
+                    <a class="nav-link" href="contact.html">Contact</a>
+                    <a class="nav-link" href="#order">Order online</a>
+
+                    <div class="dd-wrapper">
+                        <button class="dd-btn" id="orderDropdown">
+                            Order Now
+                            <i class="bi bi-chevron-down dd-arrow"></i>
+                        </button>
+
+                        <div class="dd-menu">
+                            <div class="dd-header">
+                                <h6>Choose Platform</h6>
+                                <p>Order your favorites</p>
+                            </div>
+
+                            <a class="dd-item" href="https://www.swiggy.com" target="_blank">
+                                <div class="dd-icon">
+                                    <i class="bi bi-bag-check"></i>
+                                </div>
+                                <div class="dd-content">
+                                    <div class="dd-title">Order via Swiggy</div>
+                                    <div class="dd-desc">Fast delivery, exclusive deals</div>
+                                </div>
+                                <i class="bi bi-arrow-up-right dd-link-icon"></i>
+                            </a>
+
+                            <a class="dd-item" href="https://www.zomato.com" target="_blank">
+                                <div class="dd-icon">
+                                    <i class="bi bi-shop"></i>
+                                </div>
+                                <div class="dd-content">
+                                    <div class="dd-title">Order via Zomato</div>
+                                    <div class="dd-desc">Premium dining experience</div>
+                                </div>
+                                <i class="bi bi-arrow-up-right dd-link-icon"></i>
+                            </a>
+
+                            <a class="dd-item dd-call" href="tel:+919999999999">
+                                <div class="dd-icon">
+                                    <i class="bi bi-telephone-fill"></i>
+                                </div>
+                                <div class="dd-content">
+                                    <div class="dd-title">Call to Order</div>
+                                    <div class="dd-desc">+91 99999 99999</div>
+                                </div>
+                                <i class="bi bi-arrow-up-right dd-link-icon"></i>
+                            </a>
+
+                            <div class="dd-footer">
+                                <p>Open daily 11:00 AM - 11:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="d-lg-none" id="mobileMenu" style="display:none">
-                <a class="nav-link active d-block py-2" href="index.html">Home</a>
-                <a class="nav-link d-block py-2" href="menu.html">Menu</a>
-                <a class="nav-link d-block py-2" href="gallery.html">Gallery</a>
-                <a class="nav-link d-block py-2" href="#order">Order</a>
-                <a class="nav-link d-block py-2" href="#contact">Contact</a>
+
+
+            <div class="d-lg-none" id="mobileMenu">
+                <a class="nav-link active" href="index.html">Home</a>
+                    <a class="nav-link" href="menu.html">Menu</a>
+                    <a class="nav-link" href="#why">Our Promise</a>
+                    <a class="nav-link" href="contact.html">Contact</a>
+                    <a class="nav-link" href="#order">Order online</a>
+               
+                    <div class="dd-wrapper">
+                    <button class="dd-btn" id="orderDropdown">
+                        Order Now
+                        <i class="bi bi-chevron-down dd-arrow"></i>
+                    </button>
+
+                    <div class="dd-menu">
+                        <div class="dd-header">
+                            <h6>Choose Platform</h6>
+                            <p>Order your favorites</p>
+                        </div>
+
+                        <a class="dd-item" href="https://www.swiggy.com" target="_blank">
+                            <div class="dd-icon">
+                                <i class="bi bi-bag-check"></i>
+                            </div>
+                            <div class="dd-content">
+                                <div class="dd-title">Order via Swiggy</div>
+                                <div class="dd-desc">Fast delivery, exclusive deals</div>
+                            </div>
+                            <i class="bi bi-arrow-up-right dd-link-icon"></i>
+                        </a>
+
+                        <a class="dd-item" href="https://www.zomato.com" target="_blank">
+                            <div class="dd-icon">
+                                <i class="bi bi-shop"></i>
+                            </div>
+                            <div class="dd-content">
+                                <div class="dd-title">Order via Zomato</div>
+                                <div class="dd-desc">Premium dining experience</div>
+                            </div>
+                            <i class="bi bi-arrow-up-right dd-link-icon"></i>
+                        </a>
+
+                        <a class="dd-item dd-call" href="tel:+919999999999">
+                            <div class="dd-icon">
+                                <i class="bi bi-telephone-fill"></i>
+                            </div>
+                            <div class="dd-content">
+                                <div class="dd-title">Call to Order</div>
+                                <div class="dd-desc">+91 99999 99999</div>
+                            </div>
+                            <i class="bi bi-arrow-up-right dd-link-icon"></i>
+                        </a>
+
+                        <div class="dd-footer">
+                            <p>Open daily 11:00 AM - 11:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </nav>
 
     <!-- ===================== HERO ===================== -->
     <section id="hero">
-        <div class="hero-slides">
+        <div class="hero-slides premium-hero-bg ">
             <div class="hero-slide active"
-                style="background-image:url('assets/images/food-long-john/chicke-drumstick.jpg')"></div>
-            <div class="hero-slide"
-                style="background-image:url('assets/images/food-long-john/chicken-cheese-burger.jpg')"></div>
-            <div class="hero-slide" style="background-image:url('assets/images/food-long-john/chicken-roll.jpg')"></div>
-            <div class="hero-slide" style="background-image:url('assets/images/food-long-john/chilly-chickn-dry.jpg')">
+                style="background-image:url('assets/images/food-long-john/indian-food-hero.webp')"></div>
+            <div class="hero-slide" style="background-image:url('assets/images/food-long-john/mutton-thali.webp')">
             </div>
-            <!-- <div class="hero-slide" style="background-image:url('assets/images/food-long-john/pork-mushroom-chow.jpg')"></div> -->
-
+            <div class="hero-slide"
+                style="background-image:url('assets/images/food-long-john/mutton-keema-with-roti-2-pc.webp')"></div>
+            <div class="hero-slide" style="background-image:url('assets/images/food-long-john/fish-fry.webp')">
+            </div>
+            <div class="premium-overlay"></div>
         </div>
         <div class="hero-overlay"></div>
         <div class="container hero-content">
-            <div class="col-lg-8 col-xl-7">
-                <!-- <div class="hero-logo-wrap">
-        <img src="image6.png" alt="Long John Silver's Logo" class="hero-logo-img">
-        <div class="hero-logo-divider"></div>
-        <div class="hero-logo-text-block">
-          <span class="hero-eyebrow">Shillong · Meghalaya · Est. 2020</span>
-          <span class="hero-tagline-pill">Taste the Myth</span>
-        </div>
-      </div> -->
-                <h1 class="hero-title">
-                    Your Table Awaits<br>
-                    <em>in the Heart of Meghalaya</em>
+            <div class="col-lg-10 col-xl-9">
+                <span class="premium-eyebrow">Where Every Meal Feels Like Home</span>
+                <h1 class="premium-title">
+                    Long John Silver Shillong<br>
+                    <em>Your Table Awaits in the Heart of Meghalaya.</em>
                 </h1>
-                <div class="hero-divider"></div>
-                <p class="hero-sub">Thoughtfully curated Indian, Chinese &amp; Continental flavors — a culinary haven
-                    near Polo Towers, Shillong.</p>
-                <div class="hero-actions py-4">
-                    <a href="#order" class="btn-primary-ljs"><span>Order Now</span></a>
-                    <a href="#contact" class="btn-outline-ljs">Visit Us</a>
+                <p class="premium-sub">Taste the Comfort. Live the Flavor. Welcome to Long John Silver Shillong Cafe.
+                </p>
+                <div class="premium-actions">
+                    <a href="#order" class="btn-primary-ljs"><span>Order Online</span></a>
+                    <a href="menu.html" class="btn-outline-ljs">Explore Menu</a>
                 </div>
             </div>
         </div>
@@ -100,7 +199,7 @@
     </section>
 
     <!-- ===================== BANNER ===================== -->
-    <div class="reno-banner">
+    <!-- <div class="reno-banner">
         <div class="reno-inner">
             <div class="reno-track">
                 <span class="reno-item"><span class="reno-accent">✦</span> We're Renovating <span
@@ -113,19 +212,25 @@
                     Follow Us for Sneak Peeks <span class="reno-accent">✦</span></span>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <!-- ===================== ABOUT ===================== -->
 
     <section id="about">
-        <div class="container">
+        <div class="container py-4">
             <div class="row align-items-center g-5">
                 <div class="col-lg-5 reveal from-left">
                     <div class="about-frame">
-                        <img src="assets/images/long-john-images/schezwan-noodles.png" alt="LJS cuisine"
-                            class="about-img">
+                        <picture>
+                            <source srcset="assets/images/food-long-john/schezwan-noodles.webp" type="image/webp">
+                            <img src="assets/images/food-long-john/schezwan-noodles.webp" alt="LJS cuisine"
+                                class="about-img">
+                        </picture>
                         <div class="about-frame-border"></div>
-                        <img src="assets/images/long-john-logo.png" alt="LJS Logo" class="about-logo-stamp">
+                        <picture>
+                            <source srcset="assets/images/long-john-logo.webp" type="image/webp">
+                            <img src="assets/images/long-john-logo.webp" alt="LJS Logo" class="about-logo-stamp">
+                        </picture>
                     </div>
                 </div>
                 <div class="col-lg-7 ps-lg-5 reveal from-right">
@@ -168,9 +273,18 @@
     <!-- ===== HOMEPAGE MENU PREVIEW SECTION =====-->
 
 
+
+
+    <!-- ═══ MENU CARDS ═══ -->
+
+
+
+
+
+
     <div class="menu-main" id="menu" style="padding-top:0">
 
-        <!-- Section Header (matches your existing pattern) -->
+
         <div class="menu-section visible" id="sec-home-menu">
 
             <div class="section-header reveal">
@@ -181,141 +295,12 @@
                 <div class="section-count">A Feast of Flavors</div>
             </div>
 
-            <!-- Featured Row — 2 hero cards -->
-            <div class="featured-row reveal">
 
-                <div class="featured-card">
-                    <img src="assets/images/food-long-john/chicken-curry.jpg" alt="Chicken Curry" class="fc-img"
-                        onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 800 600%22><rect fill=%22%231C2409%22 width=%22800%22 height=%22600%22/><text x=%22400%22 y=%22310%22 font-size=%2240%22 fill=%22%234A5E14%22 text-anchor=%22middle%22 font-family=%22serif%22>Chicken Curry</text></svg>'">
-                    <div class="fc-overlay"></div>
-                    <span class="fc-tag">House Favourite</span>
-                    <div class="fc-content">
-                        <span class="fc-ribbon">Indian · Non-Veg</span>
-                        <div class="fc-name">Chicken Curry</div>
-                        <div class="fc-desc">Bone-in chicken slow-simmered in an aromatic blend of spices, tomatoes and
-                            fresh herbs. Served with chapati or rice.</div>
-                        <span class="fc-price">220 <span>/ 4 pcs</span></span>
-                    </div>
-                </div>
 
-                <div class="featured-card">
-                    <img src="assets/images/food-long-john/chicken-manchurian-gravy.jpg" alt="Chicken Manchurian"
-                        class="fc-img"
-                        onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 800 600%22><rect fill=%22%221C2409%22 width=%22800%22 height=%22600%22/><text x=%22400%22 y=%22310%22 font-size=%2240%22 fill=%22%234A5E14%22 text-anchor=%22middle%22 font-family=%22serif%22>Chicken Manchurian</text></svg>'">
-                    <div class="fc-overlay"></div>
-                    <span class="fc-tag">Most Loved</span>
-                    <div class="fc-content">
-                        <span class="fc-ribbon">Chinese · Gravy</span>
-                        <div class="fc-name">Chicken Manchurian</div>
-                        <div class="fc-desc">Crispy boneless chicken in a tangy, glossy Manchurian gravy with bell
-                            peppers, onions and spring onion.</div>
-                        <span class="fc-price">260</span>
-                    </div>
-                </div>
+            <div class="menu-cards-wrap" id="homeMenuCardsWrap">
 
             </div>
 
-            <!-- Grid Row — 3 supporting cards -->
-            <div class="grid-row reveal">
-
-                <div class="grid-card">
-                    <img src="assets/images/food-long-john/paneer-butter-masala.jpg" alt="Paneer Butter Masala"
-                        class="gc-img" onerror="this.parentNode.style.background='#1C2409'">
-                    <div class="gc-overlay"></div>
-                    <div class="gc-content">
-                        <span class="gc-ribbon">Indian · Veg</span>
-                        <div class="gc-name">Paneer Butter Masala</div>
-                        <div class="gc-desc">Soft cottage cheese in a velvety tomato-butter gravy with cream.</div>
-                        <div class="gc-price"><span class="rupee">₹</span> 250</div>
-                    </div>
-                </div>
-
-                <div class="grid-card">
-                    <img src="assets/images/food-long-john/egg-biryani.jpg" alt="Chicken Biryani" class="gc-img"
-                        onerror="this.parentNode.style.background='#1C2409'">
-                    <div class="gc-overlay"></div>
-                    <div class="gc-content">
-                        <span class="gc-ribbon">Indian · Biryani</span>
-                        <div class="gc-name">Chicken Biryani</div>
-                        <div class="gc-desc">Fragrant rice layered with spiced chicken and caramelized onions.</div>
-                        <div class="gc-price"><span class="rupee">₹</span> 300</div>
-                    </div>
-                </div>
-
-                <div class="grid-card">
-                    <img src="assets/images/food-long-john/veg-fried-rice.jpg" alt="Veg Fried Rice" class="gc-img"
-                        onerror="this.parentNode.style.background='#1C2409'">
-                    <div class="gc-overlay"></div>
-                    <div class="gc-content">
-                        <span class="gc-ribbon">Chinese · Rice</span>
-                        <div class="gc-name">Veg Fried Rice</div>
-                        <div class="gc-desc">Classic wok-tossed rice with fresh vegetables and soy sauce.</div>
-                        <div class="gc-price"><span class="rupee">₹</span> 150</div>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- List Row — 1 item as a clean list entry (White Pasta) -->
-
-            <div class="list-section reveal">
-                <div class="list-section-title">Starters &amp; Breads</div>
-                <div class="list-grid">
-                    <div class="list-item">
-                        <div>
-                            <div class="li-name"><span class="veg-dot veg"></span>Plain Chapati</div>
-                        </div>
-                        <div class="li-price">15</div>
-                    </div>
-                    <div class="list-item">
-                        <div>
-                            <div class="li-name"><span class="veg-dot veg"></span>Butter Chapati</div>
-                        </div>
-                        <div class="li-price">20</div>
-                    </div>
-                    <div class="list-item">
-                        <div>
-                            <div class="li-name"><span class="veg-dot veg"></span>Onion Pakora <span class="li-sub">8
-                                    pc</span></div>
-                        </div>
-                        <div class="li-price">130</div>
-                    </div>
-                    <div class="list-item">
-                        <div>
-                            <div class="li-name"><span class="veg-dot nonveg"></span>Chicken Pakora Boneless <span
-                                    class="li-sub">8 pc</span></div>
-                        </div>
-                        <div class="li-price">220</div>
-                    </div>
-                    <div class="list-item">
-                        <div>
-                            <div class="li-name"><span class="veg-dot veg"></span>Cheese Ball <span class="li-sub">8
-                                    pc</span></div>
-                        </div>
-                        <div class="li-price">260</div>
-                    </div>
-                    <div class="list-item">
-                        <div>
-                            <div class="li-name"><span class="veg-dot veg"></span>Paneer Pakora</div>
-                        </div>
-                        <div class="li-price">220</div>
-                    </div>
-                    <div class="list-item">
-                        <div>
-                            <div class="li-name"><span class="veg-dot nonveg"></span>Fish Finger with Fries <span
-                                    class="li-sub">8 pcs</span></div>
-                        </div>
-                        <div class="li-price">270</div>
-                    </div>
-                    <div class="list-item">
-                        <div>
-                            <div class="li-name"><span class="veg-dot veg"></span>French Fries with Hot Garlic Sauce
-                            </div>
-                        </div>
-                        <div class="li-price">120</div>
-                    </div>
-                </div>
-            </div>
 
 
             <div class="menu-view-all reveal">
@@ -325,7 +310,6 @@
         </div>
     </div>
 
-    <!-- END HOMEPAGE MENU PREVIEW -->
 
 
     <!-- ===================== WHY ===================== -->
@@ -368,147 +352,40 @@
         </div>
     </section>
 
-    <!-- ===================== GALLERY ===================== -->
-    
+
 
     <!-- ══════════════════════════════════════════════════
-     SECTION  MARKUP
-══════════════════════════════════════════════════ -->
-
-<section class="fst-section" id="gallery">
-  <div class="fst-wrap">
- 
-    <!-- ── Header ── -->
-    <div class="fst-header">
-      <div>
-        <div class="fst-kicker">
-          <span class="fst-kicker-bar"></span>
-          <span class="fst-kicker-text">Visual Menu</span>
-          <span class="fst-kicker-bar2"></span>
-        </div>
-        <h2 class="fst-headline">
-          Taste It With<br><em>Your Eyes</em>
-        </h2>
-        <p class="fst-sub">
-          Every dish crafted for flavour — and for the eye.
-        </p>
-      </div>
- 
-      <!-- Filters -->
-      <div class="fst-tabs">
-        <span class="fst-tabs-label">Filter by</span>
-        <div class="fst-tabs-row">
-          <button class="fst-tab fst-tab-on" data-f="all"><span>All</span></button>
-          <button class="fst-tab" data-f="chicken"><span>Chicken</span></button>
-          <button class="fst-tab" data-f="mutton"><span>Mutton</span></button>
-          <button class="fst-tab" data-f="specials"><span>Specials</span></button>
-        </div>
-      </div>
-    </div>
- 
-    <!-- ── Mosaic Grid ── -->
-    <div class="fst-mosaic" id="fstGrid">
- 
-      <div class="fst-tile" data-cat="chicken" onclick="fstOpen(0)">
-        <img src="assets/images/food-long-john/lemon-chicken-gravy.jpg" alt="Lemon Chicken Gravy" class="fst-photo">
-        <div class="fst-veil">
-          <span class="fst-lens"><i class="fas fa-expand-alt"></i></span>
-          <div class="fst-idx">01</div>
-          <div class="fst-info">
-            <div class="fst-badge"><i class="fas fa-circle" style="font-size:5px"></i> Chicken</div>
-            <div class="fst-dish">Lemon Chicken Gravy</div>
-          </div>
-        </div>
-      </div>
- 
-      <div class="fst-tile" data-cat="chicken" onclick="fstOpen(1)">
-        <img src="assets/images/food-long-john/chicken-thali.jpg" alt="Chicken Thali" class="fst-photo">
-        <div class="fst-veil">
-          <span class="fst-lens"><i class="fas fa-expand-alt"></i></span>
-          <div class="fst-idx">02</div>
-          <div class="fst-info">
-            <div class="fst-badge"><i class="fas fa-circle" style="font-size:5px"></i> Chicken</div>
-            <div class="fst-dish">Chicken Thali</div>
-          </div>
-        </div>
-      </div>
- 
-      <div class="fst-tile" data-cat="mutton" onclick="fstOpen(2)">
-        <img src="assets/images/food-long-john/mutton-keema-with-roti-2-pc.jpg" alt="Mutton Keema Roti" class="fst-photo">
-        <div class="fst-veil">
-          <span class="fst-lens"><i class="fas fa-expand-alt"></i></span>
-          <div class="fst-idx">03</div>
-          <div class="fst-info">
-            <div class="fst-badge"><i class="fas fa-circle" style="font-size:5px"></i> Mutton</div>
-            <div class="fst-dish">Mutton Keema &amp; Roti</div>
-          </div>
-        </div>
-      </div>
- 
-      <div class="fst-tile" data-cat="mutton" onclick="fstOpen(3)">
-        <img src="assets/images/food-long-john/mutton-curry.jpg" alt="Mutton Curry" class="fst-photo">
-        <div class="fst-veil">
-          <span class="fst-lens"><i class="fas fa-expand-alt"></i></span>
-          <div class="fst-idx">04</div>
-          <div class="fst-info">
-            <div class="fst-badge"><i class="fas fa-circle" style="font-size:5px"></i> Mutton</div>
-            <div class="fst-dish">Mutton Curry</div>
-          </div>
-        </div>
-      </div>
- 
-      <div class="fst-tile" data-cat="chicken" onclick="fstOpen(4)">
-        <img src="assets/images/food-long-john/chicke-drumstick.jpg" alt="Chicken Drumstick" class="fst-photo">
-        <div class="fst-veil">
-          <span class="fst-lens"><i class="fas fa-expand-alt"></i></span>
-          <div class="fst-idx">05</div>
-          <div class="fst-info">
-            <div class="fst-badge"><i class="fas fa-circle" style="font-size:5px"></i> Chicken</div>
-            <div class="fst-dish">Chicken Drumstick</div>
-          </div>
-        </div>
-      </div>
- 
-      
- 
-    </div><!-- /fst-mosaic -->
- 
-     <div class="menu-view-all reveal">
-                <a href="gallery.html" class="btn-outline-ljs">View Gallery</a>
-    </div>
- 
-  </div><!-- /fst-wrap -->
-</section>
- 
-<!-- ══════════════════════════════════════════════════
      LIGHTBOX
 ══════════════════════════════════════════════════ -->
-<div class="fst-lb" id="fstLb">
-  <div class="fst-lb-bar" id="fstBar"></div>
-  <div class="fst-lb-bg" onclick="fstClose()"></div>
- 
-  <button class="fst-lb-close" onclick="fstClose()"><i class="fas fa-times"></i></button>
-  <button class="fst-lb-arrow fst-lb-prev" onclick="fstNav(-1)"><i class="fas fa-chevron-left"></i></button>
-  <button class="fst-lb-arrow fst-lb-next" onclick="fstNav(1)"><i class="fas fa-chevron-right"></i></button>
- 
-  <div class="fst-lb-shell">
-    <div class="fst-lb-frame">
-      <img id="fstLbPhoto" src="" alt="" class="fst-lb-photo">
+    <div class="fst-lb" id="fstLb">
+        <div class="fst-lb-bar" id="fstBar"></div>
+        <div class="fst-lb-bg" onclick="fstClose()"></div>
+
+        <button class="fst-lb-close" onclick="fstClose()"><i class="fas fa-times"></i></button>
+        <button class="fst-lb-arrow fst-lb-prev" onclick="fstNav(-1)"><i class="fas fa-chevron-left"></i></button>
+        <button class="fst-lb-arrow fst-lb-next" onclick="fstNav(1)"><i class="fas fa-chevron-right"></i></button>
+
+        <div class="fst-lb-shell">
+            <div class="fst-lb-frame">
+                <picture>
+                    <source srcset="" type="image/webp">
+                    <img id="fstLbPhoto" src="" alt="" class="fst-lb-photo">
+                </picture>
+            </div>
+            <div class="fst-lb-meta">
+                <div class="fst-lb-tag" id="fstLbTag"></div>
+                <div class="fst-lb-name" id="fstLbName"></div>
+            </div>
+            <div class="fst-lb-dots" id="fstDots"></div>
+        </div>
+
+        <div class="fst-lb-count" id="fstCount"></div>
     </div>
-    <div class="fst-lb-meta">
-      <div class="fst-lb-tag" id="fstLbTag"></div>
-      <div class="fst-lb-name" id="fstLbName"></div>
-    </div>
-    <div class="fst-lb-dots" id="fstDots"></div>
-  </div>
- 
-  <div class="fst-lb-count" id="fstCount"></div>
-</div>
-  
+
 
 
     <!-- ===================== ORDER ===================== -->
-     
+
     <section id="order">
         <div class="container">
             <div class="row justify-content-center text-center mb-2 reveal">
@@ -613,7 +490,10 @@
             <div class="row g-4">
                 <div class="col-lg-4 col-md-6">
                     <div class="footer-logo-wrap">
-                        <img src="assets/images/long-john-logo.png" alt="LJS Logo" class="footer-logo">
+                        <picture>
+                            <source srcset="assets/images/long-john-logo.webp" type="image/webp">
+                            <img src="assets/images/long-john-logo.png" alt="LJS Logo" class="footer-logo">
+                        </picture>
                         <div>
                             <span class="footer-brand">Long John Silver's</span>
                             <span class="footer-tagline">Taste the Myth · Shillong</span>
@@ -665,6 +545,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/scricpt.js"></script>
+    <script src="assets/js/menu-cards.js"></script>
 
 </body>
 
