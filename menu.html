@@ -35,9 +35,9 @@
                 <div class="d-none d-lg-flex align-items-center gap-1">
                     <a class="nav-link" href="index.html">Home</a>
                     <a class="nav-link active" href="menu.html">Menu</a>
-                    <a class="nav-link" href="/index.html#why">Our Promise</a>
+                    <a class="nav-link" href="index.html#why">Our Promise</a>
                     <a class="nav-link" href="contact.html">Contact</a>
-                        <a class="nav-link" href="/index.html#order">Order online</a>
+                    <a class="nav-link" href="index.html#order">Order online</a>
                     <div class="dd-wrapper">
                         <button class="dd-btn" id="orderDropdown">Order Now <i
                                 class="bi bi-chevron-down dd-arrow"></i></button>
@@ -118,31 +118,41 @@
         </div>
     </nav>
 
-    <!-- ═══ HERO ═══ -->
-    <section class="menu-hero">
-        <div class="hero-bg-slider">
-            <div class="hero-slide active"
-                style="background-image:url('assets/images/food-long-john/pork-mushroom-chow.webp')"></div>
-            <div class="hero-slide" style="background-image:url('assets/images/food-long-john/fish-fry.webp')"></div>
-            <div class="hero-slide"
-                style="background-image:url('assets/images/food-long-john/chicken-manchurian-gravy.webp')"></div>
-            <div class="hero-slide"
-                style="background-image:url('assets/images/food-long-john/prawns-chillyg-ravy.webp')"></div>
-            <div class="hero-slide"
-                style="background-image:url('assets/images/food-long-john/paneer-butter-masala.webp')"></div>
-        </div>
-        <div class="menu-hero-inner py-5 pb-5">
-            <h1>A Feast of<br><em>Flavors</em></h1>
-            <p class="hero-sub">Indian, Chinese &amp; Continental — crafted with passion, served with love.</p>
-            <div class="hero-dots">
-                <span class="hero-dot active"></span>
-                <span class="hero-dot"></span>
-                <span class="hero-dot"></span>
-                <span class="hero-dot"></span>
-                <span class="hero-dot"></span>
+
+
+    <!-- ═══════════════════════════════════════════
+     FOOD VIDEO BANNER
+═══════════════════════════════════════════ -->
+    <section class="vjb-section">
+        <div class="vjb-wrapper">
+
+            <!-- Video -->
+            <video class="vjb-video" autoplay muted loop playsinline preload="auto">
+                <source src="assets/images/food-long-john/long-john-food-video.mp4" type="video/mp4">
+                <source src="assets/images/food-long-john/long-john-food-video.webm" type="video/webm">
+            </video>
+
+            <!-- Gradient Overlay -->
+            <div class="vjb-overlay"></div>
+
+            <!-- Text Content -->
+            <div class="vjb-content">
+                <h1 class="vjb-headline">
+                    A Feast of
+                    <em>Flavors</em>
+                </h1>
+                <hr class="vjb-divider">
+                <p class="vjb-subline">
+                    Indian, Chinese &amp; Continental — crafted with passion, served with love.
+                </p>
             </div>
+
+            <!-- Bottom Fade into page background -->
+            <div class="vjb-bottom-fade"></div>
+
         </div>
     </section>
+
 
     <!-- ═══ PILL TABS ═══ -->
     <div class="menu-tabs-bar" id="menuTabsBar">

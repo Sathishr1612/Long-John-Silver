@@ -10,8 +10,8 @@ const MENU = [
   { name: 'Chicken Curry', cat: 'indian', veg: false, img: 'chicken-curry.jpg', price: 220, note: '/4 pcs', desc: 'Bone-in chicken slow-simmered in aromatic spices, tomatoes and fresh herbs.', badge: 'loved' },
   { name: 'Chicken Kasha', cat: 'indian', veg: false, img: 'chicken-kasha.jpg', price: 230, desc: 'Thick Bengali-style dry gravy packed with robust spices and tender chicken.', badge: 'chef' },
   { name: 'Chicken Masala', cat: 'indian', veg: false, img: 'chicken-masala.jpg', price: 220, note: '/4 pcs', desc: 'Richly spiced masala base with bone-in chicken pieces.' },
-  { name: 'Chicken Butter Masala', cat: 'indian', veg: false, img: 'chicken-masala.jpg', price: 270, note: '/4 pcs', desc: 'Creamy tomato-butter gravy with tender chicken in classic north-Indian style.' },
-  { name: 'Chicken Do Piyaza', cat: 'indian', veg: false, img: 'lemon-chicken-gravy.jpg', price: 240, desc: 'Double onion gravy with chicken — tangy, hearty and satisfying.' },
+  { name: 'Chicken Butter Masala', cat: 'indian', veg: false, img: 'chicken-butter-masala.webp', price: 270, note: '/4 pcs', desc: 'Creamy tomato-butter gravy with tender chicken in classic north-Indian style.' },
+  { name: 'Chicken Do Piyaza', cat: 'indian', veg: false, img: 'chilly-chicken-gravy.webp', price: 240, desc: 'Double onion gravy with chicken — tangy, hearty and satisfying.' },
   { name: 'Mutton Curry', cat: 'indian', veg: false, img: 'mutton-curry.jpg', price: 300, note: '/4 pcs', desc: 'Bone-in mutton simmered low and slow in spiced gravy till melt-tender.', badge: 'loved' },
   { name: 'Mutton Kasha', cat: 'indian', veg: false, img: 'mutton-kasha.jpg', price: 300, note: '/4 pcs', desc: 'Bengali-style dry mutton kasha with concentrated spices and caramelised onion.' },
   { name: 'Mutton Masala', cat: 'indian', veg: false, img: 'mutton-kasha.jpg', price: 300, note: '/4 pcs', desc: 'Mutton in a bold masala gravy — hearty and warming.' },
@@ -19,7 +19,7 @@ const MENU = [
   { name: 'Chicken Biryani', cat: 'indian', veg: false, img: 'egg-biryani.jpg', price: 300, desc: 'Fragrant rice layered with spiced chicken and caramelised onions.', badge: 'loved' },
   { name: 'Paneer Butter Masala', cat: 'indian', veg: true, img: 'paneer-butter-masala.jpg', price: 250, desc: 'Soft cottage cheese in a velvety tomato-butter gravy with cream.', badge: 'loved' },
   { name: 'Veg Pulao', cat: 'indian', veg: true, img: 'peas-pulao.jpg', price: 200, desc: 'Fragrant basmati rice with seasonal vegetables and whole spices.' },
-  { name: 'Matar Paneer', cat: 'indian', veg: true, img: 'paneer-butter-masala.jpg', price: 210, desc: 'Tender paneer and green peas in a spiced tomato-onion gravy.' },
+  { name: 'Matar Paneer', cat: 'indian', veg: true, img: 'mutter-panner.webp', price: 210, desc: 'Tender paneer and green peas in a spiced tomato-onion gravy.' },
   { name: 'Shahi Paneer', cat: 'indian', veg: true, img: 'paneer-butter-masala.jpg', price: 250, desc: 'Paneer in a rich, creamy royal-style gravy with mild spices.' },
   { name: 'Dal Fry', cat: 'indian', veg: true, img: 'veg-pulao.jpg', price: 150, desc: 'Yellow lentils tempered with cumin, garlic and green chillies.' },
   { name: 'Fish Fry', cat: 'indian', veg: false, img: 'fish-fry.jpg', price: 220, desc: 'Crispy golden fish fillets marinated in spices and shallow fried.' },
@@ -72,7 +72,7 @@ const MENU = [
   { name: 'Mutton Keema with Roti', cat: 'combos', veg: false, img: 'mutton-keema-with-roti-2-pc.jpg', price: 140, desc: 'Spiced minced mutton served with 2 fresh soft rotis.', badge: 'loved' },
   { name: 'Chicken Keema with Roti', cat: 'combos', veg: false, img: 'chicken-keema-with-Roti-2-pc.jpg', price: 120, desc: 'Spiced minced chicken served with 2 fresh soft rotis.' },
   { name: 'Butter Chicken with Roti', cat: 'combos', veg: false, img: 'chicken-masala.jpg', price: 300, desc: 'Creamy butter chicken paired with 2 freshly made rotis.' },
-  { name: 'Paneer Butter Masala + Roti', cat: 'combos', veg: true, img: 'paneer-butter-masala.jpg', price: 270, desc: 'Rich paneer butter masala served with 2 fresh rotis.' },
+  { name: 'Paneer Butter Masala + Roti', cat: 'combos', veg: true, img: 'chicken-butter-masala.webp', price: 270, desc: 'Rich paneer butter masala served with 2 fresh rotis.' },
   { name: 'Jeera Rice + Chicken Butter Masala', cat: 'combos', veg: false, img: 'chicken-masala.jpg', price: 300, desc: 'Fragrant jeera rice paired with creamy chicken butter masala.' },
   { name: 'Veg Fried Rice + Veg Manchurian + Fries', cat: 'combos', veg: true, img: 'veg-fried-rice.jpg', price: 200, desc: 'Complete Chinese veg meal deal — rice, manchurian and fries.', badge: 'loved' },
   { name: 'Veg Fried Rice + Chilly Chicken + Fries', cat: 'combos', veg: false, img: 'chilly-chicken-dry.jpg', price: 250, desc: 'Rice with crispy chilly chicken and golden fries combo.' },
@@ -146,7 +146,7 @@ function buildCard(item, delay) {
       </div>
       <div class="mc-footer">
         <div class="mc-price">${priceHTML}</div>
-        <a href="https://plumb5.com/" target="_blank" class="mc-btn">Order <i class="fas fa-arrow-right" style="font-size:.55rem"></i></a>
+        <a href="contact.html" target="_blank" class="mc-btn">Order <i class="fas fa-arrow-right" style="font-size:.55rem"></i></a>
       </div>
     </div>  
   </div>`;
