@@ -42,7 +42,7 @@ const MENU = [
   { name: 'Chicken Fried Rice', cat: 'chinese', veg: false, img: 'chicken-fried-rice.jpg', price: 170, desc: 'Wok-fried rice with chicken, egg, soy sauce and fresh vegetables.' },
   { name: 'Veg Fried Rice', cat: 'chinese', veg: true, img: 'veg-fried-rice.jpg', price: 150, desc: 'Classic wok-tossed rice with seasonal vegetables and soy sauce.' },
   { name: 'Veg Schezwan Fried Rice', cat: 'chinese', veg: true, img: 'veg-schezwan-fried-rice.jpg', price: 160, desc: 'Bold Schezwan-spiced fried rice with crisp garden vegetables.' },
-  { name: 'Egg Schezwan Fried Rice', cat: 'chinese', veg: false, img: 'egg-schezwan-fried-rice.jpg', price: 180, desc: 'Fiery Schezwan fried rice tossed with fluffy scrambled egg.' },
+  { name: 'Egg Schezwan Fried Rice', cat: 'chinese', veg: false, img: 'egg-friderice.webp ', price: 180, desc: 'Fiery Schezwan fried rice tossed with fluffy scrambled egg.' },
   { name: 'Veg Schezwan Chow', cat: 'chinese', veg: true, img: 'veg-schezwan-chow.jpg', price: 160, desc: 'Noodles tossed in bold Schezwan sauce with crunchy fresh vegetables.' },
   { name: 'Veg Chowmein', cat: 'chinese', veg: true, img: 'veg-chow.jpg', price: 150, desc: 'Classic stir-fried noodles with fresh vegetables in a light savory sauce.' },
   { name: 'Chicken Chowmein Gravy', cat: 'chinese', veg: false, img: 'chicken-chowmein-gravy.jpg', price: 200, desc: 'Noodles bathed in rich, glossy chicken gravy sauce — comforting and hearty.' },
