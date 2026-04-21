@@ -90,12 +90,13 @@ body {
 }
 
 #navbar.scrolled {
-    padding: 8px 0;
+    /* padding: 8px 0; */
     background: rgba(15, 18, 5, 0.95);
     backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(74, 94, 20, 0.3);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
 }
+
 
 .nav-logo-wrap {
     display: flex;
@@ -240,8 +241,6 @@ body {
 
 
 
-
-
 /* Dropdown Container */
 .dd-wrapper {
     position: relative;
@@ -251,17 +250,13 @@ body {
 }
 
 
-
 .dd-btn {
     background: var(--olive);
     color: var(--cream);
     border: 1px solid var(--olive-light);
 
-    /* ✅ Better sizing */
     padding: 10px 22px;
-    /* reduced from 15px 40px */
     font-size: 0.68rem;
-    /* slightly smaller */
     letter-spacing: 0.18em;
 
     font-family: var(--font-body);
@@ -272,7 +267,6 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    /* tighter spacing */
 
     position: relative;
     overflow: hidden;
@@ -287,16 +281,13 @@ body {
 @media (max-width: 768px) {
     .dd-btn {
         width: 100%;
-        /* full width like menu */
         justify-content: center;
 
         padding: 12px 20px;
-        /* better touch size */
         font-size: 0.7rem;
         letter-spacing: 0.16em;
 
         margin-top: 10px;
-        /* spacing from menu */
         gap: 6px;
     }
 
@@ -305,7 +296,7 @@ body {
     }
 }
 
-/* Premium Dropdown Menu */
+
 .dd-menu {
     position: absolute;
     top: calc(100% + 15px);
@@ -330,7 +321,7 @@ body {
     z-index: 1000;
 }
 
-/* Dropdown Pointer */
+
 .dd-menu::before {
     content: '';
     position: absolute;
@@ -345,14 +336,14 @@ body {
     transform: translateX(-50%) rotate(45deg);
 }
 
-/* Show Dropdown */
+
 .dd-wrapper.active .dd-menu {
     opacity: 1;
     visibility: visible;
     transform: translateY(0) scale(1);
 }
 
-/* Dropdown Header */
+
 .dd-header {
     padding: 16px 20px 12px;
     border-bottom: 1px solid rgba(142, 154, 74, 0.1);
@@ -377,7 +368,7 @@ body {
     font-style: italic;
 }
 
-/* Dropdown Items */
+
 .dd-item {
     display: flex;
     align-items: center;
