@@ -188,12 +188,19 @@ const navSections = {
 const catNav = document.getElementById('catNav');
 
 document.querySelectorAll('.cat-tab').forEach(tab => {
-  tab.addEventListener('click', () => {
-    const target = navSections[tab.dataset.target];
+  tab.addEventListener('click', (e) => {
+    e.preventDefault();
+    const targetId = tab.dataset.target;
+    const target = navSections[targetId];
     if (!target) return;
-    const offset = (catNav ? catNav.offsetHeight : 0)
-      + (topBar ? topBar.offsetHeight : 0);
-    window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - offset, behavior: 'smooth' });
+
+    const navHeight = (navbar ? navbar.offsetHeight : 0) + (topBar ? topBar.offsetHeight : 0);
+    const targetPos = target.getBoundingClientRect().top + window.scrollY - navHeight;
+
+    window.scrollTo({
+      top: targetPos,
+      behavior: 'smooth'
+    });
   });
 });
 
@@ -235,18 +242,19 @@ function handleForm(e) {
 document.querySelectorAll('a[href*="#"]').forEach(a => {
   a.addEventListener('click', e => {
     const href = a.getAttribute('href');
-    if (!href || href === "#") return;
+    if (!href || href === "#" || href.startsWith('javascript:')) return;
 
-    // Build absolute URLs for comparison
+    // Only handle same-page hash links (e.g. "#why" or "index.html#why" while on index.html)
     const url = new URL(a.href);
     const loc = window.location;
 
-    // Check if target is on the same page
-    const isSamePage = url.pathname === loc.pathname ||
-      url.pathname === loc.pathname + 'index.html' ||
-      (loc.pathname.endsWith('/') && url.pathname.endsWith('/index.html'));
+    // A link is "same-page" if the origin and pathname match
+    const isSamePage = url.origin === loc.origin &&
+      (url.pathname === loc.pathname ||
+        url.pathname === loc.pathname + 'index.html' ||
+        loc.pathname === url.pathname + 'index.html');
 
-    if (isSamePage) {
+    if (isSamePage && url.hash) {
       const id = url.hash.slice(1);
       const el = document.getElementById(id);
 

@@ -246,24 +246,47 @@ function animateVisible() {
 
 /* ── Tab switching ── */
 function switchTab(tabId) {
+  // Normalize tabId
+  const targetId = (tabId || 'all').toLowerCase();
+
   // Update active tab button
+  let tabFound = false;
   document.querySelectorAll('.menu-tab').forEach(btn => {
-    btn.classList.toggle('active', btn.dataset.tab === tabId);
+    const isTarget = btn.dataset.tab.toLowerCase() === targetId;
+    btn.classList.toggle('active', isTarget);
+    if (isTarget) tabFound = true;
   });
 
+  // If no tab found, default to 'all'
+  const finalId = tabFound ? targetId : 'all';
+  if (!tabFound) {
+    document.querySelectorAll('.menu-tab').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.tab === 'all');
+    });
+  }
+
   // Show/hide sections
+  let sectionVisible = false;
   document.querySelectorAll('.mc-section').forEach(sec => {
-    const isTarget = sec.id === `mc-${tabId}` || (tabId === 'all' && sec.id === 'mc-all');
+    const isTarget = sec.id === `mc-${finalId}` || (finalId === 'all' && sec.id === 'mc-all');
     sec.classList.toggle('mc-visible', isTarget);
+    if (isTarget) sectionVisible = true;
   });
+
+  // Fallback: if somehow no section is visible, show 'all'
+  if (!sectionVisible) {
+    const allSec = document.getElementById('mc-all');
+    if (allSec) allSec.classList.add('mc-visible');
+  }
 
   // Animate newly visible cards
   setTimeout(animateVisible, 50);
 
-  // Scroll to tabs bar
+  // Scroll to tabs bar smoothly
   const bar = document.getElementById('menuTabsBar');
   if (bar) {
-    const y = bar.getBoundingClientRect().top + window.scrollY - 10;
+    const navHeight = document.getElementById('navbar') ? document.getElementById('navbar').offsetHeight : 70;
+    const y = bar.getBoundingClientRect().top + window.scrollY - navHeight - 20;
     window.scrollTo({ top: y, behavior: 'smooth' });
   }
 }
