@@ -5218,7 +5218,7 @@ CARD MENU SYSTEM
       background: linear-gradient(
         to bottom,
         transparent,
-        var(--dark-3)
+        var(--olive-dark)
       );
       pointer-events: none;
     }
