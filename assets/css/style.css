@@ -144,7 +144,7 @@ body {
     font-style: italic;
 }
 
-/* Nav Links */
+
 .nav-link {
     color: var(--text-light) !important;
     font-family: var(--font-body);
@@ -158,7 +158,7 @@ body {
     white-space: nowrap;
 }
 
-/* Underline */
+
 .nav-link::after {
     content: '';
     position: absolute;
@@ -179,15 +179,12 @@ body {
     transform: scaleX(1);
 }
 
-/* Prevent menu breaking */
+
 .navbar .d-lg-flex {
     flex-wrap: nowrap;
     gap: 8px;
 }
 
-/* =============================================
-   TABLET RESPONSIVE
-============================================= */
 
 @media (max-width: 1200px) {
 
@@ -199,7 +196,7 @@ body {
 
 }
 
-/* Smaller laptops */
+
 @media (max-width: 1050px) {
 
     .nav-link {
@@ -216,17 +213,14 @@ body {
 
 @media (max-width: 992px) {
 
-    /* Hide desktop menu */
     .d-lg-flex {
         display: none !important;
     }
 
-    /* Show hamburger */
     .navbar-toggler {
         display: block !important;
     }
 
-    /* Reduce logo size */
     .nav-logo-img {
         width: 48px;
         height: 48px;
@@ -241,7 +235,8 @@ body {
 
 
 
-/* Dropdown Container */
+/*=============== DROP DOWN =================*/
+
 .dd-wrapper {
     position: relative;
     display: inline-block;
@@ -273,7 +268,7 @@ body {
     transition: all 0.3s ease;
 }
 
-/* Arrow smaller */
+
 .dd-btn .dd-arrow {
     font-size: 10px;
 }
@@ -389,7 +384,7 @@ body {
     margin-bottom: 0;
 }
 
-/* Item Background Animation */
+
 .dd-item::before {
     content: '';
     position: absolute;
@@ -406,7 +401,7 @@ body {
     opacity: 1;
 }
 
-/* Icon Container */
+
 .dd-icon {
     width: 40px;
     height: 40px;
@@ -438,7 +433,6 @@ body {
     color: var(--cream);
 }
 
-/* Item Content */
 .dd-content {
     flex: 1;
     position: relative;
@@ -471,7 +465,7 @@ body {
     color: var(--olive-light);
 }
 
-/* External Link Indicator */
+
 .dd-link-icon {
     font-size: 12px;
     color: var(--text-muted);
@@ -488,7 +482,7 @@ body {
     color: var(--olive-light);
 }
 
-/* Call Item - Special Styling */
+
 .dd-call {
     margin-top: 8px;
     border-top: 1px solid rgba(142, 154, 74, 0.1);
@@ -513,7 +507,7 @@ body {
     color: var(--orange-light);
 }
 
-/* Pulse Animation for Call Icon */
+
 @keyframes pulse-ring {
     0% {
         transform: scale(1);
@@ -535,7 +529,7 @@ body {
     animation: pulse-ring 2s ease-out infinite;
 }
 
-/* Dropdown Footer */
+
 .dd-footer {
     margin-top: 8px;
     padding: 12px 18px;
@@ -551,7 +545,7 @@ body {
     margin: 0;
 }
 
-/* Mobile Responsive */
+
 @media (max-width: 768px) {
     .dd-wrapper {
         max-width: 100%;
@@ -564,7 +558,6 @@ body {
         letter-spacing: 1px;
     }
 
-    /* On mobile, anchor menu to left edge of wrapper, full width */
     .dd-menu {
         position: relative;
         top: auto;
@@ -585,7 +578,6 @@ body {
         transform: scaleY(1);
     }
 
-    /* Hide the caret pointer on mobile — not needed */
     .dd-menu::before {
         display: none;
     }
@@ -707,9 +699,6 @@ body {
 
 
 
-
-
-
 .navbar-toggler {
     border: 1px solid rgba(237, 230, 184, 0.3);
     background: none;
@@ -736,6 +725,7 @@ body {
 /* =============================================
    NAVBAR - ACTIVE STATE
 ============================================= */
+
 .nav-link.active {
     color: var(--white) !important;
     font-weight: 600;
@@ -747,7 +737,6 @@ body {
     bottom: 0 !important;
     box-shadow: 0 0 12px rgba(142, 154, 74, 0.6);
 }
-
 
 
 
@@ -794,7 +783,7 @@ body {
     position: relative;
     z-index: 2;
     padding-top: 80px;
-    /* Offset for navbar */
+
 }
 
 .premium-eyebrow {
@@ -881,7 +870,6 @@ body {
 
 
 
-
 .hero-slide {
     position: absolute;
     inset: 0;
@@ -906,7 +894,7 @@ body {
             rgba(46, 59, 10, 0.3) 100%);
 }
 
-/* Decorative vignette */
+
 .hero-overlay::after {
     content: '';
     position: absolute;
@@ -924,7 +912,6 @@ body {
     padding-top: 100px;
 } */
 
-/* BIG LOGO in hero */
 .hero-logo-wrap {
     display: flex;
     align-items: center;
@@ -957,15 +944,6 @@ body {
     gap: 6px;
 }
 
-/* .hero-eyebrow {
-    font-family: var(--font-body);
-    font-size: 0.65rem;
-    letter-spacing: 0.5em;
-    color: var(--olive-light);
-    text-transform: uppercase;
-    font-weight: 500;
-} */
-
 .hero-tagline-pill {
     display: inline-block;
     font-family: var(--font-body);
@@ -979,25 +957,6 @@ body {
     width: fit-content;
 }
 
-/* .hero-title {
-    font-family: var(--font-display);
-    font-size: clamp(2.4rem, 6vw, 5.2rem);
-    font-weight: 700;
-    color: var(--cream-light);
-    line-height: 1.1;
-    letter-spacing: 0.04em;
-    margin-bottom: 16px;
-    opacity: 0;
-    animation: fadeUp 0.9s 0.5s forwards;
-} */
-
-/* .hero-title em {
-    font-style: italic;
-    color: var(--cream);
-    font-family: var(--font-serif);
-    font-weight: 300;
-    font-size: 0.9em;
-} */
 
 .hero-divider {
     width: 70px;
@@ -1008,27 +967,6 @@ body {
     animation: fadeIn 0.9s 0.7s forwards;
 }
 
-/* .hero-sub {
-    font-family: var(--font-serif);
-    font-size: clamp(1rem, 2vw, 1.3rem);
-    color: rgba(237, 230, 184, 0.75);
-    font-weight: 300;
-    font-style: italic;
-    letter-spacing: 0.02em;
-    max-width: 500px;
-    line-height: 1.75;
-    margin-bottom: 40px;
-    opacity: 0;
-    animation: fadeUp 0.9s 0.9s forwards;
-} */
-
-/* .hero-actions {
-    display: flex;
-    gap: 14px;
-    flex-wrap: wrap;
-    opacity: 0;
-    animation: fadeUp 0.9s 1.1s forwards;
-} */
 
 .btn-primary-ljs {
     background: var(--olive);
@@ -1097,7 +1035,7 @@ body {
     transform: translateY(-2px);
 }
 
-/* Hero indicators */
+
 .hero-indicators {
     position: absolute;
     bottom: 36px;
@@ -1171,6 +1109,7 @@ body {
 /* =============================================
    RENOVATION BANNER
 ============================================= */
+
 .reno-banner {
     background: var(--olive-dark);
     border-top: 1px solid rgba(237, 230, 184, 0.15);
@@ -1287,6 +1226,7 @@ body {
 /* =============================================
    ABOUT
 ============================================= */
+
 #about {
     padding: 80px 0;
     background: var(--dark-2);
@@ -1359,8 +1299,6 @@ body {
     margin-top: 6px;
     display: block;
 }
-
-
 
 
 
@@ -1455,12 +1393,9 @@ body {
 
 
 
-
 /* =============================================
    GALLERY
 ============================================= */
-
-
 
 
 #gallery {
@@ -1532,7 +1467,7 @@ body {
     transform: scale(1);
 }
 
-/* Lightbox */
+
 #lightbox {
     position: fixed;
     inset: 0;
@@ -1955,9 +1890,7 @@ footer {
     }
 }
 
-/* =============================================
-   RESPONSIVE
-============================================= */
+
 @media (max-width: 991px) {
     .contact-grid {
         grid-template-columns: 1fr;
@@ -2051,22 +1984,17 @@ footer {
 
 
 
-
 /* ===== MENU HERO ===== */
 .menu-hero {
     position: relative;
     width: 100%;
     height: 90vh;
-    /* fills most of viewport */
     min-height: 520px;
-    /* never collapses too small */
     max-height: 780px;
-    /* never too tall on big monitors */
     overflow: hidden;
     display: flex;
     align-items: center;
     background: var(--dark-2, #0e1203);
-    /* push down by navbar height */
     margin-top: 0;
     padding-top: 80px;
     box-sizing: border-box;
@@ -2093,7 +2021,6 @@ footer {
     opacity: 1;
 }
 
-/* Ken Burns — each slide different direction */
 .hero-slide:nth-child(1) {
     animation: kb1 9s ease-in-out infinite alternate;
 }
@@ -2172,7 +2099,7 @@ footer {
             rgba(8, 11, 2, 0.70) 100%);
 }
 
-/* Subtle radial glow */
+
 .menu-hero::before {
     content: '';
     position: absolute;
@@ -2182,7 +2109,7 @@ footer {
     pointer-events: none;
 }
 
-/* MENU watermark */
+
 .menu-hero::after {
     content: 'MENU';
     position: absolute;
@@ -2200,7 +2127,7 @@ footer {
     user-select: none;
 }
 
-/* ── Content ── */
+
 .menu-hero-inner {
     position: relative;
     z-index: 3;
@@ -2263,7 +2190,7 @@ footer {
     line-height: 1.8;
 }
 
-/* ── Slide dots ── */
+
 .hero-dots {
     display: flex;
     align-items: center;
@@ -2285,7 +2212,7 @@ footer {
     background: var(--cream-dark, #d4ca8e);
 }
 
-/* ── TABLET: ≤1024px ── */
+
 @media (max-width: 1024px) {
     .menu-hero {
         height: 80vh;
@@ -2306,7 +2233,7 @@ footer {
     }
 }
 
-/* ── MOBILE: ≤768px ── */
+
 @media (max-width: 768px) {
     .menu-hero {
         height: 75vh;
@@ -2314,7 +2241,6 @@ footer {
         max-height: 600px;
         padding-top: 70px;
         align-items: flex-end;
-        /* text sits near bottom on mobile */
         padding-bottom: 48px;
     }
 
@@ -2337,12 +2263,11 @@ footer {
         margin-bottom: 16px;
     }
 
-    /* Hide watermark on mobile — too large */
     .menu-hero::after {
         display: none;
     }
 
-    /* Overlay slightly darker on mobile for readability */
+
     .hero-bg-slider::after {
         background:
             linear-gradient(to bottom,
@@ -2356,7 +2281,7 @@ footer {
     }
 }
 
-/* ── SMALL MOBILE: ≤480px ── */
+
 @media (max-width: 480px) {
     .menu-hero {
         height: 70vh;
@@ -2390,13 +2315,10 @@ footer {
 
 
 
-
-
-
-
 /* ─────────────────────────────────────────────────────
       gallery SECTION SHELL
 ───────────────────────────────────────────────────── */
+
 .fst-section {
     background: var(--dark);
     padding: 100px 0 120px;
@@ -2405,7 +2327,7 @@ footer {
     overflow: hidden;
 }
 
-/* grain overlay */
+
 .fst-section::before {
     content: '';
     position: absolute;
@@ -2415,7 +2337,7 @@ footer {
     z-index: 0;
 }
 
-/* decorative vertical rule left */
+
 .fst-section::after {
     content: '';
     position: absolute;
@@ -2489,7 +2411,7 @@ footer {
     position: relative;
 }
 
-/* underline swoosh on em */
+
 .fst-headline em::after {
     content: '';
     position: absolute;
@@ -2591,23 +2513,21 @@ footer {
     grid-template-columns: repeat(12, 1fr);
     grid-auto-rows: 70px;
     gap: 8px;
-    /* Allow grid to reflow when items are hidden */
     grid-auto-flow: dense;
 }
 
-/* Layout — 7 tiles (default positions) */
+
 .fst-tile:nth-child(1) {
     grid-column: 1/6;
     grid-row: 1/8;
 }
 
-/* BIG hero left   */
+
 .fst-tile:nth-child(2) {
     grid-column: 6/9;
     grid-row: 1/5;
 }
 
-/* mid-top         */
 .fst-tile:nth-child(3) {
     grid-column: 9/13;
     grid-row: 1/4;
@@ -2637,21 +2557,18 @@ footer {
     grid-row: 8/11;
 }
 
-/* lower-wide      */
 
-/* ── TILE BASE ── */
 .fst-tile {
     position: relative;
     overflow: hidden;
     cursor: pointer;
     background: var(--dark-3);
-    /* Smooth transitions for all properties */
     transition: opacity 0.4s ease, transform 0.4s ease;
     min-height: 160px;
-    /* Ensure tiles have minimum height */
+
 }
 
-/* entrance animation */
+
 .fst-tile {
     opacity: 0;
     transform: translateY(24px) scale(.98);
@@ -2662,7 +2579,7 @@ footer {
     transform: translateY(0) scale(1);
 }
 
-/* stagger children */
+
 .fst-tile:nth-child(1) {
     transition-delay: .05s;
 }
@@ -2691,7 +2608,7 @@ footer {
     transition-delay: .42s;
 }
 
-/* ── PHOTO ── */
+
 .fst-photo {
     width: 100%;
     height: 100%;
@@ -2706,7 +2623,7 @@ footer {
     filter: brightness(1.02) saturate(1.15);
 }
 
-/* ── VEIL  (overlay) ── */
+
 .fst-veil {
     position: absolute;
     inset: 0;
@@ -2725,7 +2642,6 @@ footer {
     opacity: 1;
 }
 
-/* corner olive line accent (top-right) */
 .fst-veil::before {
     content: '';
     position: absolute;
@@ -2744,7 +2660,6 @@ footer {
     opacity: 1;
 }
 
-/* ── INFO  block ── */
 .fst-info {
     transform: translateY(10px);
     transition: transform .45s var(--ease);
@@ -2777,13 +2692,11 @@ footer {
     line-height: 1.2;
 }
 
-/* small tiles suppress dish on hover */
 .fst-tile:nth-child(3) .fst-dish,
 .fst-tile:nth-child(4) .fst-dish {
     font-size: 1rem;
 }
 
-/* ── LENS  icon ── */
 .fst-lens {
     position: absolute;
     top: 16px;
@@ -2808,7 +2721,6 @@ footer {
     opacity: 1;
 }
 
-/* ── INDEX  number ── */
 .fst-idx {
     position: absolute;
     top: 14px;
@@ -2845,7 +2757,6 @@ footer {
     flex-shrink: 0;
 }
 
-/* ── REEL  (scrolling ticker) ── */
 .fst-reel {
     flex: 1;
     overflow: hidden;
@@ -2929,7 +2840,6 @@ footer {
     display: flex;
 }
 
-/* backdrop click-close indicator */
 .fst-lb-bg {
     position: absolute;
     inset: 0;
@@ -2962,7 +2872,6 @@ footer {
     transition: opacity .3s var(--ease);
 }
 
-/* olive corner accents on frame */
 .fst-lb-frame::before,
 .fst-lb-frame::after {
     content: '';
@@ -2986,7 +2895,6 @@ footer {
     border-right: 2px solid var(--olive-light);
 }
 
-/* meta / name */
 .fst-lb-meta {
     pointer-events: auto;
     text-align: center;
@@ -3031,7 +2939,7 @@ footer {
     transform: scale(1.4);
 }
 
-/* progress bar */
+
 .fst-lb-bar {
     position: absolute;
     top: 0;
@@ -3043,7 +2951,7 @@ footer {
     pointer-events: none;
 }
 
-/* close */
+
 .fst-lb-close {
     position: fixed;
     top: 22px;
@@ -3069,7 +2977,6 @@ footer {
     transform: rotate(90deg);
 }
 
-/* arrows */
 .fst-lb-arrow {
     position: fixed;
     top: 50%;
@@ -3102,7 +3009,7 @@ footer {
     right: 20px;
 }
 
-/* count */
+
 .fst-lb-count {
     position: fixed;
     bottom: 24px;
@@ -3190,13 +3097,11 @@ footer {
         gap: 8px;
     }
 
-    /* Reset all nth-child for mobile - JS will handle positioning */
     .fst-tile:nth-child(n) {
         grid-column: auto;
         grid-row: auto;
     }
 
-    /* Default mobile layout when not filtered */
     .fst-tile:nth-child(1) {
         grid-column: 1/3;
         grid-row: 1/3;
@@ -3232,12 +3137,10 @@ footer {
         grid-row: 5/6;
     }
 
-    /* Make tiles properly sized on mobile */
     .fst-tile {
         min-height: 160px;
     }
 
-    /* always show overlay hint on mobile */
     .fst-veil {
         opacity: 1;
         background: linear-gradient(160deg, transparent 40%, rgba(15, 18, 5, .78) 100%);
@@ -3345,8 +3248,6 @@ footer {
 }
 
 
-/* ===== MOBILE RESPONSIVE — MENU PAGE ===== */
-
 @media (max-width: 1024px) {
     .menu-hero {
         padding: 120px 0 50px;
@@ -3402,7 +3303,6 @@ footer {
 
 }
 
-/* ── Small mobile: 480px and below ── */
 @media (max-width: 480px) {
 
 
@@ -3451,22 +3351,18 @@ footer {
 
 }
 
-
 /* ═══════════════════════════════════════════════════════
 CARD MENU SYSTEM
 ═══════════════════════════════════════════════════════ */
 
-/* ── Pill Tabs Bar ── */
-/* Styles moved to the end of file for better maintenance */
 
-/* ── Menu Main Wrapper ── */
 .menu-cards-wrap {
     max-width: 1320px;
     margin: 0 auto;
     padding: 40px 24px;
 }
 
-/* ── Category Section Header ── */
+
 .mc-section {
     display: none;
 }
@@ -3514,14 +3410,12 @@ CARD MENU SYSTEM
     background: linear-gradient(to right, rgba(74, 94, 20, 0.4), transparent);
 }
 
-/* ── Card Grid ── */
 .mc-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 18px;
 }
 
-/* ── Single Card ── */
 .mc-card {
     background: #22290C;
     border-radius: 12px;
@@ -3546,7 +3440,6 @@ CARD MENU SYSTEM
     box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45), 0 0 24px rgba(74, 94, 20, 0.12);
 }
 
-/* Most Loved Badge */
 .mc-badge-loved {
     position: absolute;
     top: 10px;
@@ -3565,7 +3458,7 @@ CARD MENU SYSTEM
     gap: 4px;
 }
 
-/* Chef Pick Badge */
+
 .mc-badge-chef {
     position: absolute;
     top: 10px;
@@ -3584,7 +3477,6 @@ CARD MENU SYSTEM
     gap: 4px;
 }
 
-/* Card Image */
 .mc-img-wrap {
     position: relative;
     height: 196px;
@@ -3611,7 +3503,7 @@ CARD MENU SYSTEM
     flex: 1;
 }
 
-/* Placeholder */
+
 .mc-img-ph {
     width: 100%;
     height: 100%;
@@ -3633,7 +3525,7 @@ CARD MENU SYSTEM
     color: var(--text-muted);
 }
 
-/* Image gradient overlay */
+
 .mc-img-wrap::after {
     content: '';
     position: absolute;
@@ -3645,7 +3537,7 @@ CARD MENU SYSTEM
     pointer-events: none;
 }
 
-/* Card Body */
+
 .mc-body {
     padding: 14px 16px 8px;
     flex: 1;
@@ -3660,7 +3552,6 @@ CARD MENU SYSTEM
     margin-bottom: 7px;
 }
 
-/* Veg / NonVeg indicator (FSSAI style) */
 .mc-veg-box {
     width: 14px;
     height: 14px;
@@ -3725,7 +3616,7 @@ CARD MENU SYSTEM
     overflow: hidden;
 }
 
-/* Card Footer */
+
 .mc-footer {
     display: flex;
     align-items: center;
@@ -3786,7 +3677,7 @@ CARD MENU SYSTEM
     text-decoration: none;
 }
 
-/* ── Combo Cards ── */
+
 .mc-combo-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -3951,7 +3842,7 @@ CARD MENU SYSTEM
     color: var(--olive-light);
 }
 
-/* ── "All" section shows all sub-sections ── */
+
 #mc-all .mc-cat-header {
     margin-top: 40px;
 }
@@ -3960,7 +3851,7 @@ CARD MENU SYSTEM
     margin-top: 0;
 }
 
-/* ── Responsive ── */
+
 @media (max-width: 1200px) {
     .mc-grid {
         grid-template-columns: repeat(3, 1fr);
@@ -3983,7 +3874,6 @@ CARD MENU SYSTEM
 }
 
 @media (max-width: 600px) {
-    /* Mobile tabs overrides moved to the end of file */
 
     .menu-cards-wrap {
         padding: 24px 16px 60px;
@@ -3993,7 +3883,6 @@ CARD MENU SYSTEM
         margin: 36px 0 18px;
     }
 
-    /* Horizontal card on mobile */
     .mc-grid {
         grid-template-columns: 1fr;
         gap: 10px;
@@ -4031,9 +3920,7 @@ CARD MENU SYSTEM
     .mc-footer {
         padding: 6px 14px 12px;
         margin-top: auto;
-        /* Push to bottom of card */
         border-top: none;
-        /* Cleaner look on mobile */
         justify-content: space-between;
         align-items: center;
         gap: 8px;
@@ -4046,7 +3933,6 @@ CARD MENU SYSTEM
     .mc-price .mc-note {
         font-size: 0.55rem;
         display: block;
-        /* Stack note under price if needed or give space */
         margin-top: -2px;
     }
 
@@ -4172,14 +4058,12 @@ CARD MENU SYSTEM
     z-index: 1;
 }
 
-/* ── WRAP ── */
 .cs-wrap {
     max-width: 1100px;
     margin: 0 auto;
     padding: 0 24px;
 }
 
-/* ── ACTION HUB ── */
 .cs-hub {
     padding: 52px 0 0;
 }
@@ -4437,7 +4321,6 @@ CARD MENU SYSTEM
     align-items: start;
 }
 
-/* LEFT */
 .cs-left-kicker {
     font-size: 0.58rem;
     letter-spacing: 0.45em;
@@ -4549,7 +4432,6 @@ CARD MENU SYSTEM
     line-height: 1.6;
 }
 
-/* RIGHT - FORM */
 .cs-form-card {
     background: var(--dark-2);
     border: 1px solid rgba(107, 122, 46, 0.2);
@@ -4874,7 +4756,7 @@ CARD MENU SYSTEM
     white-space: nowrap;
 }
 
-/* ── RESPONSIVE ── */
+
 @media (max-width: 900px) {
     .cs-actions {
         grid-template-columns: 1fr;
@@ -5096,7 +4978,6 @@ CARD MENU SYSTEM
 
 
 
-/* ====== MENU BANNER VIDEO BACKGROUND ====== */
 /* ═══════════════════════════════════════
        FOOD VIDEO BANNER
     ═══════════════════════════════════════ */
