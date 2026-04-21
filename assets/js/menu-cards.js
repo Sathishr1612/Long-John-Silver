@@ -188,26 +188,50 @@ function renderMenu() {
   const wrap = document.getElementById('menuCardsWrap');
   if (!wrap) return;
 
-  // "All" super-section
+  // Build skeleton: "All" super-section with empty placeholders per category
+  // then fill each category section asynchronously to avoid blocking the browser
   let allHTML = '<div id="mc-all" class="mc-section mc-visible">';
   CATS.forEach(cat => {
-    const items = MENU.filter(m => m.cat === cat.id);
     const header = `<div class="mc-cat-header"><span class="mc-cat-eyebrow">${cat.icon} ${cat.label}</span><div class="mc-cat-title">${cat.title} <em>${cat.em}</em></div><div class="mc-cat-line"></div></div>`;
-    if (cat.id === 'beverages') {
-      allHTML += header + `<div class="mc-bev-grid">${items.map((it, i) => buildBevCard(it, 0)).join('')}</div>`;
-    } else {
-      allHTML += header + `<div class="mc-grid">${items.map((it, i) => buildCard(it, 0)).join('')}</div>`;
-    }
+    const gridClass = cat.id === 'beverages' ? 'mc-bev-grid' : 'mc-grid';
+    allHTML += header + `<div class="${gridClass}" id="mc-all-${cat.id}"></div>`;
   });
   allHTML += '</div>';
 
-  // Individual category sections
+  // Individual category sections (empty grids, filled below)
   const catSections = CATS.map(cat => {
-    return buildSection(cat.id, MENU.filter(m => m.cat === cat.id));
+    const cat_obj = CATS.find(c => c.id === cat.id);
+    const header = `<div class="mc-cat-header"><span class="mc-cat-eyebrow">${cat_obj.icon} ${cat_obj.label}</span><div class="mc-cat-title">${cat_obj.title} <em>${cat_obj.em}</em></div><div class="mc-cat-line"></div></div>`;
+    const gridClass = cat.id === 'beverages' ? 'mc-bev-grid' : 'mc-grid';
+    return `<div id="mc-${cat.id}" class="mc-section">${header}<div class="${gridClass}" id="mc-tab-${cat.id}"></div></div>`;
   }).join('');
 
   wrap.innerHTML = allHTML + catSections;
-  animateVisible();
+
+  // Fill each category asynchronously, one per frame, so the page renders fast
+  CATS.forEach((cat, idx) => {
+    setTimeout(() => {
+      const items = MENU.filter(m => m.cat === cat.id);
+
+      // Fill "All" tab grid for this category
+      const allGrid = document.getElementById(`mc-all-${cat.id}`);
+      if (allGrid) {
+        allGrid.innerHTML = cat.id === 'beverages'
+          ? items.map(it => buildBevCard(it, 0)).join('')
+          : items.map(it => buildCard(it, 0)).join('');
+      }
+
+      // Fill individual tab grid for this category
+      const tabGrid = document.getElementById(`mc-tab-${cat.id}`);
+      if (tabGrid) {
+        tabGrid.innerHTML = cat.id === 'beverages'
+          ? items.map(it => buildBevCard(it, 0)).join('')
+          : items.map(it => buildCard(it, 0)).join('');
+      }
+
+      animateVisible();
+    }, idx * 60); // stagger each category by 60ms — feels instant but doesn't block
+  });
 }
 
 /* ── Render Homepage Menu (Exactly 12 items, simple grid) ── */
@@ -234,13 +258,14 @@ function animateVisible() {
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
-        const delay = e.target.style.transitionDelay || '0ms';
-        setTimeout(() => e.target.classList.add('mc-show'), parseInt(delay) || 0);
+        // Add mc-show and never remove it — scrolling back won't hide cards
+        e.target.classList.add('mc-show');
         io.unobserve(e.target);
       }
     });
   }, { threshold: 0.05 });
 
+  // Only observe cards that haven't been shown yet
   document.querySelectorAll('.mc-card:not(.mc-show), .mc-bev-card:not(.mc-show), .mc-combo-card:not(.mc-show)').forEach(el => io.observe(el));
 }
 
