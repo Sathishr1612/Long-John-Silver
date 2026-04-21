@@ -41,18 +41,72 @@ document.addEventListener('keydown', (e) => {
 });
 
 
-// Highlight current page nav link
-(function highlightCurrentPage() {
+// Highlight current page nav link & handle hash links
+const navLinks = document.querySelectorAll('.nav-link');
+function highlightNav() {
   const currentPage = location.pathname.split('/').pop() || 'index.html';
-  document.querySelectorAll('.nav-link').forEach(link => {
-    const linkPage = link.getAttribute('href').split('#')[0];
-    if (linkPage === currentPage || (currentPage === '' && linkPage === 'index.html')) {
-      link.classList.add('active');
+  const scrollPos = window.scrollY + 120; // Increased offset for better trigger
+
+  let anySectionActive = false;
+
+  navLinks.forEach(link => {
+    const href = link.getAttribute('href');
+    if (!href) return;
+
+    // Handle hash links (ScrollSpy) on the home page
+    if (href.startsWith('#') && (currentPage === 'index.html' || currentPage === '')) {
+      const section = document.querySelector(href);
+      if (section && scrollPos >= section.offsetTop && scrollPos < section.offsetTop + section.offsetHeight) {
+        link.classList.add('active');
+        anySectionActive = true;
+      } else {
+        link.classList.remove('active');
+      }
+      return;
+    }
+
+    // Handle page links
+    const linkPage = href.split('#')[0] || 'index.html';
+    if (linkPage === currentPage) {
+      if (linkPage === 'index.html' && (currentPage === 'index.html' || currentPage === '')) {
+        link.classList.toggle('active', !anySectionActive);
+      } else {
+        link.classList.add('active');
+      }
     } else {
       link.classList.remove('active');
     }
   });
-})();
+}
+
+// Optimized Scroll handling
+let isScrolling = false;
+window.addEventListener('scroll', () => {
+  if (!isScrolling) {
+    window.requestAnimationFrame(() => {
+      const y = window.scrollY;
+
+      // Navbar/Back-to-top
+      if (navbar) navbar.classList.toggle('scrolled', y > 50);
+      if (topBar) topBar.classList.toggle('scrolled', y > 50);
+      if (btt) btt.classList.toggle('visible', y > 400);
+
+      // Core scroll functions
+      highlightNav();
+      if (typeof updateActiveTab === 'function') updateActiveTab();
+
+      isScrolling = false;
+    });
+    isScrolling = true;
+  }
+}, { passive: true });
+
+// Run initial states
+window.addEventListener('load', () => {
+  highlightNav();
+  if (typeof triggerReveal === 'function') triggerReveal();
+  if (typeof updateActiveTab === 'function') updateActiveTab();
+});
 
 
 // ================================================
@@ -87,13 +141,7 @@ if (heroSlides.length) startHeroTimer();
 const navbar = document.getElementById('navbar');
 const topBar = document.getElementById('topBar');
 const btt = document.getElementById('btt');
-
-window.addEventListener('scroll', () => {
-  const y = window.scrollY;
-  if (navbar) navbar.classList.toggle('scrolled', y > 50);
-  if (topBar) topBar.classList.toggle('scrolled', y > 50);
-  if (btt) btt.classList.toggle('visible', y > 400);
-}, { passive: true });
+// Handle scroll logic in the optimized block at top of file
 
 // ================================================
 // MOBILE MENU
@@ -162,224 +210,7 @@ function updateActiveTab() {
     t.classList.toggle('active', t.dataset.target === active);
   });
 }
-window.addEventListener('scroll', updateActiveTab, { passive: true });
-
-
-
-
-// ================================================
-// BUILD "ALL" SECTION
-// ================================================
-function buildAllSection() {
-  const allSec = sections.all;
-  if (!allSec) return;
-
-  allSec.innerHTML = `
-    <div class="section-header reveal">
-        <div class="section-label-wrap">
-            <div class="section-label">Full Menu</div>
-            <div class="section-title-big">Every <em>Dish</em></div>
-        </div>
-    </div>
-    <div class="featured-row reveal">
-        <div class="featured-card">
-            <picture>
-                <source srcset="assets/images/food-long-john/chicken-curry.webp" type="image/webp">
-                <img src="assets/images/food-long-john/chicken-curry.jpg" alt="Chicken Curry" class="fc-img" onerror="this.parentNode.style.background='#1C2409'">
-            </picture>
-            <div class="fc-overlay"></div>
-            <div class="fc-content">
-                <span class="fc-ribbon">Indian · Non-Veg</span>
-                <div class="fc-name">Chicken Curry</div>
-                <div class="fc-desc">Slow-simmered in an aromatic blend of spices, tomatoes and fresh herbs.</div>
-                <span class="fc-price">220 <span>/ 4 pcs</span></span>
-            </div>
-        </div>
-        <div class="featured-card">
-            <picture>
-                <source srcset="assets/images/food-long-john/chicken-manchurian-gravy.webp" type="image/webp">
-                <img src="assets/images/food-long-john/chicken-manchurian-gravy.jpg" alt="Chicken Manchurian" class="fc-img" onerror="this.parentNode.style.background='#1C2409'">
-            </picture>
-            <div class="fc-overlay"></div>
-            <span class="fc-tag">Most Loved</span>
-            <div class="fc-content">
-                <span class="fc-ribbon">Chinese · Gravy</span>
-                <div class="fc-name">Chicken Manchurian</div>
-                <div class="fc-desc">Crispy chicken in tangy, glossy Manchurian gravy with peppers and spring onion.</div>
-                <span class="fc-price">260</span>
-            </div>
-        </div>
-    </div>
-    <div class="grid-row reveal">
-        <div class="grid-card">
-            <picture>
-                <source srcset="assets/images/food-long-john/veg-schezwan-fried-rice.webp" type="image/webp">
-                <img src="assets/images/food-long-john/veg-schezwan-fried-rice.jpg" alt="Schezwan Fried Rice" class="gc-img" onerror="this.parentNode.style.background='#1C2409'">
-            </picture>
-            <div class="gc-overlay"></div>
-            <div class="gc-content"><span class="gc-ribbon">Chinese · Rice</span><div class="gc-name">Veg Schezwan Fried Rice</div><div class="gc-price"><span class="rupee">₹</span> 160</div></div>
-        </div>
-        <div class="grid-card">
-            <picture>
-                <source srcset="assets/images/food-long-john/veg-cocktail-pasta.webp" type="image/webp">
-                <img src="assets/images/food-long-john/veg-cocktail-pasta.jpg" alt="Cocktail Pasta" class="gc-img" onerror="this.parentNode.style.background='#1C2409'">
-            </picture>
-            <div class="gc-overlay"></div>
-            <div class="gc-content"><span class="gc-ribbon">Continental · Pasta</span><div class="gc-name">Cocktail Pasta — Veg</div><div class="gc-price"><span class="rupee">₹</span> 190</div></div>
-        </div>
-        <div class="grid-card">
-            <picture>
-                <source srcset="assets/images/food-long-john/chicken-chow.webp" type="image/webp">
-                <img src="assets/images/food-long-john/chicken-chow.jpg" alt="Chicken Chow" class="gc-img" onerror="this.parentNode.style.background='#1C2409'">
-            </picture>
-            <div class="gc-overlay"></div>
-            <div class="gc-content"><span class="gc-ribbon">Chinese · Noodles</span><div class="gc-name">Chicken Chowmein</div><div class="gc-price"><span class="rupee">₹</span> 170</div></div>
-        </div>
-    </div>
-    <div class="grid-row reveal">
-        <div class="grid-card">
-            <picture>
-                <source srcset="assets/images/food-long-john/veg-pulao.webp" type="image/webp">
-                <img src="assets/images/food-long-john/veg-pulao.jpg" alt="Veg Pulao" class="gc-img" onerror="this.parentNode.style.background='#1C2409'">
-            </picture>
-            <div class="gc-overlay"></div>
-            <div class="gc-content"><span class="gc-ribbon">Indian · Rice</span><div class="gc-name">Veg Pulao</div><div class="gc-price"><span class="rupee">₹</span> 200</div></div>
-        </div>
-        <div class="grid-card">
-            <picture>
-                <source srcset="assets/images/food-long-john/white-chicken-pasta.webp" type="image/webp">
-                <img src="assets/images/food-long-john/white-chicken-pasta.jpg" alt="White Chicken Pasta" class="gc-img" onerror="this.parentNode.style.background='#1C2409'">
-            </picture>
-            <div class="gc-overlay"></div>
-            <div class="gc-content"><span class="gc-ribbon">Continental · Pasta</span><div class="gc-name">White Pasta — Chicken</div><div class="gc-price"><span class="rupee">₹</span> 220</div></div>
-        </div>
-        <div class="grid-card">
-            <picture>
-                <source srcset="assets/images/food-long-john/chicken-kasha.webp" type="image/webp">
-                <img src="assets/images/food-long-john/chicken-kasha.jpg" alt="Chicken Kasha" class="gc-img" onerror="this.parentNode.style.background='#1C2409'">
-            </picture>
-            <div class="gc-overlay"></div>
-            <div class="gc-content"><span class="gc-ribbon">Indian · Signature</span><div class="gc-name">Chicken Kasha</div><div class="gc-price"><span class="rupee">₹</span> 230</div></div>
-        </div>
-    </div>
-
-    <div class="list-section reveal"><div class="list-section-title">Quick Scan — Indian</div>
-    <div class="list-grid">
-        <div class="list-item"><div class="li-name"><span class="veg-dot veg"></span>Plain Chapati</div><div class="li-price">15</div></div>
-        <div class="list-item"><div class="li-name"><span class="veg-dot veg"></span>Butter Chapati</div><div class="li-price">20</div></div>
-        <div class="list-item"><div class="li-name"><span class="veg-dot veg"></span>Onion Pakora 8pc</div><div class="li-price">130</div></div>
-        <div class="list-item"><div class="li-name"><span class="veg-dot nonveg"></span>Chicken Pakora Boneless 8pc</div><div class="li-price">220</div></div>
-        <div class="list-item"><div class="li-name"><span class="veg-dot veg"></span>Paneer Pakora</div><div class="li-price">220</div></div>
-        <div class="list-item"><div class="li-name"><span class="veg-dot veg"></span>French Fries w/ Hot Garlic Sauce</div><div class="li-price">120</div></div>
-        <div class="list-item"><div class="li-name"><span class="veg-dot veg"></span>Veg Roll</div><div class="li-price">90</div></div>
-        <div class="list-item"><div class="li-name"><span class="veg-dot nonveg"></span>Chicken Roll</div><div class="li-price">100</div></div>
-        <div class="list-item"><div class="li-name"><span class="veg-dot veg"></span>Dal Fry</div><div class="li-price">150</div></div>
-        <div class="list-item"><div class="li-name"><span class="veg-dot veg"></span>Jeera Rice</div><div class="li-price">140</div></div>
-        <div class="list-item"><div class="li-name"><span class="veg-dot veg"></span>Veg Pulao</div><div class="li-price">200</div></div>
-        <div class="list-item"><div class="li-name"><span class="veg-dot nonveg"></span>Chicken Biryani</div><div class="li-price">300</div></div>
-        <div class="list-item"><div class="li-name"><span class="veg-dot nonveg"></span>Mutton Biryani</div><div class="li-price">360</div></div>
-        <div class="list-item"><div class="li-name"><span class="veg-dot veg"></span>Paneer Butter Masala</div><div class="li-price">250</div></div>
-        <div class="list-item"><div class="li-name"><span class="veg-dot nonveg"></span>Chicken Curry 4pc</div><div class="li-price">220</div></div>
-        <div class="list-item"><div class="li-name"><span class="veg-dot nonveg"></span>Chicken Butter Masala 4pc</div><div class="li-price">270</div></div>
-        <div class="list-item"><div class="li-name"><span class="veg-dot nonveg"></span>Chicken Kasha</div><div class="li-price">230</div></div>
-        <div class="list-item"><div class="li-name"><span class="veg-dot nonveg"></span>Mutton Curry 4pc</div><div class="li-price">300</div></div>
-    </div></div>
-
-    <div class="list-section reveal"><div class="list-section-title">Quick Scan — Chinese</div>
-    <div class="list-grid">
-        <div class="list-item"><div class="li-name"><span class="veg-dot veg"></span>Veg Fried Rice</div><div class="li-price">150</div></div>
-        <div class="list-item"><div class="li-name"><span class="veg-dot veg"></span>Veg Schezwan Fried Rice</div><div class="li-price">160</div></div>
-        <div class="list-item"><div class="li-name"><span class="veg-dot nonveg"></span>Chicken Fried Rice</div><div class="li-price">170</div></div>
-        <div class="list-item"><div class="li-name"><span class="veg-dot nonveg"></span>Egg Fried Rice</div><div class="li-price">170</div></div>
-        <div class="list-item"><div class="li-name"><span class="veg-dot veg"></span>Veg Noodles</div><div class="li-price">150</div></div>
-        <div class="list-item"><div class="li-name"><span class="veg-dot veg"></span>Veg Schezwan Noodles</div><div class="li-price">160</div></div>
-        <div class="list-item"><div class="li-name"><span class="veg-dot nonveg"></span>Chicken Noodles</div><div class="li-price">170</div></div>
-        <div class="list-item"><div class="li-name"><span class="veg-dot nonveg"></span>Chicken Schezwan Noodles</div><div class="li-price">180</div></div>
-        <div class="list-item"><div class="li-name"><span class="veg-dot nonveg"></span>Chicken Chowmein Gravy</div><div class="li-price">200</div></div>
-        <div class="list-item"><div class="li-name"><span class="veg-dot veg"></span>Gobi Manchurian</div><div class="li-price">200</div></div>
-        <div class="list-item"><div class="li-name"><span class="veg-dot nonveg"></span>Chicken Manchurian</div><div class="li-price">260</div></div>
-        <div class="list-item"><div class="li-name"><span class="veg-dot nonveg"></span>Chicken Chilly Dry</div><div class="li-price">260</div></div>
-        <div class="list-item"><div class="li-name"><span class="veg-dot nonveg"></span>Chicken in Hot Garlic Sauce</div><div class="li-price">280</div></div>
-        <div class="list-item"><div class="li-name"><span class="veg-dot nonveg"></span>Chicken Steam Momo</div><div class="li-price">150</div></div>
-        <div class="list-item"><div class="li-name"><span class="veg-dot nonveg"></span>Prawn Fried Rice</div><div class="li-price">260</div></div>
-        <div class="list-item"><div class="li-name"><span class="veg-dot nonveg"></span>Pork Noodles</div><div class="li-price">190</div></div>
-    </div></div>
-
-    <div class="list-section reveal"><div class="list-section-title">Quick Scan — Continental &amp; Beverages</div>
-    <div class="list-grid">
-        <div class="list-item"><div class="li-name"><span class="veg-dot veg"></span>White Pasta — Veg</div><div class="li-price">190</div></div>
-        <div class="list-item"><div class="li-name"><span class="veg-dot nonveg"></span>White Pasta — Chicken</div><div class="li-price">220</div></div>
-        <div class="list-item"><div class="li-name"><span class="veg-dot veg"></span>Cocktail Pasta — Veg</div><div class="li-price">190</div></div>
-        <div class="list-item"><div class="li-name"><span class="veg-dot nonveg"></span>Cocktail Pasta — Chicken</div><div class="li-price">220</div></div>
-        <div class="list-item"><div class="li-name"><span class="veg-dot nonveg"></span>Chicken Burger with Fries</div><div class="li-price">150</div></div>
-        <div class="list-item"><div class="li-name"><span class="veg-dot nonveg"></span>Chicken Cheese Burger with Fries</div><div class="li-price">160</div></div>
-        <div class="list-item"><div class="li-name"><span class="veg-dot veg"></span>Veg Sandwich</div><div class="li-price">100</div></div>
-        <div class="list-item"><div class="li-name"><span class="veg-dot nonveg"></span>Chicken Grilled Sandwich</div><div class="li-price">150</div></div>
-        <div class="list-item"><div class="li-name"><span class="veg-dot veg"></span>Milk Tea</div><div class="li-price">30</div></div>
-        <div class="list-item"><div class="li-name"><span class="veg-dot veg"></span>Coffee</div><div class="li-price">50</div></div>
-        <div class="list-item"><div class="li-name"><span class="veg-dot veg"></span>Seasonal Juice</div><div class="li-price">50</div></div>
-    </div></div>
-    `;
-}
-
-buildAllSection();
-
-// ================================================
-// FILTER BUTTONS (.filter-btn)
-// ================================================
-const filterBtns = document.querySelectorAll('.filter-btn');
-
-filterBtns.forEach(btn => {
-  btn.addEventListener('click', () => {
-    filterBtns.forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    const cat = btn.dataset.cat;
-
-    Object.values(sections).forEach(s => { if (s) s.classList.remove('visible'); });
-
-    const target = sections[cat];
-    if (target) target.classList.add('visible');
-
-    setTimeout(triggerReveal, 50);
-  });
-});
-
-// ================================================
-// LIGHTBOX
-// ================================================
-const lbImgs = [
-  'image29.jpg', 'image30.jpg', 'image31.jpg', 'image32.jpg',
-  'image33.jpg', 'image34.jpg', 'image35.jpg'
-];
-let lbCur = 0;
-const lb = document.getElementById('lightbox');
-const lbEl = document.getElementById('lbImg');
-
-function openLb(i) {
-  lbCur = i;
-  lbEl.src = lbImgs[i];
-  lb.style.display = 'flex';
-  document.body.style.overflow = 'hidden';
-}
-function closeLb() {
-  lb.style.display = 'none';
-  document.body.style.overflow = '';
-}
-function lbNav(d) {
-  lbCur = (lbCur + d + lbImgs.length) % lbImgs.length;
-  lbEl.src = lbImgs[lbCur];
-}
-
-if (lb) {
-  lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
-}
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') closeLb();
-  if (e.key === 'ArrowLeft') lbNav(-1);
-  if (e.key === 'ArrowRight') lbNav(1);
-});
-
-
+// Listener moved to optimized scroll block
 
 
 
@@ -399,17 +230,43 @@ function handleForm(e) {
 }
 
 // ================================================
-// SMOOTH SCROLL — single unified listener
+// SMOOTH SCROLL — Optimized for no-jump & no-reload
 // ================================================
-document.querySelectorAll('a[href^="#"]').forEach(a => {
+document.querySelectorAll('a[href*="#"]').forEach(a => {
   a.addEventListener('click', e => {
-    const id = a.getAttribute('href').slice(1);
-    const el = document.getElementById(id);
-    if (!el) return;
-    e.preventDefault();
-    const offset = (catNav ? catNav.offsetHeight : 0)
-      + (topBar ? topBar.offsetHeight : 0);
-    window.scrollTo({ top: el.offsetTop - offset, behavior: 'smooth' });
+    const href = a.getAttribute('href');
+    if (!href || href === "#") return;
+
+    // Build absolute URLs for comparison
+    const url = new URL(a.href);
+    const loc = window.location;
+
+    // Check if target is on the same page
+    const isSamePage = url.pathname === loc.pathname ||
+      url.pathname === loc.pathname + 'index.html' ||
+      (loc.pathname.endsWith('/') && url.pathname.endsWith('/index.html'));
+
+    if (isSamePage) {
+      const id = url.hash.slice(1);
+      const el = document.getElementById(id);
+
+      if (el) {
+        e.preventDefault();
+
+        const navHeight = navbar ? navbar.offsetHeight : 70;
+        const targetPos = el.getBoundingClientRect().top + window.scrollY - navHeight;
+
+        window.scrollTo({
+          top: targetPos,
+          behavior: 'smooth'
+        });
+
+        // Update URL hash without jump/reload
+        if (history.pushState) {
+          history.pushState(null, null, '#' + id);
+        }
+      }
+    }
   });
 });
 
@@ -445,8 +302,7 @@ document.addEventListener('DOMContentLoaded', () => {
   forceRevealVisible();
   triggerReveal();
 });
-window.addEventListener('scroll', triggerReveal, { passive: true });
-triggerReveal();
+// Listener handled in optimized scroll block
 forceRevealVisible();
 
 
